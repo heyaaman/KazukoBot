@@ -2,22 +2,22 @@ import asyncio
 import sys
 
 from motor import motor_asyncio
-from Kazikobot import MONGO_DB_URI 
+from Kazukobot import MONGO_DB_URI 
 from pymongo import MongoClient
 from pymongo.errors import ServerSelectionTimeoutError
-from Kazikobot.conf import get_int_key, get_str_key
+from Kazukobot.conf import get_int_key, get_str_key
 
 
-MONGO_PORT = get_int_key("27017")
+MONGO_PORT = get_int_key("8000")
 MONGO_DB_URI = get_str_key("MONGO_DB_URI")
-MONGO_DB = "Kaziko"
+MONGO_DB = "Kazuko"
 
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI, MONGO_PORT)[MONGO_DB]
 motor = motor_asyncio.AsyncIOMotorClient(MONGO_DB_URI, MONGO_PORT)
 db = motor[MONGO_DB]
-db = client["Kazikobot"]
+db = client["Kazukobot"]
 try:
     asyncio.get_event_loop().run_until_complete(motor.server_info())
 except ServerSelectionTimeoutError:
