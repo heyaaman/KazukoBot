@@ -22,11 +22,11 @@ from Kazikobot import (
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from SaitamaRobot.modules import ALL_MODULES
-from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin
-from SaitamaRobot.modules.helper_funcs.misc import paginate_modules
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
-from telegram.error import (
+from Kazukobot.modules import ALL_MODULES
+from Kazukobot.modules.helper_funcs.chat_status import is_user_admin
+from Kazukobot.modules.helper_funcs.misc import paginate_modules
+from Kazukobot import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
+from Kazukobot.error import (
     BadRequest,
     ChatMigrated,
     NetworkError,
@@ -72,8 +72,8 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 Hey hi {}, I'm {}!
-I am an Anime themed group management bot.
-Built by weebs for weebs, I specialize in managing anime eccentric communities!
+I am an Anime themed group management bot to
+maintain your group safe and sound!
 """
 
 HELP_STRINGS = """
@@ -94,12 +94,11 @@ And the following:
     "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n",
 )
 
-SAITAMA_IMG = "https://telegra.ph/file/46e6d9dfcb3eb9eae95d9.jpg"
+KAZIKO_IMG = "https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project via [Paypal](ko-fi.com/sawada) or by contacting @Sawada \
- Supporting isnt always financial! \
- Those who cannot provide monetary support are welcome to help us develop the bot at @OnePunchDev."""
+ You can support the project via [Paypal](ko-fi.com/heyaaman) or by contacting @heyaaman \
+"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -112,7 +111,7 @@ CHAT_SETTINGS = {}
 USER_SETTINGS = {}
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("SaitamaRobot.modules." + module_name)
+    imported_module = importlib.import_module("Kaziko.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
@@ -216,36 +215,30 @@ def start(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="☑️ Add me",
-                                url="t.me/{}?startgroup=true".format(
-                                    context.bot.username,
-                                ),
-                            ),
-                        ],
-                        [
-                            InlineKeyboardButton(
-                                text="🚑 Support",
+                                text="Support",
                                 url=f"https://t.me/{SUPPORT_CHAT}",
                             ),
                             InlineKeyboardButton(
-                                text="🔔 Updates",
-                                url="https://t.me/OnePunchUpdates",
+                                text="About",callback_data="kazuko_"),
                             ),
+                            InlineKeyboardButton(
+                                text="Updates",
+                                url="https://t.me/CFC_BOT_support",
+                            ),
+                            
                         ],
+
                         [
                             InlineKeyboardButton(
-                                text="🧾 Getting Started",
-                                url="https://t.me/OnePunchUpdates/29",
+                                text="Try Inline",
+                                switch_inline_query_current_chat="",
+                            ),
+                            InlineKeyboardButton(text="Help", callback_data="help_back"
                             ),
                             InlineKeyboardButton(
-                                text="🗄 Source code",
-                                url="https://github.com/AnimeKaizoku/SaitamaRobot",
-                            ),
-                        ],
-                        [
-                            InlineKeyboardButton(
-                                text="☠️ Kaizoku Network",
-                                url="https://t.me/Kaizoku/4",
+                                text="Add me",
+                                url="t.me/{}?startgroup=true".format(
+                                    context.bot.username,
                             ),
                         ],
                     ],
@@ -353,6 +346,40 @@ def help_button(update, context):
 
     except BadRequest:
         pass
+
+@run_async
+def kazuko_about_callback(update, context):
+    query = update.callback_query
+    if query.data == "kazuko_":
+        query.message.edit_text(
+            text=""" ℹ️ I'm *Kazuko*, a powerful group management bot built to help you manage your group easily.
+                 \n❍ I can restrict users.
+                 \n❍ I can greet users with customizable welcome messages and even set a group's rules.
+                 \n❍ I have an advanced anti-flood system.
+                 \n❍ I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
+                 \n❍ I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
+                 \n❍ I check for admins' permissions before executing any command and more stuffs
+                 \n\n_kazuko's licensed under the GNU General Public License v3.0_
+                 \nHere is the [💾Repository](https://github.com/heyaaman/KazukoRobot).
+                 \n\nIf you have any question about kazuko, let us know at .""",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [
+                    InlineKeyboardButton(text="Back", callback_data="kazuko_back")
+                 ]
+                ]
+            ),
+        )
+    elif query.data == "kazuko_back":
+        query.message.edit_text(
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60,
+                disable_web_page_preview=False,
+        )
 
 
 @run_async
