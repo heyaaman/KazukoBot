@@ -1,4 +1,4 @@
-from kazukobot.mongo import db
+from Kazikobot.mongo import db
 from typing import Dict, List, Union
 
 
