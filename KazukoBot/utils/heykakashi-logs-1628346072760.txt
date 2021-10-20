@@ -1,0 +1,96 @@
+2021-08-07T14:15:42.460160+00:00 app[api]: Attach DATABASE (@ref:postgresql-slippery-60396) by user heyaamanbasheer2004@gmail.com
+2021-08-07T14:15:42.470152+00:00 app[api]: Release v5 created by user heyaamanbasheer2004@gmail.com
+2021-08-07T14:15:42.470152+00:00 app[api]: @ref:postgresql-slippery-60396 completed provisioning, setting DATABASE_URL. by user heyaamanbasheer2004@gmail.com
+2021-08-07T14:15:42.534956+00:00 app[api]: Release v6 created by user heyaamanbasheer2004@gmail.com
+2021-08-07T14:15:42.534956+00:00 app[api]: Enable Logplex by user heyaamanbasheer2004@gmail.com
+2021-08-07T14:15:43.000000+00:00 app[api]: Build started by user heyaamanbasheer2004@gmail.com
+2021-08-07T14:17:23.925452+00:00 app[api]: Deploy by user heyaamanbasheer2004@gmail.com
+2021-08-07T14:17:23.925452+00:00 app[api]: Release v7 created by user heyaamanbasheer2004@gmail.com
+2021-08-07T14:17:41.000000+00:00 app[api]: Build succeeded
+2021-08-07T14:19:54.704545+00:00 app[api]: Scaled to worker@1:Free by user heyaamanbasheer2004@gmail.com
+2021-08-07T14:20:15.898829+00:00 heroku[worker.1]: Starting process with command `python3 -m LaylaRobot`
+2021-08-07T14:20:16.675479+00:00 heroku[worker.1]: State changed from starting to up
+2021-08-07T14:20:22.299893+00:00 app[worker.1]: 2021-08-07 14:20:22,299 - LaylaRobot - WARNING - SpamWatch API key missing! recheck your config.
+2021-08-07T14:20:26.378548+00:00 app[worker.1]: 2021-08-07 14:20:26,378 - LaylaRobot - INFO - Not loading: ['translation']
+2021-08-07T14:20:26.378809+00:00 app[worker.1]: 2021-08-07 14:20:26,378 - LaylaRobot - INFO - Modules to load: ['anime', 'nsfw', 'truth_and_dare_string', 'music', 'users', 'paste', 'notes', '__weather', 'musicplayer', 'muting', 'currency_converter', 'truth_and_dare', 'eval', 'ud', 'shippering', 'misc', 'ping', 'fun_strings', '__imdb', 'antiflood', 'debug', '__country', 'cust_filters', 'global_bans', 'connection', '__tools', 'blacklist_stickers', 'zombies', 'fakeit', 'purge', 'warns', 'dev', 'welcome', 'afk', 'math', '__gps', '__heroku', 'bans', 'locks', 'gettime', 'log_channel', '__core', 'wallpaper', '__nightmode', 'blacklistusers', 'get_common_chats', 'disable', 'userinfo', '__texttospeech', 'shell', 'sed', 'backups', 'stickers', '_pyrogithub', 'rules', 'games', 'reactions', 'speed_test', '__songs', '__forcesubs', '__aimultilanguage', 'remote_cmds', 'logomaker', 'admin', 'approve', 'error_handler', 'modules', 'cleaner', 'dbcleanup', 'feds', '__encrypt', 'tagall', 'fun', 'reporting', '__speachtotext', 'cricketscore', '__google', 'disasters', '__zip', 'blacklist', 'gtranslator', 'wiki', '__telegraph', '__shield']
+2021-08-07T14:20:27.777825+00:00 app[worker.1]: 2021-08-07 14:20:27,777 - LaylaRobot - WARNING - No str key: GENIUS_API_TOKEN
+2021-08-07T14:20:28.993796+00:00 app[worker.1]: Traceback (most recent call last):
+2021-08-07T14:20:28.993889+00:00 app[worker.1]:   File "/app/.heroku/python/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+2021-08-07T14:20:28.994347+00:00 app[worker.1]:     return _run_code(code, main_globals, None,
+2021-08-07T14:20:28.994382+00:00 app[worker.1]:   File "/app/.heroku/python/lib/python3.8/runpy.py", line 87, in _run_code
+2021-08-07T14:20:28.994742+00:00 app[worker.1]:     exec(code, run_globals)
+2021-08-07T14:20:28.994775+00:00 app[worker.1]:   File "/app/LaylaRobot/__main__.py", line 128, in <module>
+2021-08-07T14:20:28.995199+00:00 app[worker.1]:     imported_module = importlib.import_module("LaylaRobot.modules." + module_name)
+2021-08-07T14:20:28.995229+00:00 app[worker.1]:   File "/app/.heroku/python/lib/python3.8/importlib/__init__.py", line 127, in import_module
+2021-08-07T14:20:28.995599+00:00 app[worker.1]:     return _bootstrap._gcd_import(name[level:], package, level)
+2021-08-07T14:20:28.995630+00:00 app[worker.1]:   File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+2021-08-07T14:20:28.995944+00:00 app[worker.1]:   File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+2021-08-07T14:20:28.996175+00:00 app[worker.1]:   File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+2021-08-07T14:20:28.996415+00:00 app[worker.1]:   File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+2021-08-07T14:20:28.996641+00:00 app[worker.1]:   File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+2021-08-07T14:20:28.996895+00:00 app[worker.1]:   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+2021-08-07T14:20:28.997123+00:00 app[worker.1]:   File "/app/LaylaRobot/modules/shippering.py", line 2, in <module>
+2021-08-07T14:20:28.997403+00:00 app[worker.1]:     from LaylaRobot.utils.dbfunc import get_couple, save_couple
+2021-08-07T14:20:28.997435+00:00 app[worker.1]:   File "/app/LaylaRobot/utils/dbfunc.py", line 1, in <module>
+2021-08-07T14:20:28.997712+00:00 app[worker.1]:     from LaylaRobot.mongo import db
+2021-08-07T14:20:28.997745+00:00 app[worker.1]:   File "/app/LaylaRobot/mongo.py", line 4, in <module>
+2021-08-07T14:20:28.997991+00:00 app[worker.1]:     from motor import motor_asyncio
+2021-08-07T14:20:28.998058+00:00 app[worker.1]:   File "/app/.heroku/python/lib/python3.8/site-packages/motor/__init__.py", line 35, in <module>
+2021-08-07T14:20:28.998329+00:00 app[worker.1]:     from .motor_tornado import *
+2021-08-07T14:20:28.998376+00:00 app[worker.1]:   File "/app/.heroku/python/lib/python3.8/site-packages/motor/motor_tornado.py", line 29, in <module>
+2021-08-07T14:20:28.998677+00:00 app[worker.1]:     MotorClient = create_motor_class(core.AgnosticClient)
+2021-08-07T14:20:28.998707+00:00 app[worker.1]:   File "/app/.heroku/python/lib/python3.8/site-packages/motor/motor_tornado.py", line 25, in create_motor_class
+2021-08-07T14:20:29.001420+00:00 app[worker.1]:     return create_class_with_framework(cls, tornado_framework,
+2021-08-07T14:20:29.001455+00:00 app[worker.1]:   File "/app/.heroku/python/lib/python3.8/site-packages/motor/metaprogramming.py", line 288, in create_class_with_framework
+2021-08-07T14:20:29.001915+00:00 app[worker.1]:     new_class_attr = attr.create_attribute(new_class, name)
+2021-08-07T14:20:29.001948+00:00 app[worker.1]:   File "/app/.heroku/python/lib/python3.8/site-packages/motor/metaprogramming.py", line 204, in create_attribute
+2021-08-07T14:20:29.002335+00:00 app[worker.1]:     doc = getattr(cls.__delegate_class__, attr_name).__doc__
+2021-08-07T14:20:29.002474+00:00 app[worker.1]: AttributeError: type object 'MongoClient' has no attribute 'topology_description'
+2021-08-07T14:20:29.749609+00:00 heroku[worker.1]: Process exited with status 1
+2021-08-07T14:20:29.847608+00:00 heroku[worker.1]: State changed from up to crashed
+2021-08-07T14:20:29.855470+00:00 heroku[worker.1]: State changed from crashed to starting
+2021-08-07T14:20:43.996723+00:00 heroku[worker.1]: Starting process with command `python3 -m LaylaRobot`
+2021-08-07T14:20:44.907435+00:00 heroku[worker.1]: State changed from starting to up
+2021-08-07T14:20:51.086548+00:00 app[worker.1]: 2021-08-07 14:20:51,086 - LaylaRobot - WARNING - SpamWatch API key missing! recheck your config.
+2021-08-07T14:20:51.245946+00:00 app[worker.1]: 2021-08-07 14:20:51,237 - LaylaRobot - INFO - Not loading: ['translation']
+2021-08-07T14:20:51.246424+00:00 app[worker.1]: 2021-08-07 14:20:51,246 - LaylaRobot - INFO - Modules to load: ['reactions', 'wiki', 'tagall', '__nightmode', '__core', 'cricketscore', 'shippering', 'sed', 'fun_strings', '__country', 'get_common_chats', 'notes', 'feds', 'truth_and_dare_string', 'afk', 'games', 'rules', 'remote_cmds', 'ping', 'gettime', '__forcesubs', '__speachtotext', '__google', 'bans', 'speed_test', 'music', 'dbcleanup', '__gps', '__aimultilanguage', 'math', '__songs', 'misc', 'stickers', 'logomaker', 'nsfw', '__tools', 'ud', 'users', 'blacklist', 'disable', 'admin', 'shell', 'paste', 'gtranslator', 'muting', 'dev', 'cust_filters', 'fun', 'connection', '__weather', 'approve', 'truth_and_dare', '__shield', 'blacklistusers', 'purge', 'antiflood', 'wallpaper', 'backups', '__encrypt', 'log_channel', '__imdb', 'locks', 'musicplayer', '__zip', 'modules', '__texttospeech', 'error_handler', 'debug', 'anime', 'warns', 'zombies', '__telegraph', 'global_bans', 'reporting', 'disasters', 'fakeit', 'currency_converter', 'cleaner', 'blacklist_stickers', '_pyrogithub', 'welcome', 'eval', '__heroku', 'userinfo']
+2021-08-07T14:20:53.145866+00:00 app[worker.1]: 2021-08-07 14:20:53,145 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2021-08-07T14:20:53.151927+00:00 app[worker.1]: 2021-08-07 14:20:53,151 - apscheduler.scheduler - INFO - Added job "job_close" to job store "default"
+2021-08-07T14:20:53.152131+00:00 app[worker.1]: 2021-08-07 14:20:53,151 - apscheduler.scheduler - INFO - Scheduler started
+2021-08-07T14:20:53.153246+00:00 app[worker.1]: 2021-08-07 14:20:53,153 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2021-08-07T14:20:53.154098+00:00 app[worker.1]: 2021-08-07 14:20:53,153 - apscheduler.scheduler - INFO - Added job "job_open" to job store "default"
+2021-08-07T14:20:53.154309+00:00 app[worker.1]: 2021-08-07 14:20:53,154 - apscheduler.scheduler - INFO - Scheduler started
+2021-08-07T14:20:53.401942+00:00 app[worker.1]: Traceback (most recent call last):
+2021-08-07T14:20:53.401996+00:00 app[worker.1]:   File "/app/.heroku/python/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+2021-08-07T14:20:53.402287+00:00 app[worker.1]:     return _run_code(code, main_globals, None,
+2021-08-07T14:20:53.402311+00:00 app[worker.1]:   File "/app/.heroku/python/lib/python3.8/runpy.py", line 87, in _run_code
+2021-08-07T14:20:53.402510+00:00 app[worker.1]:     exec(code, run_globals)
+2021-08-07T14:20:53.402536+00:00 app[worker.1]:   File "/app/LaylaRobot/__main__.py", line 128, in <module>
+2021-08-07T14:20:53.402813+00:00 app[worker.1]:     imported_module = importlib.import_module("LaylaRobot.modules." + module_name)
+2021-08-07T14:20:53.402836+00:00 app[worker.1]:   File "/app/.heroku/python/lib/python3.8/importlib/__init__.py", line 127, in import_module
+2021-08-07T14:20:53.403044+00:00 app[worker.1]:     return _bootstrap._gcd_import(name[level:], package, level)
+2021-08-07T14:20:53.403067+00:00 app[worker.1]:   File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+2021-08-07T14:20:53.403244+00:00 app[worker.1]:   File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+2021-08-07T14:20:53.403379+00:00 app[worker.1]:   File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+2021-08-07T14:20:53.403510+00:00 app[worker.1]:   File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+2021-08-07T14:20:53.403633+00:00 app[worker.1]:   File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+2021-08-07T14:20:53.403789+00:00 app[worker.1]:   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+2021-08-07T14:20:53.403920+00:00 app[worker.1]:   File "/app/LaylaRobot/modules/shippering.py", line 2, in <module>
+2021-08-07T14:20:53.404105+00:00 app[worker.1]:     from LaylaRobot.utils.dbfunc import get_couple, save_couple
+2021-08-07T14:20:53.404134+00:00 app[worker.1]:   File "/app/LaylaRobot/utils/dbfunc.py", line 1, in <module>
+2021-08-07T14:20:53.404313+00:00 app[worker.1]:     from LaylaRobot.mongo import db
+2021-08-07T14:20:53.404342+00:00 app[worker.1]:   File "/app/LaylaRobot/mongo.py", line 4, in <module>
+2021-08-07T14:20:53.404533+00:00 app[worker.1]:     from motor import motor_asyncio
+2021-08-07T14:20:53.404565+00:00 app[worker.1]:   File "/app/.heroku/python/lib/python3.8/site-packages/motor/__init__.py", line 35, in <module>
+2021-08-07T14:20:53.404783+00:00 app[worker.1]:     from .motor_tornado import *
+2021-08-07T14:20:53.404814+00:00 app[worker.1]:   File "/app/.heroku/python/lib/python3.8/site-packages/motor/motor_tornado.py", line 29, in <module>
+2021-08-07T14:20:53.404999+00:00 app[worker.1]:     MotorClient = create_motor_class(core.AgnosticClient)
+2021-08-07T14:20:53.405005+00:00 app[worker.1]:   File "/app/.heroku/python/lib/python3.8/site-packages/motor/motor_tornado.py", line 25, in create_motor_class
+2021-08-07T14:20:53.405127+00:00 app[worker.1]:     return create_class_with_framework(cls, tornado_framework,
+2021-08-07T14:20:53.405156+00:00 app[worker.1]:   File "/app/.heroku/python/lib/python3.8/site-packages/motor/metaprogramming.py", line 288, in create_class_with_framework
+2021-08-07T14:20:53.405362+00:00 app[worker.1]:     new_class_attr = attr.create_attribute(new_class, name)
+2021-08-07T14:20:53.405362+00:00 app[worker.1]:   File "/app/.heroku/python/lib/python3.8/site-packages/motor/metaprogramming.py", line 204, in create_attribute
+2021-08-07T14:20:53.405639+00:00 app[worker.1]:     doc = getattr(cls.__delegate_class__, attr_name).__doc__
+2021-08-07T14:20:53.405640+00:00 app[worker.1]: AttributeError: type object 'MongoClient' has no attribute 'topology_description'
+2021-08-07T14:20:53.961603+00:00 heroku[worker.1]: Process exited with status 1
+2021-08-07T14:20:54.041528+00:00 heroku[worker.1]: State changed from up to crashed
