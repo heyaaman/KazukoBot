@@ -7,8 +7,8 @@ import time
 import uuid
 from io import BytesIO
 
-import Kazukobot.modules.sql.feds_sql as sql
-from Kazukobot import (
+import KazukoBot.modules.sql.feds_sql as sql
+from KazukoBot import (
     EVENT_LOGS,
     LOGGER,
     SUPPORT_CHAT,
@@ -18,15 +18,15 @@ from Kazukobot import (
     WOLVES,
     dispatcher,
 )
-from Kazukobot.modules.disable import DisableAbleCommandHandler
-from Kazukobot.modules.helper_funcs.alternate import send_message
-from Kazukobot.modules.helper_funcs.chat_status import is_user_admin
-from Kazukobot.modules.helper_funcs.extraction import (
+from KazukoBot.modules.disable import DisableAbleCommandHandler
+from KazukoBot.modules.helper_funcs.alternate import send_message
+from KazukoBot.modules.helper_funcs.chat_status import is_user_admin
+from KazukoBot.modules.helper_funcs.extraction import (
     extract_unt_fedban,
     extract_user,
     extract_user_fban,
 )
-from Kazukobot.modules.helper_funcs.string_handling import markdown_parser
+from KazukoBot.modules.helper_funcs.string_handling import markdown_parser
 from telegram import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
