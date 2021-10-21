@@ -1,15 +1,15 @@
 {
-      "name": "Phoeni✘",
+      "name": "Kazuko",
       "description": "Telegram group management bot.",
-      "logo": "https://telegra.ph/file/74a1b9cf4bbf4f4880246.jpg",
+      "logo": "https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg",
       "keywords": [
          "telegram",
          "anime",
          "group",
          "manager",
-         "innexi"
+         "kazuko"
       ],   
-   "repository": "https://github.com/heyaaman/PhoenixCollosus.git",
+   "repository": "https://github.com/heyaaman/KazukoRobot.git",
    "addons": [
       {
          "options": {
