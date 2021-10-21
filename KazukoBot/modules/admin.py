@@ -5,9 +5,9 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, Filters, run_async
 from telegram.utils.helpers import mention_html
 
-from Kazukobot import DRAGONS, dispatcher
-from Kazukobot.modules.disable import DisableAbleCommandHandler
-from Kazukobot.modules.helper_funcs.chat_status import (
+from KazukoBot import DRAGONS, dispatcher
+from KazukoBot.modules.disable import DisableAbleCommandHandler
+from KazukoBot.modules.helper_funcs.chat_status import (
     bot_admin,
     can_pin,
     can_promote,
@@ -16,12 +16,12 @@ from Kazukobot.modules.helper_funcs.chat_status import (
     ADMIN_CACHE,
 )
 
-from Kazukobot.modules.helper_funcs.extraction import (
+from KazukoBot.modules.helper_funcs.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from Kazukobot.modules.log_channel import loggable
-from Kazukobot.modules.helper_funcs.alternate import send_message
+from KazukoBot.modules.log_channel import loggable
+from KazukoBot.modules.helper_funcs.alternate import send_message
 
 
 @run_async
