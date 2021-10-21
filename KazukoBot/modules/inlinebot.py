@@ -45,9 +45,9 @@ from search_engine_parser import GoogleSearch
 from tswift import Song
 from youtubesearchpython import VideosSearch
 
-from Kazukobot.utils.inlinehelper import *
-from Kazukobot.utils.pluginhelpers import fetch, json_prettify
-from Kazukobot import pgram, OPENWEATHERMAP_ID, TIME_API_KEY, BOT_USERNAME, SUPPORT_CHAT
+from KazukoBot.utils.inlinehelper import *
+from KazukoBot.utils.pluginhelpers import fetch, json_prettify
+from KazukoBot import pgram, OPENWEATHERMAP_ID, TIME_API_KEY, BOT_USERNAME, SUPPORT_CHAT
 
 dictionary = PyDictionary()
 
