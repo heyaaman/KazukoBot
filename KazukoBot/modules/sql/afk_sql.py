@@ -2,7 +2,7 @@ import threading
 
 from datetime import datetime
 
-from Kazukobot.modules.sql import BASE, SESSION
+from KazukoBot.modules.sql import BASE, SESSION
 from sqlalchemy import Boolean, Column, Integer, UnicodeText, DateTime
 
 
