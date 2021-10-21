@@ -220,22 +220,20 @@ def start(update: Update, context: CallbackContext):
                             ),
                             InlineKeyboardButton(
                                 text="Updates",
-                                url="https://t.me/CFC_BOT_support",
+                                url="https://t.me/phoenix_empire",
                             ),
                         ],
                         [
                            InlineKeyboardButton(
                                 text="Source code",
                                 url="https://github.com/heyaaman/KazukoBot",
-                            
+                            ),                     
                             InlineKeyboardButton(text="Help", callback_data="help_back",
-                            ),
-
                             ),
                             InlineKeyboardButton(
                                 text="Add me", 
                                 url="t.me/KazukoRobot?startgroup=true",
-                             ),
+                            ),
                         ],
                     ],
                 ),
