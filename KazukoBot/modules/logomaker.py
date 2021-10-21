@@ -1,6 +1,6 @@
-from Kazukobot.events import register
-from Kazukobot import OWNER_ID
-from Kazukobot import telethn as tbot
+from KazukoBot.events import register
+from KazukoBot import OWNER_ID
+from KazukoBot import telethn as tbot
 import os 
 from PIL import Image, ImageDraw, ImageFont
 import shutil 
