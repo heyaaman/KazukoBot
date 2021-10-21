@@ -1,9 +1,9 @@
 from typing import Optional
 
-import Kazukobot.modules.sql.rules_sql as sql
-from Kazukobot import dispatcher
-from Kazukobot.modules.helper_funcs.chat_status import user_admin
-from Kazukobot.modules.helper_funcs.string_handling import markdown_parser
+import KazukoBot.modules.sql.rules_sql as sql
+from KazukoBot import dispatcher
+from KazukoBot.modules.helper_funcs.chat_status import user_admin
+from KazukoBot.modules.helper_funcs.string_handling import markdown_parser
 from telegram import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
