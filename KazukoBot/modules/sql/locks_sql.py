@@ -3,7 +3,7 @@ import threading
 
 from sqlalchemy import Column, String, Boolean
 
-from Kazukobot.modules.sql import SESSION, BASE
+from KazukoBot.modules.sql import SESSION, BASE
 
 
 class Permissions(BASE):
