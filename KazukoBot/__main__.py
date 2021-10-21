@@ -236,11 +236,11 @@ def start(update: Update, context: CallbackContext):
                             InlineKeyboardButton(text="Help", callback_data="help_back"
                             ),
                             InlineKeyboardButton(
-                                url="t.me/{}?startgroup=true".format(
-                                context.bot.username,
+                                text="Add me", 
+                                url="t.me/KazukoRobot?startgroup=true",
                             ),
                         ],
-                       ],
+                    ],
                 ),
             )
     else:
