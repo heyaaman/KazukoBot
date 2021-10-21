@@ -7,7 +7,7 @@ from contextlib import suppress
 
 import KazukoBot.modules.sql.welcome_sql as sql
 import KazukoBot
-from Kazukobot import (
+from KazukoBot import (
     DEV_USERS,
     LOGGER,
     OWNER_ID,
