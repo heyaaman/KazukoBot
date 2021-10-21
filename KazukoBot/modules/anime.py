@@ -5,8 +5,8 @@ import textwrap
 import bs4
 import jikanpy
 import requests
-from Kazukobot import dispatcher
-from Kazukobot.modules.disable import DisableAbleCommandHandler
+from KazukoBot import dispatcher
+from KazukoBot.modules.disable import DisableAbleCommandHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update, Message
 from telegram.ext import CallbackContext, run_async
 
