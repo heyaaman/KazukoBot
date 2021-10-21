@@ -7,17 +7,17 @@ from telegram.ext import CommandHandler, MessageHandler, Filters, run_async
 from telegram.utils.helpers import mention_html
 
 import Kazukobot.modules.sql.blacklist_sql as sql
-from Kazukobot import dispatcher, LOGGER
-from Kazukobot.modules.disable import DisableAbleCommandHandler
-from Kazukobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
-from Kazukobot.modules.helper_funcs.extraction import extract_text
-from Kazukobot.modules.helper_funcs.misc import split_message
-from Kazukobot.modules.log_channel import loggable
-from Kazukobot.modules.warns import warn
-from Kazukobot.modules.helper_funcs.string_handling import extract_time
-from Kazukobot.modules.connection import connected
-from Kazukobot.modules.sql.approve_sql import is_approved
-from Kazukobot.modules.helper_funcs.alternate import send_message, typing_action
+from KazukoBot import dispatcher, LOGGER
+from KazukoBot.modules.disable import DisableAbleCommandHandler
+from KazukoBot.modules.helper_funcs.chat_status import user_admin, user_not_admin
+from KazukoBot.modules.helper_funcs.extraction import extract_text
+from KazukoBot.modules.helper_funcs.misc import split_message
+from KazukoBot.modules.log_channel import loggable
+from KazukoBot.modules.warns import warn
+from KazukoBot.modules.helper_funcs.string_handling import extract_time
+from KazukoBot.modules.connection import connected
+from KazukoBot.modules.sql.approve_sql import is_approved
+from KazukoBot.modules.helper_funcs.alternate import send_message, typing_action
 
 BLACKLIST_GROUP = 11
 
