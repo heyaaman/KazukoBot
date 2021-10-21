@@ -4,15 +4,15 @@ import re
 
 from telegram import Message, Chat, Update, User, ChatPermissions
 
-from Kazukobot import TIGERS, WOLVES, dispatcher
-from Kazukobot.modules.helper_funcs.chat_status import (
+from KazukoBot import TIGERS, WOLVES, dispatcher
+from KazukoBot.modules.helper_funcs.chat_status import (
     bot_admin,
     is_user_admin,
     user_admin,
     user_admin_no_reply,
 )
-from Kazukobot.modules.log_channel import loggable
-from Kazukobot.modules.sql import antiflood_sql as sql
+from KazukoBot.modules.log_channel import loggable
+from KazukoBot.modules.sql import antiflood_sql as sql
 from telegram.error import BadRequest
 from telegram.ext import (
     CallbackContext,
@@ -23,10 +23,10 @@ from telegram.ext import (
     run_async,
 )
 from telegram.utils.helpers import mention_html
-from Kazukobot.modules.helper_funcs.string_handling import extract_time
-from Kazukobot.modules.connection import connected
-from Kazukobot.modules.helper_funcs.alternate import send_message
-from Kazukobot.modules.sql.approve_sql import is_approved
+from KazukoBot.modules.helper_funcs.string_handling import extract_time
+from KazukoBot.modules.connection import connected
+from KazukoBot.modules.helper_funcs.alternate import send_message
+from KazukoBot.modules.sql.approve_sql import is_approved
 
 FLOOD_GROUP = 3
 
