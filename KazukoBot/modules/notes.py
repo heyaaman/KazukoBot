@@ -3,14 +3,14 @@ from io import BytesIO
 import random
 from typing import Optional
 
-import Kazukobot.modules.sql.notes_sql as sql
-from Kazukobot import LOGGER, JOIN_LOGGER, SUPPORT_CHAT, dispatcher, DRAGONS
-from Kazukobot.modules.disable import DisableAbleCommandHandler
-from Kazukobot.modules.helper_funcs.handlers import MessageHandlerChecker
-from Kazukobot.modules.helper_funcs.chat_status import user_admin, connection_status
-from Kazukobot.modules.helper_funcs.misc import build_keyboard, revert_buttons
-from Kazukobot.modules.helper_funcs.msg_types import get_note_type
-from Kazukobot.modules.helper_funcs.string_handling import (
+import KazukoBot.modules.sql.notes_sql as sql
+from KazukoBot import LOGGER, JOIN_LOGGER, SUPPORT_CHAT, dispatcher, DRAGONS
+from KazukoBot.modules.disable import DisableAbleCommandHandler
+from KazukoBot.modules.helper_funcs.handlers import MessageHandlerChecker
+from KazukoBot.modules.helper_funcs.chat_status import user_admin, connection_status
+from KazukoBot.modules.helper_funcs.misc import build_keyboard, revert_buttons
+from KazukoBot.modules.helper_funcs.msg_types import get_note_type
+from KazukoBot.modules.helper_funcs.string_handling import (
     escape_invalid_curly_brackets,
 )
 from telegram import (
