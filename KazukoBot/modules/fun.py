@@ -2,11 +2,11 @@ import html
 import random
 import time
 
-import Kazukobot.modules.fun_strings as fun_strings
-from Kazukobot import dispatcher
-from Kazukobot.modules.disable import DisableAbleCommandHandler
-from Kazukobot.modules.helper_funcs.chat_status import is_user_admin
-from Kazukobot.modules.helper_funcs.extraction import extract_user
+import KazukoBot.modules.fun_strings as fun_strings
+from KazukoBot import dispatcher
+from KazukoBot.modules.disable import DisableAbleCommandHandler
+from KazukoBot.modules.helper_funcs.chat_status import is_user_admin
+from KazukoBot.modules.helper_funcs.extraction import extract_user
 from telegram import ChatPermissions, ParseMode, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, run_async
