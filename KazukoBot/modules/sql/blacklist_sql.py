@@ -2,7 +2,7 @@ import threading
 
 from sqlalchemy import func, distinct, Column, String, UnicodeText, Integer
 
-from Kazukobot.modules.sql import SESSION, BASE
+from KazukoBot.modules.sql import SESSION, BASE
 
 
 class BlackListFilters(BASE):
