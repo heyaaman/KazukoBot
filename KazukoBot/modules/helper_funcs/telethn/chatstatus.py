@@ -1,5 +1,5 @@
-from Kazukobot.modules.helper_funcs.telethn import IMMUNE_USERS, telethn
-from Kazukobot import DRAGONS
+from KazukoBot.modules.helper_funcs.telethn import IMMUNE_USERS, telethn
+from KazukoBot import DRAGONS
 from telethon.tl.types import ChannelParticipantsAdmins
 
 
