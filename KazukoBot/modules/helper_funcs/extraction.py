@@ -1,7 +1,7 @@
 from typing import List, Optional
 
-from Kazukobot import LOGGER
-from Kazukobot.modules.users import get_user_id
+from KazukoBot import LOGGER
+from KazukoBot.modules.users import get_user_id
 from telegram import Message, MessageEntity
 from telegram.error import BadRequest
 
