@@ -1,5 +1,5 @@
 from envparse import env
-from Kazukobot import LOGGER
+from KazukoBot import LOGGER
 
 DEFAULTS = {
     "LOAD_MODULES": True,
