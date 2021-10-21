@@ -4,7 +4,7 @@ import re
 from sys import argv
 from typing import Optional
 
-from Kazukobot import (
+from KazukoBot import (
     ALLOW_EXCL,
     CERT_PATH,
     DONATION_LINK,
@@ -22,11 +22,11 @@ from Kazukobot import (
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from Kazukobot.modules import ALL_MODULES
-from Kazukobot.modules.helper_funcs.chat_status import is_user_admin
-from Kazukobot.modules.helper_funcs.misc import paginate_modules
-from Kazukobot import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
-from Kazukobot.error import (
+from KazukoBot.modules import ALL_MODULES
+from KazukoBot.modules.helper_funcs.chat_status import is_user_admin
+from KazukoBot.modules.helper_funcs.misc import paginate_modules
+from KazukoBot import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
+from KazukoBot.error import (
     BadRequest,
     ChatMigrated,
     NetworkError,
@@ -78,7 +78,7 @@ maintain your group safe and sound!
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
-I'm a Hero For Fun and help admins manage their groups with One Punch! Have a look at the following for an idea of some of \
+I'm a Powerful bot to help admins manage their groups! Have a look at the following for an idea of some of \
 the things I can help you with.
 *Main* commands available:
  • /help: PM's you this message.
