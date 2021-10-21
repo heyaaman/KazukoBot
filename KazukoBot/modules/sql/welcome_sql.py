@@ -2,8 +2,8 @@ import random
 import threading
 from typing import Union
 
-from Kazukobot.modules.helper_funcs.msg_types import Types
-from Kazukobot.modules.sql import BASE, SESSION
+from KazukoBot.modules.helper_funcs.msg_types import Types
+from KazukoBot.modules.sql import BASE, SESSION
 from sqlalchemy import BigInteger, Boolean, Column, Integer, String, UnicodeText
 
 DEFAULT_WELCOME = "Hey {first}, how are you?"
