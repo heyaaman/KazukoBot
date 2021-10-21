@@ -13,7 +13,7 @@
 
 from sqlalchemy import Column, String
 
-from Kazukobot.modules.sql import BASE, SESSION
+from KazukoBot.modules.sql import BASE, SESSION
 
 
 class Nsfwatch(BASE):
