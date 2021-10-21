@@ -26,8 +26,8 @@ from faker import Faker
 from faker.providers import internet
 from telethon import events
 
-from Kazukobot.utils.pluginhelpers import is_admin
-from Kazukobot import telethn, SUPPORT_CHAT
+from KazukoBot.utils.pluginhelpers import is_admin
+from KazukoBot import telethn, SUPPORT_CHAT
 
 
 @telethn.on(events.NewMessage(pattern="/fakegen$"))
