@@ -1,11 +1,11 @@
 import html
-from Kazukobot.modules.disable import DisableAbleCommandHandler
-from Kazukobot import dispatcher, DRAGONS
-from Kazukobot.modules.helper_funcs.extraction import extract_user
+from KazukoBot.modules.disable import DisableAbleCommandHandler
+from KazukoBot import dispatcher, DRAGONS
+from KazukoBot.modules.helper_funcs.extraction import extract_user
 from telegram.ext import CallbackContext, run_async, CallbackQueryHandler
-import Kazukobot.modules.sql.approve_sql as sql
-from Kazukobot.modules.helper_funcs.chat_status import user_admin
-from Kazukobot.modules.log_channel import loggable
+import KazukoBot.modules.sql.approve_sql as sql
+from KazukoBot.modules.helper_funcs.chat_status import user_admin
+from KazukoBot.modules.log_channel import loggable
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, Update
 from telegram.utils.helpers import mention_html
 from telegram.error import BadRequest
