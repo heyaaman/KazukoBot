@@ -9,20 +9,20 @@ from telegram.utils.helpers import mention_html
 
 from alphabet_detector import AlphabetDetector
 
-import Kazukobot.modules.sql.locks_sql as sql
-from Kazukobot import dispatcher, DRAGONS, LOGGER
-from Kazukobot.modules.disable import DisableAbleCommandHandler
-from Kazukobot.modules.helper_funcs.chat_status import (
+import KazukoBot.modules.sql.locks_sql as sql
+from KazukoBot import dispatcher, DRAGONS, LOGGER
+from KazukoBot.modules.disable import DisableAbleCommandHandler
+from KazukoBot.modules.helper_funcs.chat_status import (
     can_delete,
     is_user_admin,
     user_not_admin,
     is_bot_admin,
     user_admin,
 )
-from Kazukobot.modules.log_channel import loggable
-from Kazukobot.modules.connection import connected
-from Kazukobot.modules.sql.approve_sql import is_approved
-from Kazukobot.modules.helper_funcs.alternate import send_message, typing_action
+from KazukoBot.modules.log_channel import loggable
+from KazukoBot.modules.connection import connected
+from KazukoBot.modules.sql.approve_sql import is_approved
+from KazukoBot.modules.helper_funcs.alternate import send_message, typing_action
 
 ad = AlphabetDetector()
 
