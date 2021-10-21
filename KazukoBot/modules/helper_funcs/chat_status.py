@@ -402,6 +402,6 @@ def connection_status(func):
 
 
 # Workaround for circular import with connection.py
-from Kazukobot.modules import connection
+from KazukoBot.modules import connection
 
 connected = connection.connected
