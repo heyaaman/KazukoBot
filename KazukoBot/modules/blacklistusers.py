@@ -1,7 +1,7 @@
 # Module to blacklist users and prevent them from using commands by @TheRealPhoenix
 import html
-import Kazukobot.modules.sql.blacklistusers_sql as sql
-from Kazukobot import (
+import KazukoBot.modules.sql.blacklistusers_sql as sql
+from KazukoBot import (
     DEV_USERS,
     OWNER_ID,
     DRAGONS,
@@ -10,12 +10,12 @@ from Kazukobot import (
     WOLVES,
     dispatcher,
 )
-from Kazukobot.modules.helper_funcs.chat_status import dev_plus
-from Kazukobot.modules.helper_funcs.extraction import (
+from KazukoBot.modules.helper_funcs.chat_status import dev_plus
+from KazukoBot.modules.helper_funcs.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from Kazukobot.modules.log_channel import gloggable
+from KazukoBot.modules.log_channel import gloggable
 from telegram import ParseMode, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, run_async
