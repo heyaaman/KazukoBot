@@ -1,17 +1,17 @@
 # Config files, logs and stuff
-Kazukobot/modules/helper_funcs/temp.txt
-Kazukobot/elevated_users.json
-Kazukobot/config.py
-Kazukobot/config.ini
+KazukoBot/modules/helper_funcs/temp.txt
+KazukoBot/elevated_users.json
+KazukoBot/config.py
+KazukoBot/config.ini
 log.txt
 kangsticker.png
 updates.txt
 start_service.bat
 
 # Session files
-Kazukobot/*.session
-Kazukobot/*.session-journal
-kazuko.session-journal
+KazukoBot/*.session
+KazukoBot/*.session-journal
+Kazuko.session-journal
 *.session
 
 # Byte-compiled / optimized / DLL files
