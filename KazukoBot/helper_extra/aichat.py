@@ -1,4 +1,4 @@
-from Kazukobot.mongo import client as db_x
+from KazukoBot.mongo import client as db_x
 
 lydia = db_x["CAHTBOT"]
 
