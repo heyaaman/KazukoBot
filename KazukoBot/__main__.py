@@ -216,7 +216,7 @@ def start(update: Update, context: CallbackContext):
                         [
                             InlineKeyboardButton(
                                 text="Support",
-                                url=f"https://t.me/{SUPPORT_CHAT}",
+                                url="https://t.me/CFC_BOT_support",
                             ),
                             InlineKeyboardButton(
                                 text="Updates",
@@ -228,7 +228,9 @@ def start(update: Update, context: CallbackContext):
                                 text="Source code",
                                 url="https://github.com/heyaaman/KazukoBot",
                             ),                     
-                            InlineKeyboardButton(text="Help", callback_data="help_back",
+                            InlineKeyboardButton(
+                                text="Help",
+                                callback_data="help_back",
                             ),
                             InlineKeyboardButton(
                                 text="Add me", 
@@ -284,57 +286,65 @@ def help_button(update, context):
     prev_match = re.match(r"help_prev\((.+?)\)", query.data)
     next_match = re.match(r"help_next\((.+?)\)", query.data)
     back_match = re.match(r"help_back", query.data)
-
+    chat = update.effective_chat
     print(query.message.chat.id)
 
     try:
         if mod_match:
             module = mod_match.group(1)
+            help_list = HELPABLE[module].get_help(update.effective_chat.id)
+            if isinstance(help_list, list):
+                help_text = help_list[0]
+                help_buttons = help_list[1:]
+            elif isinstance(help_list, str):
+                help_text = help_list
+                help_buttons = []
             text = (
                 "Here is the help for the *{}* module:\n".format(
-                    HELPABLE[module].__mod_name__,
+                    HELPABLE[module].__mod_name__
                 )
-                + HELPABLE[module].__help__
+                + help_text
+            )
+            help_buttons.append(
+                [InlineKeyboardButton(text="Back", callback_data="help_back"),
+                InlineKeyboardButton(text='Support', url='https://t.me/CFC_BOT_support')]
             )
             query.message.edit_text(
                 text=text,
                 parse_mode=ParseMode.MARKDOWN,
-                disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="Back", callback_data="help_back")]],
-                ),
+                reply_markup=InlineKeyboardMarkup(help_buttons),
             )
 
         elif prev_match:
             curr_page = int(prev_match.group(1))
+            kb = paginate_modules(curr_page - 1, HELPABLE, "help")
+            kb.append([InlineKeyboardButton(text='Support', url='https://t.me/CFC_BOT_support'),
+            InlineKeyboardButton(text='Back', callback_data='start_back'), InlineKeyboardButton(text="Updates", url="https://t.me/phoenix_empire'),
             query.message.edit_text(
-                text=HELP_STRINGS,
+                text="pm_help_text"),
                 parse_mode=ParseMode.MARKDOWN,
-                disable_web_page_preview=False,                
-                reply_markup=InlineKeyboardMarkup(
-                    paginate_modules(curr_page - 1, HELPABLE, "help"),
-                ),
+                reply_markup=InlineKeyboardMarkup(kb),
             )
 
         elif next_match:
             next_page = int(next_match.group(1))
+            kb = paginate_modules(next_page + 1, HELPABLE, "help")
+            kb.append([InlineKeyboardButton(text='Support', url='https://t.me/CFC_BOT_support'),
+            InlineKeyboardButton(text='Back', callback_data='start_back'), InlineKeyboardButton(text="Updates", url="https://t.me/phoenix_empire'),
             query.message.edit_text(
-                text=HELP_STRINGS,
+                text="pm_help_text"),
                 parse_mode=ParseMode.MARKDOWN,
-                 disable_web_page_preview=False,               
-                reply_markup=InlineKeyboardMarkup(
-                    paginate_modules(next_page + 1, HELPABLE, "help"),
-                ),
+                reply_markup=InlineKeyboardMarkup(kb),
             )
 
         elif back_match:
+            kb = paginate_modules(0, HELPABLE, "help")
+            kb.append([InlineKeyboardButton(text='Support', url='https://t.me/CFC_BOT_support'),
+            InlineKeyboardButton(text='Back', callback_data='start_back'), InlineKeyboardButton(text="Updates",  url="https://t.me/phoenix_empire'),
             query.message.edit_text(
-                text=HELP_STRINGS,
+                text="pm_help_text"),
                 parse_mode=ParseMode.MARKDOWN,
-                disable_web_page_preview=False,                
-                reply_markup=InlineKeyboardMarkup(
-                    paginate_modules(0, HELPABLE, "help"),
-                ),
+                reply_markup=InlineKeyboardMarkup(kb),
             )
 
         # ensure no spinny white circle
