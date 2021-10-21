@@ -231,7 +231,7 @@ def start(update: Update, context: CallbackContext):
                         [
                             InlineKeyboardButton(
                                 text="Source code",
-                                switch_inline_query_current_chat="",
+                                url="https://github.com/heyaaman/KazukoBot",
                             ),
                             InlineKeyboardButton(text="Help", callback_data="help_back"
                             ),
