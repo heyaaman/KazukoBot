@@ -43,11 +43,11 @@ def paginate_modules(page_n: int, module_dict: Dict, prefix, chat=None) -> List:
                 EqInlineKeyboardButton(
                     x.__mod_name__,
                     callback_data="{}_module({})".format(
-                        prefix, x.__mod_name__.lower(),
+                        prefix, x.__mod_name__.lower()
                     ),
                 )
                 for x in module_dict.values()
-            ],
+            ]
         )
     else:
         modules = sorted(
@@ -55,11 +55,11 @@ def paginate_modules(page_n: int, module_dict: Dict, prefix, chat=None) -> List:
                 EqInlineKeyboardButton(
                     x.__mod_name__,
                     callback_data="{}_module({},{})".format(
-                        prefix, chat, x.__mod_name__.lower(),
+                        prefix, chat, x.__mod_name__.lower()
                     ),
                 )
                 for x in module_dict.values()
-            ],
+            ]
         )
 
     pairs = [modules[i * 3 : (i + 1) * 3] for i in range((len(modules) + 3 - 1) // 3)]
@@ -70,9 +70,29 @@ def paginate_modules(page_n: int, module_dict: Dict, prefix, chat=None) -> List:
         pairs.append((modules[-1],))
     return pairs
 
+def article(
+    title: str = "",
+    description: str = "",
+    message_text: str = "",
+    thumb_url: str = None,
+    reply_markup: InlineKeyboardMarkup = None,
+    disable_web_page_preview: bool = False,
+) -> InlineQueryResultArticle:
+
+    return InlineQueryResultArticle(
+        id=uuid4(),
+        title=title,
+        description=description,
+        thumb_url=thumb_url,
+        input_message_content=InputTextMessageContent(
+            message_text=message_text,
+            disable_web_page_preview=disable_web_page_preview,
+        ),
+        reply_markup=reply_markup,
+    )
 
 def send_to_list(
-    bot: Bot, send_to: list, message: str, markdown=False, html=False,
+    bot: Bot, send_to: list, message: str, markdown=False, html=False
 ) -> None:
     if html and markdown:
         raise Exception("Can only send with either markdown or HTML!")
