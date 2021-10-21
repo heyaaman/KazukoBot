@@ -48,8 +48,6 @@ from KazukoBot.utils.inlinehelper import *
 from KazukoBot.utils.pluginhelpers import fetch, json_prettify
 from KazukoBot import pgram, OPENWEATHERMAP_ID, TIME_API_KEY, BOT_USERNAME, SUPPORT_CHAT
 
-dictionary = PyDictionary()
-
 
 class AioHttp:
     @staticmethod
