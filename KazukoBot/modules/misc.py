@@ -1,6 +1,6 @@
-from Kazukobot.modules.helper_funcs.chat_status import user_admin
-from Kazukobot.modules.disable import DisableAbleCommandHandler
-from Kazukobot import dispatcher
+from KazukoBot.modules.helper_funcs.chat_status import user_admin
+from KazukoBot.modules.disable import DisableAbleCommandHandler
+from KazukoBot import dispatcher
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram import ParseMode, Update
