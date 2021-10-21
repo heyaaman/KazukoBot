@@ -1,7 +1,7 @@
 import threading
 
-from Kazukobot import dispatcher
-from Kazukobot.modules.sql import BASE, SESSION
+from KazukoBot import dispatcher
+from KazukoBot.modules.sql import BASE, SESSION
 from sqlalchemy import (
     Column,
     ForeignKey,
