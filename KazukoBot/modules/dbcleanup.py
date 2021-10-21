@@ -1,9 +1,9 @@
 from time import sleep
 
-import Kazukobot.modules.sql.global_bans_sql as gban_sql
-import Kazukobot.modules.sql.users_sql as user_sql
-from Kazukobot import DEV_USERS, OWNER_ID, dispatcher
-from Kazukobot.modules.helper_funcs.chat_status import dev_plus
+import KazukoBot.modules.sql.global_bans_sql as gban_sql
+import KazukoBot.modules.sql.users_sql as user_sql
+from KazukoBot import DEV_USERS, OWNER_ID, dispatcher
+from KazukoBot.modules.helper_funcs.chat_status import dev_plus
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import (
