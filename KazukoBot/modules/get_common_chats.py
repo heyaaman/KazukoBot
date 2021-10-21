@@ -1,9 +1,9 @@
 import os
 from time import sleep
 
-from Kazukobot import OWNER_ID, dispatcher
-from Kazukobot.modules.helper_funcs.extraction import extract_user
-from Kazukobot.modules.sql.users_sql import get_user_com_chats
+from KazukoBot import OWNER_ID, dispatcher
+from KazukoBot.modules.helper_funcs.extraction import extract_user
+from KazukoBot.modules.sql.users_sql import get_user_com_chats
 from telegram import Update
 from telegram.error import BadRequest, RetryAfter, Unauthorized
 from telegram.ext import CallbackContext, CommandHandler, Filters
