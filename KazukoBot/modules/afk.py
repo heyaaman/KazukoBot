@@ -1,7 +1,4 @@
-import random
-import html
-from datetime import datetime
-import humanize
+import random, html
 
 from KazukoBot import dispatcher
 from KazukoBot.modules.disable import (
