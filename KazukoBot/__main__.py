@@ -94,7 +94,7 @@ And the following:
     "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n",
 )
 
-KAZIKO_IMG = "https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg"
+KAZUKO_IMG = "https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
  You can support the project via [Paypal](ko-fi.com/heyaaman) or by contacting @heyaaman \
@@ -205,7 +205,7 @@ def start(update: Update, context: CallbackContext):
         else:
             first_name = update.effective_user.first_name
             update.effective_message.reply_photo(
-                SAITAMA_IMG,
+                KAZUKO_IMG,
                 PM_START_TEXT.format(
                     escape_markdown(first_name), escape_markdown(context.bot.first_name),
                 ),
