@@ -1,4 +1,4 @@
-from Kazukobot import telethn as tbot
+from KazukoBot import telethn as tbot
 import requests
 import time
 
