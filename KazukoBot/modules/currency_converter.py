@@ -1,5 +1,5 @@
 import requests
-from Kazukobot import CASH_API_KEY, dispatcher
+from KazukoBot import CASH_API_KEY, dispatcher
 from telegram import Update, ParseMode
 from telegram.ext import CallbackContext, CommandHandler, run_async
 
