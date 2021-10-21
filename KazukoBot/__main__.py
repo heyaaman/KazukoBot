@@ -219,7 +219,7 @@ def start(update: Update, context: CallbackContext):
                                 url=f"https://t.me/{SUPPORT_CHAT}",
                             ),
                             InlineKeyboardButton(
-                                text="About",callback_data="kazuko_"),
+                                text="About",callback_data="kazuko_",
                             ),
                             InlineKeyboardButton(
                                 text="Updates",
@@ -239,7 +239,7 @@ def start(update: Update, context: CallbackContext):
                                 text="Add me",
                                 url="t.me/{}?startgroup=true".format(
                                     context.bot.username,
-                            ),
+                                ),
                         ],
                     ],
                 ),
