@@ -14,9 +14,9 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html
 
-import Kazukobot.modules.sql.global_bans_sql as sql
-from Kazukobot.modules.sql.users_sql import get_user_com_chats
-from Kazukobot import (
+import KazukoBot.modules.sql.global_bans_sql as sql
+from KazukoBot.modules.sql.users_sql import get_user_com_chats
+from KazukoBot import (
     DEV_USERS,
     EVENT_LOGS,
     OWNER_ID,
@@ -30,16 +30,16 @@ from Kazukobot import (
     sw,
     dispatcher,
 )
-from Kazukobot.modules.helper_funcs.chat_status import (
+from KazukoBot.modules.helper_funcs.chat_status import (
     is_user_admin,
     support_plus,
     user_admin,
 )
-from Kazukobot.modules.helper_funcs.extraction import (
+from KazukoBot.modules.helper_funcs.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from Kazukobot.modules.helper_funcs.misc import send_to_list
+from KazukoBot.modules.helper_funcs.misc import send_to_list
 
 GBAN_ENFORCE_GROUP = 6
 
