@@ -2,7 +2,7 @@ import threading
 
 from sqlalchemy import Column, String, Integer
 
-from Kazukobot.modules.sql import BASE, SESSION
+from KazukoBot.modules.sql import BASE, SESSION
 
 
 class Approvals(BASE):
