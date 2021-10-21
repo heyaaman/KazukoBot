@@ -1,5 +1,5 @@
 from sqlalchemy import Boolean, Column, Integer, String, UnicodeText
-from Kazukobot.modules.sql import BASE, SESSION
+from KazukoBot.modules.sql import BASE, SESSION
 
 
 class Nightmode(BASE):
