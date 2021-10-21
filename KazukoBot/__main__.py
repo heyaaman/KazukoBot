@@ -25,8 +25,8 @@ from KazukoBot import (
 from KazukoBot.modules import ALL_MODULES
 from KazukoBot.modules.helper_funcs.chat_status import is_user_admin
 from KazukoBot.modules.helper_funcs.misc import paginate_modules
-from KazukoBot import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
-from KazukoBot.error import (
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
+from telegram.error import (
     BadRequest,
     ChatMigrated,
     NetworkError,
