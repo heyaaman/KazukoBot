@@ -1,6 +1,6 @@
-import Kazukobot.modules.sql.blacklistusers_sql as sql
-from Kazukobot import ALLOW_EXCL
-from Kazukobot import DEV_USERS, DRAGONS, DEMONS, TIGERS, WOLVES
+import KazukoBot.modules.sql.blacklistusers_sql as sql
+from KazukoBot import ALLOW_EXCL
+from KazukoBot import DEV_USERS, DRAGONS, DEMONS, TIGERS, WOLVES
 
 from telegram import Update
 from telegram.ext import CommandHandler, MessageHandler, RegexHandler, Filters
