@@ -5,8 +5,8 @@ from telethon import events
 from telegram import Update
 from telegram.ext import CallbackContext, CommandHandler, run_async
 
-from Kazukobot import telethn, dispatcher
-from Kazukobot.modules.helper_funcs.chat_status import dev_plus
+from KazukoBot import telethn, dispatcher
+from KazukoBot.modules.helper_funcs.chat_status import dev_plus
 
 DEBUG_MODE = False
 
