@@ -11,7 +11,7 @@ from KazukoBot.modules.helper_funcs.chat_status import (
     is_user_admin,
     user_admin,
     user_admin_no_reply)
-from SaitamaRobot.modules.helper_funcs.extraction import (
+from KazukoBot.modules.helper_funcs.extraction import (
     extract_text,
     extract_user,
     extract_user_and_text,
