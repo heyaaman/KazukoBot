@@ -2,8 +2,8 @@ import datetime
 from typing import List
 
 import requests
-from Kazukobot import TIME_API_KEY, dispatcher
-from Kazukobot.modules.disable import DisableAbleCommandHandler
+from KazukoBot import TIME_API_KEY, dispatcher
+from KazukoBot.modules.disable import DisableAbleCommandHandler
 from telegram import ParseMode, Update
 from telegram.ext import CallbackContext, run_async
 
