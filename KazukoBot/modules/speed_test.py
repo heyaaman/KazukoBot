@@ -1,7 +1,7 @@
 import speedtest
-from Kazukobot import DEV_USERS, dispatcher
-from Kazukobot.modules.disable import DisableAbleCommandHandler
-from Kazukobot.modules.helper_funcs.chat_status import dev_plus
+from KazukoBot import DEV_USERS, dispatcher
+from KazukoBot.modules.disable import DisableAbleCommandHandler
+from KazukoBot.modules.helper_funcs.chat_status import dev_plus
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.ext import CallbackContext, CallbackQueryHandler, run_async
 
