@@ -1,6 +1,6 @@
 import wikipedia
-from Kazukobot import dispatcher
-from Kazukobot.modules.disable import DisableAbleCommandHandler
+from KazukoBot import dispatcher
+from KazukoBot.modules.disable import DisableAbleCommandHandler
 from telegram import ParseMode, Update
 from telegram.ext import CallbackContext, run_async
 from wikipedia.exceptions import DisambiguationError, PageError
