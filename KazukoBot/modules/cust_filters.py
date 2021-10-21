@@ -15,25 +15,25 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html, escape_markdown
 
-from Kazukobot import dispatcher, LOGGER, DRAGONS
-from Kazukobot.modules.disable import DisableAbleCommandHandler
-from Kazukobot.modules.helper_funcs.handlers import MessageHandlerChecker
-from Kazukobot.modules.helper_funcs.chat_status import user_admin
-from Kazukobot.modules.helper_funcs.extraction import extract_text
-from Kazukobot.modules.helper_funcs.filters import CustomFilters
-from Kazukobot.modules.helper_funcs.misc import build_keyboard_parser
-from Kazukobot.modules.helper_funcs.msg_types import get_filter_type
-from Kazukobot.modules.helper_funcs.string_handling import (
+from KazukoBot import dispatcher, LOGGER, DRAGONS
+from KazukoBot.modules.disable import DisableAbleCommandHandler
+from KazukoBot.modules.helper_funcs.handlers import MessageHandlerChecker
+from KazukoBot.modules.helper_funcs.chat_status import user_admin
+from KazukoBot.modules.helper_funcs.extraction import extract_text
+from KazukoBot.modules.helper_funcs.filters import CustomFilters
+from KazukoBot.modules.helper_funcs.misc import build_keyboard_parser
+from KazukoBot.modules.helper_funcs.msg_types import get_filter_type
+from KazukoBot.modules.helper_funcs.string_handling import (
     split_quotes,
     button_markdown_parser,
     escape_invalid_curly_brackets,
     markdown_to_html,
 )
-from Kazukobot.modules.sql import cust_filters_sql as sql
+from KazukoBot.modules.sql import cust_filters_sql as sql
 
-from Kazukobot.modules.connection import connected
+from KazukoBot.modules.connection import connected
 
-from Kazukobot.modules.helper_funcs.alternate import send_message, typing_action
+from KazukoBot.modules.helper_funcs.alternate import send_message, typing_action
 
 HANDLER_GROUP = 10
 
