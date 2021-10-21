@@ -13,7 +13,7 @@ from telegram.ext.dispatcher import run_async
 from telegram.error import BadRequest
 from telegram.utils.helpers import escape_markdown, mention_html
 
-from Kazukobot import (
+from KazukoBot import (
     DEV_USERS,
     OWNER_ID,
     DRAGONS,
@@ -24,15 +24,15 @@ from Kazukobot import (
     dispatcher,
     sw,
 )
-from Kazukobot.__main__ import STATS, TOKEN, USER_INFO
-import Kazukobot.modules.sql.userinfo_sql as sql
-from Kazukobot.modules.disable import DisableAbleCommandHandler
-from Kazukobot.modules.sql.global_bans_sql import is_user_gbanned
-from Kazukobot.modules.sql.afk_sql import is_afk, check_afk_status
-from Kazukobot.modules.sql.users_sql import get_user_num_chats
-from Kazukobot.modules.helper_funcs.chat_status import sudo_plus
-from Kazukobot.modules.helper_funcs.extraction import extract_user
-from Kazukobot import telethn as YoneTelethonClient, TIGERS, DRAGONS, DEMONS
+from KazukoBot.__main__ import STATS, TOKEN, USER_INFO
+import KazukoBot.modules.sql.userinfo_sql as sql
+from KazukoBot.modules.disable import DisableAbleCommandHandler
+from KazukoBot.modules.sql.global_bans_sql import is_user_gbanned
+from KazukoBot.modules.sql.afk_sql import is_afk, check_afk_status
+from KazukoBot.modules.sql.users_sql import get_user_num_chats
+from KazukoBot.modules.helper_funcs.chat_status import sudo_plus
+from KazukoBot.modules.helper_funcs.extraction import extract_user
+from KazukoBot import telethn as YoneTelethonClient, TIGERS, DRAGONS, DEMONS
 
 
 def no_by_per(totalhp, percentage):
