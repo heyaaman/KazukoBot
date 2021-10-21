@@ -32,7 +32,6 @@ from bs4 import BeautifulSoup
 from countryinfo import CountryInfo
 from faker import Faker
 from faker.providers import internet
-from PyDictionary import PyDictionary
 from pyrogram import errors, filters
 from pyrogram.types import (
     InlineKeyboardButton,
