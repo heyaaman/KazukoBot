@@ -1,8 +1,8 @@
 from random import randint
 
 import requests as r
-from Kazukobot import SUPPORT_CHAT, WALL_API, dispatcher
-from Kazukobot.modules.disable import DisableAbleCommandHandler
+from KazukoBot import SUPPORT_CHAT, WALL_API, dispatcher
+from KazukoBot.modules.disable import DisableAbleCommandHandler
 from telegram import Update
 from telegram.ext import CallbackContext, run_async
 
