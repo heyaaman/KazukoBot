@@ -230,7 +230,7 @@ def start(update: Update, context: CallbackContext):
 
                         [
                             InlineKeyboardButton(
-                                text="Try Inline",
+                                text="Source code",
                                 switch_inline_query_current_chat="",
                             ),
                             InlineKeyboardButton(text="Help", callback_data="help_back"
