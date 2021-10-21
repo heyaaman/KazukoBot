@@ -219,26 +219,23 @@ def start(update: Update, context: CallbackContext):
                                 url=f"https://t.me/{SUPPORT_CHAT}",
                             ),
                             InlineKeyboardButton(
-                                text="About",callback_data="kazuko_",
-                            ),
-                            InlineKeyboardButton(
                                 text="Updates",
                                 url="https://t.me/CFC_BOT_support",
                             ),
-                            
                         ],
-
                         [
-                            InlineKeyboardButton(
+                           InlineKeyboardButton(
                                 text="Source code",
                                 url="https://github.com/heyaaman/KazukoBot",
+                            
+                            InlineKeyboardButton(text="Help", callback_data="help_back",
                             ),
-                            InlineKeyboardButton(text="Help", callback_data="help_back"
+
                             ),
                             InlineKeyboardButton(
                                 text="Add me", 
                                 url="t.me/KazukoRobot?startgroup=true",
-                            ),
+                             ),
                         ],
                     ],
                 ),
@@ -315,6 +312,7 @@ def help_button(update, context):
             query.message.edit_text(
                 text=HELP_STRINGS,
                 parse_mode=ParseMode.MARKDOWN,
+                disable_web_page_preview=False,                
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(curr_page - 1, HELPABLE, "help"),
                 ),
@@ -325,6 +323,7 @@ def help_button(update, context):
             query.message.edit_text(
                 text=HELP_STRINGS,
                 parse_mode=ParseMode.MARKDOWN,
+                 disable_web_page_preview=False,               
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(next_page + 1, HELPABLE, "help"),
                 ),
@@ -334,6 +333,7 @@ def help_button(update, context):
             query.message.edit_text(
                 text=HELP_STRINGS,
                 parse_mode=ParseMode.MARKDOWN,
+                disable_web_page_preview=False,                
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(0, HELPABLE, "help"),
                 ),
@@ -345,40 +345,6 @@ def help_button(update, context):
 
     except BadRequest:
         pass
-
-@run_async
-def kazuko_about_callback(update, context):
-    query = update.callback_query
-    if query.data == "kazuko_":
-        query.message.edit_text(
-            text=""" ℹ️ I'm *Kazuko*, a powerful group management bot built to help you manage your group easily.
-                 \n❍ I can restrict users.
-                 \n❍ I can greet users with customizable welcome messages and even set a group's rules.
-                 \n❍ I have an advanced anti-flood system.
-                 \n❍ I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
-                 \n❍ I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
-                 \n❍ I check for admins' permissions before executing any command and more stuffs
-                 \n\n_kazuko's licensed under the GNU General Public License v3.0_
-                 \nHere is the [💾Repository](https://github.com/heyaaman/KazukoRobot).
-                 \n\nIf you have any question about kazuko, let us know at .""",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                 [
-                    InlineKeyboardButton(text="Back", callback_data="kazuko_back")
-                 ]
-                ]
-            ),
-        )
-    elif query.data == "kazuko_back":
-        query.message.edit_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
-        )
 
 
 @run_async
@@ -480,6 +446,39 @@ def send_settings(chat_id, user_id, user=False):
                 "in a group chat you're admin in to find its current settings!",
                 parse_mode=ParseMode.MARKDOWN,
             )
+
+@run_async
+def kazuko_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "kazuko_":
+        query.message.edit_text(
+            text="""I'm *Kazuko*, a powerful group management bot built to help you manage your group easily.
+• I can restrict users.
+• I can greet users with customizable welcome messages and even set a group's rules.
+• I have an advanced anti-flood system.
+• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
+• I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
+• I check for admins' permissions before executing any command and more stuffs
+\n_Kazuko's licensed under the GNU General Public License v3.0_
+Have any question about Kazuko?, let us know at @CFC_BOT_support.""",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=False,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [
+                    InlineKeyboardButton(text="Back", callback_data="kazuko_back")
+                 ]
+                ]
+            ),
+        )
+    elif query.data == "kazuko_back":
+        query.message.edit_text(
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60,
+                disable_web_page_preview=False,
+        )
 
 
 @run_async
