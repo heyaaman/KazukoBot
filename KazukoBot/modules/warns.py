@@ -3,9 +3,9 @@ import re
 from typing import Optional
 
 import telegram
-from Kazukobot import TIGERS, WOLVES, dispatcher
-from Kazukobot.modules.disable import DisableAbleCommandHandler
-from Kazukobot.modules.helper_funcs.chat_status import (
+from KazukoBot import TIGERS, WOLVES, dispatcher
+from KazukoBot.modules.disable import DisableAbleCommandHandler
+from KazukoBot.modules.helper_funcs.chat_status import (
     bot_admin,
     can_restrict,
     is_user_admin,
@@ -16,11 +16,11 @@ from SaitamaRobot.modules.helper_funcs.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from Kazukobot.modules.helper_funcs.filters import CustomFilters
-from Kazukobot.modules.helper_funcs.misc import split_message
-from Kazukobot.modules.helper_funcs.string_handling import split_quotes
-from Kazukobot.modules.log_channel import loggable
-from Kazukobot.modules.sql import warns_sql as sql
+from KazukoBot.modules.helper_funcs.filters import CustomFilters
+from KazukoBot.modules.helper_funcs.misc import split_message
+from KazukoBot.modules.helper_funcs.string_handling import split_quotes
+from KazukoBot.modules.log_channel import loggable
+from KazukoBot.modules.sql import warns_sql as sql
 from telegram import (
     CallbackQuery,
     Chat,
@@ -42,7 +42,7 @@ from telegram.ext import (
     run_async,
 )
 from telegram.utils.helpers import mention_html
-from Kazukobot.modules.sql.approve_sql import is_approved
+from KazukoBot.modules.sql.approve_sql import is_approved
 
 WARN_HANDLER_GROUP = 9
 CURRENT_WARNING_FILTER_STRING = "<b>Current warning filters in this chat:</b>\n"
