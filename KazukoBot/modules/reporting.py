@@ -1,9 +1,9 @@
 import html
 
-from Kazukobot import LOGGER, DRAGONS, TIGERS, WOLVES, dispatcher
-from Kazukobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
-from Kazukobot.modules.log_channel import loggable
-from Kazukobot.modules.sql import reporting_sql as sql
+from KazukoBot import LOGGER, DRAGONS, TIGERS, WOLVES, dispatcher
+from KazukoBot.modules.helper_funcs.chat_status import user_admin, user_not_admin
+from KazukoBot.modules.log_channel import loggable
+from KazukoBot.modules.sql import reporting_sql as sql
 from telegram import Chat, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import (
