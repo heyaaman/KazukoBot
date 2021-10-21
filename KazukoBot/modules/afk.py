@@ -3,13 +3,13 @@ import html
 from datetime import datetime
 import humanize
 
-from Kazukobot import dispatcher
-from Kazukobot.modules.disable import (
+from KazukoBot import dispatcher
+from KazukoBot.modules.disable import (
     DisableAbleCommandHandler,
     DisableAbleMessageHandler,
 )
-from Kazukobot.modules.sql import afk_sql as sql
-from Kazukobot.modules.users import get_user_id
+from KazukoBot.modules.sql import afk_sql as sql
+from KazukoBot.modules.users import get_user_id
 from telegram import MessageEntity, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, Filters, MessageHandler, run_async
