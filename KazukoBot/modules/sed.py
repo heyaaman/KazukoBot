@@ -2,9 +2,9 @@ import sre_constants
 
 import regex
 import telegram
-from Kazukobot import LOGGER, dispatcher
-from Kazukobot.modules.disable import DisableAbleMessageHandler
-from Kazukobot.modules.helper_funcs.regex_helper import infinite_loop_check
+from KazukoBot import LOGGER, dispatcher
+from KazukoBot.modules.disable import DisableAbleMessageHandler
+from KazukoBot.modules.helper_funcs.regex_helper import infinite_loop_check
 from telegram import Update
 from telegram.ext import CallbackContext, Filters, run_async
 
