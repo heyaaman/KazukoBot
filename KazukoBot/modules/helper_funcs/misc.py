@@ -29,9 +29,8 @@ def split_message(msg: str) -> List[str]:
         else:
             result.append(small_msg)
             small_msg = line
-    else:
-        # Else statement at the end of the for loop, so append the leftover string.
-        result.append(small_msg)
+    # Else statement at the end of the for loop, so append the leftover string.
+    result.append(small_msg)
 
     return result
 
@@ -39,57 +38,27 @@ def split_message(msg: str) -> List[str]:
 def paginate_modules(page_n: int, module_dict: Dict, prefix, chat=None) -> List:
     if not chat:
         modules = sorted(
-            [
-                EqInlineKeyboardButton(
-                    x.__mod_name__,
-                    callback_data="{}_module({})".format(
-                        prefix, x.__mod_name__.lower()
-                    ),
-                )
-                for x in module_dict.values()
-            ]
-        )
+            [EqInlineKeyboardButton(x.__mod_name__,
+                                    callback_data="{}_module({})".format(prefix, x.__mod_name__.lower())) for x
+             in module_dict.values()])
     else:
         modules = sorted(
-            [
-                EqInlineKeyboardButton(
-                    x.__mod_name__,
-                    callback_data="{}_module({},{})".format(
-                        prefix, chat, x.__mod_name__.lower()
-                    ),
-                )
-                for x in module_dict.values()
-            ]
-        )
+            [EqInlineKeyboardButton(x.__mod_name__,
+                                    callback_data="{}_module({},{})".format(prefix, chat, x.__mod_name__.lower())) for x
+             in module_dict.values()])
 
-    pairs = [modules[i * 3 : (i + 1) * 3] for i in range((len(modules) + 3 - 1) // 3)]
+    pairs = [
+    modules[i * 3:(i + 1) * 3] for i in range((len(modules) + 3 - 1) // 3)
+    ]
 
     round_num = len(modules) / 3
     calc = len(modules) - round(round_num)
     if calc in [1, 2]:
         pairs.append((modules[-1],))
+    else:
+        pairs += [[EqInlineKeyboardButton("Back",  callback_data="kazuko_back")]]
+
     return pairs
-
-def article(
-    title: str = "",
-    description: str = "",
-    message_text: str = "",
-    thumb_url: str = None,
-    reply_markup: InlineKeyboardMarkup = None,
-    disable_web_page_preview: bool = False,
-) -> InlineQueryResultArticle:
-
-    return InlineQueryResultArticle(
-        id=uuid4(),
-        title=title,
-        description=description,
-        thumb_url=thumb_url,
-        input_message_content=InputTextMessageContent(
-            message_text=message_text,
-            disable_web_page_preview=disable_web_page_preview,
-        ),
-        reply_markup=reply_markup,
-    )
 
 def send_to_list(
     bot: Bot, send_to: list, message: str, markdown=False, html=False
@@ -120,14 +89,12 @@ def build_keyboard(buttons):
 
 
 def revert_buttons(buttons):
-    res = ""
-    for btn in buttons:
-        if btn.same_line:
-            res += "\n[{}](buttonurl://{}:same)".format(btn.name, btn.url)
-        else:
-            res += "\n[{}](buttonurl://{})".format(btn.name, btn.url)
-
-    return res
+    return "".join(
+        "\n[{}](buttonurl://{}:same)".format(btn.name, btn.url)
+        if btn.same_line
+        else "\n[{}](buttonurl://{})".format(btn.name, btn.url)
+        for btn in buttons
+    )
 
 
 def build_keyboard_parser(bot, chat_id, buttons):
