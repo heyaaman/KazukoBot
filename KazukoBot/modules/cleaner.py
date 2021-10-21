@@ -1,14 +1,14 @@
 import html
 
-from Kazukobot import ALLOW_EXCL, CustomCommandHandler, dispatcher
-from Kazukobot.modules.disable import DisableAbleCommandHandler
-from Kazukobot.modules.helper_funcs.chat_status import (
+from KazukoBot import ALLOW_EXCL, CustomCommandHandler, dispatcher
+from KazukoBot.modules.disable import DisableAbleCommandHandler
+from KazukoBot.modules.helper_funcs.chat_status import (
     bot_can_delete,
     connection_status,
     dev_plus,
     user_admin,
 )
-from Kazukobot.modules.sql import cleaner_sql as sql
+from KazukoBot.modules.sql import cleaner_sql as sql
 from telegram import ParseMode, Update
 from telegram.ext import (
     CallbackContext,
