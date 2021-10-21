@@ -1,6 +1,6 @@
 import threading
 
-from Kazukobot.modules.sql import BASE, SESSION
+from KazukoBot.modules.sql import BASE, SESSION
 from sqlalchemy import Column, Integer, String, UnicodeText, distinct, func
 
 
