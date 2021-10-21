@@ -40,9 +40,9 @@ from pyrogram.types import (
 )
 from search_engine_parser import GoogleSearch
 
-from Kazukobot import BOT_USERNAME, OWNER_ID, pgram, arq
-from Kazukobot.utils.pluginhelpers import convert_seconds_to_minutes as time_convert
-from Kazukobot.utils.pluginhelpers import fetch
+from KazukoBot import BOT_USERNAME, OWNER_ID, pgram, arq
+from KazukoBot.utils.pluginhelpers import convert_seconds_to_minutes as time_convert
+from KazukoBot.utils.pluginhelpers import fetch
 
 SUDOERS = OWNER_ID
 app = pgram
