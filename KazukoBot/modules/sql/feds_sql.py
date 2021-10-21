@@ -1,8 +1,8 @@
 import ast
 import threading
 
-from Kazukobot import dispatcher
-from Kazukobot.modules.sql import BASE, SESSION
+from KazukoBot import dispatcher
+from KazukoBot.modules.sql import BASE, SESSION
 from sqlalchemy import Boolean, Column, Integer, String, UnicodeText
 from telegram.error import BadRequest, Unauthorized
 
