@@ -5,10 +5,10 @@ from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, Upda
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import CommandHandler, CallbackQueryHandler, run_async
 
-import Kazukobot.modules.sql.connection_sql as sql
-from Kazukobot import dispatcher, DRAGONS, DEV_USERS
-from Kazukobot.modules.helper_funcs import chat_status
-from Kazukobot.modules.helper_funcs.alternate import send_message, typing_action
+import KazukoBot.modules.sql.connection_sql as sql
+from KazukoBot import dispatcher, DRAGONS, DEV_USERS
+from KazukoBot.modules.helper_funcs import chat_status
+from KazukoBot.modules.helper_funcs.alternate import send_message, typing_action
 
 user_admin = chat_status.user_admin
 
