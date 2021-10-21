@@ -1,5 +1,5 @@
 {
-      "name": "KazukoRobot",
+      "name": "Kazukobot",
       "description": "Telegram group management bot.",
       "logo": "https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg",
       "keywords": [
@@ -9,7 +9,7 @@
          "manager",
          "kazuko"
       ],   
-   "repository": "https://github.com/heyaaman/KazukoRobot.git",
+   "repository": "https://github.com/heyaaman/Kazukobot.git",
    "addons": [
       {
          "options": {
