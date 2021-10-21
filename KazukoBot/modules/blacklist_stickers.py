@@ -1,17 +1,17 @@
 import html
 from typing import Optional
 
-import Kazukobot.modules.sql.blsticker_sql as sql
-from Kazukobot import LOGGER, dispatcher
-from Kazukobot.modules.connection import connected
-from Kazukobot.modules.disable import DisableAbleCommandHandler
-from Kazukobot.modules.helper_funcs.alternate import send_message
-from Kazukobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
-from Kazukobot.modules.helper_funcs.misc import split_message
-from Kazukobot.modules.helper_funcs.string_handling import extract_time
+import KazukoBot.modules.sql.blsticker_sql as sql
+from KazukoBot import LOGGER, dispatcher
+from KazukoBot.modules.connection import connected
+from KazukoBot.modules.disable import DisableAbleCommandHandler
+from KazukoBot.modules.helper_funcs.alternate import send_message
+from KazukoBot.modules.helper_funcs.chat_status import user_admin, user_not_admin
+from KazukoBot.modules.helper_funcs.misc import split_message
+from KazukoBot.modules.helper_funcs.string_handling import extract_time
 
-from Kazukobot.modules.log_channel import loggable
-from Kazukobot.modules.warns import warn
+from KazukoBot.modules.log_channel import loggable
+from KazukoBot.modules.warns import warn
 from telegram import Chat, Message, ParseMode, Update, User, ChatPermissions
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, Filters, MessageHandler
