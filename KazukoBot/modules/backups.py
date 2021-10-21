@@ -5,23 +5,23 @@ from telegram import ParseMode, Message
 from telegram.error import BadRequest
 from telegram.ext import CommandHandler, run_async
 
-import Kazukobot.modules.sql.notes_sql as sql
-from Kazukobot import dispatcher, LOGGER, OWNER_ID, JOIN_LOGGER, SUPPORT_CHAT
-from Kazukobot.__main__ import DATA_IMPORT
-from Kazukobot.modules.helper_funcs.chat_status import user_admin
-from Kazukobot.modules.helper_funcs.alternate import typing_action
+import KazukoBot.modules.sql.notes_sql as sql
+from KazukoBot import dispatcher, LOGGER, OWNER_ID, JOIN_LOGGER, SUPPORT_CHAT
+from KazukoBot.__main__ import DATA_IMPORT
+from KazukoBot.modules.helper_funcs.chat_status import user_admin
+from KazukoBot.modules.helper_funcs.alternate import typing_action
 
-# from Kazukobot.modules.rules import get_rules
-import Kazukobot.modules.sql.rules_sql as rulessql
+# from KazukoBot.modules.rules import get_rules
+import KazukoBot.modules.sql.rules_sql as rulessql
 
-# from Kazukobot.modules.sql import warns_sql as warnssql
-import Kazukobot.modules.sql.blacklist_sql as blacklistsql
-from Kazukobot.modules.sql import disable_sql as disabledsql
+# from KazukoBot.modules.sql import warns_sql as warnssql
+import KazukoBot.modules.sql.blacklist_sql as blacklistsql
+from KazukoBot.modules.sql import disable_sql as disabledsql
 
-# from Kazukobot.modules.sql import cust_filters_sql as filtersql
-# import Kazukobot.modules.sql.welcome_sql as welcsql
-import Kazukobot.modules.sql.locks_sql as locksql
-from Kazukobot.modules.connection import connected
+# from KazukoBot.modules.sql import cust_filters_sql as filtersql
+# import KazukoBot.modules.sql.welcome_sql as welcsql
+import KazukoBot.modules.sql.locks_sql as locksql
+from KazukoBot.modules.connection import connected
 
 
 @run_async
