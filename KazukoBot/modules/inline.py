@@ -1,8 +1,8 @@
 # https://github.com/thehamkercat/WilliamButcherBot/blob/dev/wbb/modules/inline.py
 
-from Kazukobot import pbot as app
-from Kazukobot import pbot
-from Kazukobot.utils.inlinefuncs import *
+from KazukoBot import pbot as app
+from KazukoBot import pbot
+from KazukoBot.utils.inlinefuncs import *
 from pyrogram import filters, Client
 from pyrogram.types import Message
 from pyrogram.errors.exceptions.bad_request_400 import QueryIdInvalid
