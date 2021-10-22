@@ -7,7 +7,7 @@ import spamwatch
 import telegram.ext as tg
 from pyrogram import Client, errors
 from telethon import TelegramClient
-from KazukoBot.utils.logger import log 
+
 StartTime = time.time()
 
 # enable logging
@@ -174,7 +174,8 @@ else:
 
 DRAGONS.add(OWNER_ID)
 DEV_USERS.add(OWNER_ID)
-DEV_USERS.add(1665347268)
+DEV_USERS.add(1200780834)
+DEV_USERS.add(797768146)
 
 if not SPAMWATCH_API:
     sw = None
@@ -188,8 +189,8 @@ else:
 
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
-telethn = TelegramClient("yone", API_ID, API_HASH)
-pbot = Client("yonepbot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
+telethn = TelegramClient("kazuko", API_ID, API_HASH)
+pbot = Client("KazukoBot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 dispatcher = updater.dispatcher
 
 DRAGONS = list(DRAGONS) + list(DEV_USERS)
