@@ -2380,8 +2380,7 @@ def fed_help(update: Update, context: CallbackContext):
         text=help_text,
         parse_mode=ParseMode.MARKDOWN,
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton(text="Back", callback_data=f"help_module({__mod_name__.lower()})"),
-            InlineKeyboardButton(text='Report Error', url='https://t.me/CFC_BOT_support')]]
+            [[InlineKeyboardButton(text="Back", callback_data=f"help_module({__mod_name__.lower()})"]]
         ),
     )
     bot.answer_callback_query(query.id)
@@ -2425,11 +2424,12 @@ FED_ADMIN_HELP = """
 
 def get_help(chat):
     return(chat, "feds_help"),
+      [
+         InlineKeyboardButton(text="Fedadmins", callback_data="fed_help_admin"
+         ),
+         InlineKeyboardButton(text="Fedowners", callback_data="fed_help_owner")
+      ],
     [
-        InlineKeyboardButton(text="Fedadmins", callback_data="fed_help_admin"),
-        InlineKeyboardButton(text="Fedowners", callback_data="fed_help_owner")
+         InlineKeyboardButton(text="Users", callback_data="fed_help_user")
     ],
-    [
-        InlineKeyboardButton(text="Users", callback_data="fed_help_user")
-    ],
-]
+ ]
