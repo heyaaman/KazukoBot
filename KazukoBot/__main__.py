@@ -72,6 +72,7 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
+
 PM_START_TEXT = """
 Hey hi {}, I'm {}!
 I am an Anime themed group management bot
@@ -84,9 +85,28 @@ I can do a variety of things, most common of em are:
 - Save notes and filters with proper formatting and reply markup.
 ғᴏʀ ʀᴇᴘᴏʀᴛɪɴɢ ᴀɴʏ ɪssᴜᴇs ʀᴇɢᴀʀᴅɪɴɢ ᴍᴇ ᴋɪɴᴅʟʏ ʀᴇᴘᴏʀᴛ ɪɴ sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ sᴏ ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀs ᴄᴀɴ ғɪx ᴍᴇ ᴏᴜᴛ ғᴏʀ ʏᴏᴜʀ ɴᴇᴇᴅs.!
 """
+buttons = [
+    [
+         InlineKeyboardButton(
+           text="Support", url="https://t.me/CFC_BOT_support",
+         ),
+         InlineKeyboardButton(
+           text="Updates", url="https://t.me/phoenix_empire"),
+      ],
+    [
+        InlineKeyboardButton(text="About", callback_data="kazuko_"),
+        InlineKeyboardButton(
+            text="Source code", url="https://github.com/heyaaman/KazukoBot"
+        ),
+    ],
+    [
+        InlineKeyboardButton(text="Help", callback_data="help_back"),
+    ],
+]
+
 
 HELP_STRINGS = """
-Hey there! My name is *{}*.
+Hey there! My name is Kazuko.
 I'm a Powerful bot to help admins manage their groups! Have a look at the following for an idea of some of \
 the things I can help you with.
 *Main* commands available:
@@ -98,14 +118,11 @@ the things I can help you with.
    • in a group: will redirect you to pm, with all that chat's settings.
 {}
 And the following:
-""".format(
-    dispatcher.bot.first_name,
-    "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n",
-)
+"""
 
 KAZUKO_IMG = "https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg"
 
-DONATE_STRING = """Heya, glad to hear you want to donate!
+DONATE_STRING =  """Heya, glad to hear you want to donate!
  You can support the project via [Paypal](ko-fi.com/heyaaman) or by contacting @heyaaman \
 """
 
@@ -192,14 +209,10 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="BACK", callback_data="help_back")]]
+                        [[InlineKeyboardButton(text="⬅️ BACK", callback_data="help_back")]]
                     ),
                 )
 
-            elif args[0].lower() == "markdownhelp":
-                IMPORTED["extras"].markdown_help_sender(update)
-            elif args[0].lower() == "disasters":
-                IMPORTED["disasters"].send_disasters(update)
             elif args[0].lower().startswith("stngs_"):
                 match = re.match("stngs_(.*)", args[0].lower())
                 chat = dispatcher.bot.getChat(match.group(1))
@@ -213,50 +226,47 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
         else:
-            first_name = update.effective_user.first_name
-            update.effective_message.reply_photo(
-                KAZUKO_IMG,
-                PM_START_TEXT.format(
-                    escape_markdown(first_name), escape_markdown(context.bot.first_name),
-                ),
+            update.effective_message.reply_text(
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
-                disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(
-                                text="Support",
-                                url="https://t.me/CFC_BOT_support",
-                            ),
-                            InlineKeyboardButton(
-                                text="Updates",
-                                url="https://t.me/phoenix_empire",
-                            ),
-                        ],
-                        [
-                           InlineKeyboardButton(
-                                text="Source code",
-                                url="https://github.com/heyaaman/KazukoBot",
-                            ),                     
-                            InlineKeyboardButton(
-                                text="Help",
-                                callback_data="help_back",
-                            ),
-                            InlineKeyboardButton(
-                                text="Add me", 
-                                url="t.me/KazukoRobot?startgroup=true",
-                            ),
-                        ],
-                    ],
-                ),
+                timeout=60,
             )
     else:
         update.effective_message.reply_text(
             "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
-                uptime,
+                uptime
             ),
             parse_mode=ParseMode.HTML,
         )
+
+
+def error_handler(update, context):
+    """Log the error and send a telegram message to notify the developer."""
+    # Log the error before we do anything else, so we can see it even if something breaks.
+    LOGGER.error(msg="Exception while handling an update:", exc_info=context.error)
+
+    # traceback.format_exception returns the usual python message about an exception, but as a
+    # list of strings rather than a single string, so we have to join them together.
+    tb_list = traceback.format_exception(
+        None, context.error, context.error.__traceback__
+    )
+    tb = "".join(tb_list)
+
+    # Build the message with some markup and additional information about what happened.
+    message = (
+        "An exception was raised while handling an update\n"
+        "<pre>update = {}</pre>\n\n"
+        "<pre>{}</pre>"
+    ).format(
+        html.escape(json.dumps(update.to_dict(), indent=2, ensure_ascii=False)),
+        html.escape(tb),
+    )
+
+    if len(message) >= 4096:
+        message = message[:4096]
+    # Finally, send the message
+    context.bot.send_message(chat_id=OWNER_ID, text=message, parse_mode=ParseMode.HTML)
 
 
 # for test purposes
@@ -354,27 +364,27 @@ def help_button(update, context):
         pass
 
 
-
 @run_async
-def kazuko_about_callback(update: Update, context: CallbackContext):
+def kazuko_about_callback(update, context):
     query = update.callback_query
     if query.data == "kazuko_":
         query.message.edit_text(
-            text="""I'm *Kazuko*, a powerful group management bot built to help you manage your group easily.
-• I can restrict users.
-• I can greet users with customizable welcome messages and even set a group's rules.
-• I have an advanced anti-flood system.
-• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
-• I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
-• I check for admins' permissions before executing any command and more stuffs
-\n_Kazuko's licensed under the GNU General Public License v3.0_
-Have any question about Kazuko?, let us know at @CFC_BOT_support.""",
+            text=""" ℹ️ I'm *kazuko*, a powerful group management bot built to help you manage your group easily.
+                 \n❍ I can restrict users.
+                 \n❍ I can greet users with customizable welcome messages and even set a group's rules.
+                 \n❍ I have an advanced anti-flood system.
+                 \n❍ I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
+                 \n❍ I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
+                 \n❍ I check for admins' permissions before executing any command and more stuffs
+                 \n\n_kazuko's licensed under the GNU General Public License v3.0_
+                 \nHere is the [💾Repository](https://github.com/heyaaman/KazukoBot).
+                 \n\nIf you have any question about kazuko, let us know at .""",
             parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=False,
+            disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="BACK", callback_data="kazuko_back")
+                    InlineKeyboardButton(text="Back", callback_data="kazuko_back")
                  ]
                 ]
             ),
@@ -388,12 +398,13 @@ Have any question about Kazuko?, let us know at @CFC_BOT_support.""",
                 disable_web_page_preview=False,
         )
 
+
 @run_async
 def Source_about_callback(update, context):
     query = update.callback_query
     if query.data == "source_":
         query.message.edit_text(
-            text=""" Hi..🤗 I'm *Kazuko*
+            text=""" Hi..🤗 I'm *kazuko*
                  \nHere is the [Source Code](https://github.com/heyaaman/KazukoBot) .""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -599,7 +610,6 @@ def settings_button(update: Update, context: CallbackContext):
             LOGGER.exception("Exception in settings buttons. %s", str(query.data))
 
 
-
 @run_async
 def get_settings(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
@@ -631,6 +641,7 @@ def get_settings(update: Update, context: CallbackContext):
     else:
         send_settings(chat.id, user.id, True)
 
+
 @run_async
 def donate(update: Update, context: CallbackContext):
     user = update.effective_message.from_user
@@ -641,7 +652,7 @@ def donate(update: Update, context: CallbackContext):
             DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True
         )
 
-        if OWNER_ID != 1821151467 and DONATION_LINK:
+        if OWNER_ID != 254318997 and DONATION_LINK:
             update.effective_message.reply_text(
                 "You can also donate to the person currently running me "
                 "[here]({})".format(DONATION_LINK),
@@ -706,7 +717,7 @@ def main():
     settings_handler = CommandHandler("settings", get_settings)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
-    about_callback_handler = CallbackQueryHandler(kazuko_about_callback, pattern=r"kazuko_")
+    about_callback_handler = CallbackQueryHandler(yone_about_callback, pattern=r"kazuko_")
     source_callback_handler = CallbackQueryHandler(Source_about_callback, pattern=r"source_")
 
     donate_handler = CommandHandler("donate", donate)
