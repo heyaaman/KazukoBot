@@ -1,4 +1,4 @@
-import yaml
+import enyaml
 import os
 from typing import Dict
 
