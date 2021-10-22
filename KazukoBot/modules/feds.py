@@ -2340,9 +2340,6 @@ def get_chat(chat_id, chat_data):
         return {"status": False, "value": False}
 
 
-__mod_name__ = "Federations"
-
-
 def fed_owner_help(update: Update, context: CallbackContext):
     update.effective_message.reply_text(
         (update.effective_chat.id, "FED_OWNER_HELP"),
@@ -2386,6 +2383,7 @@ def fed_help(update: Update, context: CallbackContext):
     )
     bot.answer_callback_query(query.id)
 
+__mod_name__ = "Feds"
 
 FED_USER_HELP = """
     *Any user:*
@@ -2422,6 +2420,7 @@ FED_ADMIN_HELP = """
     • `/fedchats`*:* Get all the chats that are connected in the Federation
     • `/chatfed `*:* See the Federation in the current chat
 """
+__help__ = 
 
 def get_help(chat):
     return [gs(chat, "feds_help"),
