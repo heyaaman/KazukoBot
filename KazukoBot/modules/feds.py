@@ -7,7 +7,17 @@ import time
 import uuid
 from io import BytesIO
 
-import KazukoBot.modules.sql.feds_sql as sql
+from telegram.ext import CallbackContext
+from telegram.error import BadRequest, TelegramError, Unauthorized
+from telegram import (
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    MessageEntity,
+    ParseMode,
+    Update,
+)
+from telegram.utils.helpers import mention_html, mention_markdown
+
 from KazukoBot import (
     EVENT_LOGS,
     LOGGER,
@@ -18,28 +28,20 @@ from KazukoBot import (
     WOLVES,
     dispatcher,
 )
-from KazukoBot.modules.disable import DisableAbleCommandHandler
-from KazukoBot.modules.helper_funcs.alternate import send_message
 from KazukoBot.modules.helper_funcs.chat_status import is_user_admin
 from KazukoBot.modules.helper_funcs.extraction import (
-    extract_unt_fedban,
     extract_user,
+    extract_unt_fedban,
     extract_user_fban,
 )
 from KazukoBot.modules.helper_funcs.string_handling import markdown_parser
-from telegram import (
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    MessageEntity,
-    ParseMode,
-    Update,
-)
-from telegram.error import BadRequest, TelegramError, Unauthorized
-from telegram.ext import (
-    CallbackContext,
-    CallbackQueryHandler,
-    CommandHandler,
-    run_async,
+
+import KazukoBot.modules.sql.feds_sql as sql
+
+from KazukoBot.modules.helper_funcs.alternate import (
+    send_message,
+    typing_action,
+    send_action,
 )
 from telegram.utils.helpers import mention_html, mention_markdown
 
@@ -2420,7 +2422,6 @@ FED_ADMIN_HELP = """
     • `/fedchats`*:* Get all the chats that are connected in the Federation
     • `/chatfed `*:* See the Federation in the current chat
 """
-__help__ = 
 
 def get_help(chat):
     return [gs(chat, "feds_help"),
