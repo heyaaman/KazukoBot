@@ -83,7 +83,7 @@ I can do a variety of things, most common of em are:
 - Restrict users who flood your chat using my anti-flood module.
 - Warn users according to the options set and restrict em accordingly.
 - Save notes and filters with proper formatting and reply markup.
-ғᴏʀ ʀᴇᴘᴏʀᴛɪɴɢ ᴀɴʏ ɪssᴜᴇs ʀᴇɢᴀʀᴅɪɴɢ ᴍᴇ ᴋɪɴᴅʟʏ ʀᴇᴘᴏʀᴛ ɪɴ sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ sᴏ ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀs ᴄᴀɴ ғɪx ᴍᴇ ᴏᴜᴛ ғᴏʀ ʏᴏᴜʀ ɴᴇᴇᴅs.!
+ғᴏʀ ʀᴇᴘᴏʀᴛɪɴɢ ᴀɴʏ ɪssᴜᴇs ʀᴇɢᴀʀᴅɪɴɢ ᴍᴇ ᴋɪɴᴅʟʏ ʀᴇᴘᴏʀᴛ ɪɴ sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ sᴏ ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀs ᴄᴀɴ ғɪx ᴍᴇ ᴏᴜᴛ ғᴏʀ ʏᴏᴜʀ ɴᴇᴇᴅs[.](https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg)!
 """
 buttons = [
     [
@@ -110,14 +110,13 @@ Hey there! My name is Kazuko.
 I'm a Powerful bot to help admins manage their groups! Have a look at the following for an idea of some of \
 the things I can help you with.
 *Main* commands available:
- • /help: PM's you this message.
- • /help <module name>: PM's you info about that module.
+ • /start: Start bot (You already started)
+ • /help: Shows all commands and module.
  • /donate: information on how to donate!
  • /settings:
    • in PM: will send you your settings for all supported modules.
    • in a group: will redirect you to pm, with all that chat's settings.
-{}
-And the following:
+And the following: [.](https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg)
 """
 
 KAZUKO_IMG = "https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg"
