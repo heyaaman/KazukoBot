@@ -2342,18 +2342,17 @@ def get_chat(chat_id, chat_data):
 
 __mod_name__ = "Federations"
 
-from KazukoBot.modules.language import gs
 
 def fed_owner_help(update: Update, context: CallbackContext):
     update.effective_message.reply_text(
-        gs(update.effective_chat.id, "FED_OWNER_HELP"),
+        (update.effective_chat.id, "FED_OWNER_HELP"),
         parse_mode=ParseMode.MARKDOWN,
     )
 
 
 def fed_admin_help(update: Update, context: CallbackContext):
     update.effective_message.reply_text(
-        gs(update.effective_chat.id, "FED_ADMIN_HELP"),
+        (update.effective_chat.id, "FED_ADMIN_HELP"),
         parse_mode=ParseMode.MARKDOWN,
     )
 
@@ -2361,7 +2360,7 @@ def fed_admin_help(update: Update, context: CallbackContext):
 
 def fed_user_help(update: Update, context: CallbackContext):
     update.effective_message.reply_text(
-        gs(update.effective_chat.id, "FED_USER_HELP"),
+        (update.effective_chat.id, "FED_USER_HELP"),
         parse_mode=ParseMode.MARKDOWN,
     )
 
@@ -2372,11 +2371,11 @@ def fed_help(update: Update, context: CallbackContext):
     bot = context.bot
     help_info = query.data.split("fed_help_")[1]
     if help_info == "owner":
-        help_text = gs(update.effective_chat.id, "FED_OWNER_HELP")
+        help_text =(update.effective_chat.id, "FED_OWNER_HELP")
     elif help_info == "admin":
-        help_text = gs(update.effective_chat.id, "FED_ADMIN_HELP")
+        help_text =(update.effective_chat.id, "FED_ADMIN_HELP")
     elif help_info == "user":
-        help_text = gs(update.effective_chat.id, "FED_USER_HELP") 
+        help_text =(update.effective_chat.id, "FED_USER_HELP") 
     query.message.edit_text(
         text=help_text,
         parse_mode=ParseMode.MARKDOWN,
@@ -2389,7 +2388,7 @@ def fed_help(update: Update, context: CallbackContext):
 
 
 def get_help(chat):
-    return [gs(chat, "feds_help"),
+    return(chat, "feds_help"),
     [
         InlineKeyboardButton(text="Fedadmins", callback_data="fed_help_admin"),
         InlineKeyboardButton(text="Fedowners", callback_data="fed_help_owner")
