@@ -1,152 +1,255 @@
-import json
+import asyncio
+import io
 import os
 import time
 
-from pymongo import MongoClient
-from telethon import types
-from telethon.tl import functions
-from telethon.tl.types import DocumentAttributeAudio
+import lyricsgenius
+import requests
+import wget
+from pyrogram import filters
+from pyrogram.types import Message
+from tswift import Song
 from youtube_dl import YoutubeDL
-from youtube_dl.utils import (
-    ContentTooShortError,
-    DownloadError,
-    ExtractorError,
-    GeoRestrictedError,
-    MaxDownloadsReached,
-    PostProcessingError,
-    UnavailableVideoError,
-    XAttrMetadataError,
-)
 from youtubesearchpython import SearchVideos
 
-from KazukoBot import MONGO_DB_URI, tbot
-from KazukoBot.events import register
+from KazukoBot.conf import get_str_key
+from KazukoBot.pyrogramee.pluginshelper import get_text, progress
+from KazukoBot import pbot
 
-client = MongoClient()
-client = MongoClient(MONGO_DB_URI)
-db = client["missjuliarobot"]
-approved_users = db.approve
+GENIUS = get_str_key("GENIUS_API_TOKEN", None)
 
 
-async def is_register_admin(chat, user):
-    if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
-        return isinstance(
-            (
-                await tbot(functions.channels.GetParticipantRequest(chat, user))
-            ).participant,
-            (types.ChannelParticipantAdmin, types.ChannelParticipantCreator),
-        )
-    if isinstance(chat, types.InputPeerUser):
-        return True
+@pbot.on_message(filters.command(["vsong", "video"]))
+async def ytmusic(client, message: Message):
+    urlissed = get_text(message)
 
+    pablo = await client.send_message(
+        message.chat.id, f"`Getting {urlissed} From Youtube Servers. Please Wait.`"
+    )
+    if not urlissed:
+        await pablo.edit("Invalid Command Syntax, Please Check Help Menu To Know More!")
+        return
 
-@register(pattern="^/song (.*)")
-async def download_song(v_url):
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
-    if v_url.is_group:
-        if await is_register_admin(v_url.input_chat, v_url.message.sender_id):
-            pass
-        elif v_url.chat_id == iid and v_url.sender_id == userss:
-            pass
-        else:
-            return
-    url = v_url.pattern_match.group(1)
-    rkp = await v_url.reply("Processing...")
-    if not url:
-        await rkp.edit("**What's the song you want?**\nUsage`/song <song name>`")
-    search = SearchVideos(url, offset=1, mode="json", max_results=1)
-    test = search.result()
-    p = json.loads(test)
-    q = p.get("search_result")
+    search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
+    mi = search.result()
+    mio = mi["search_result"]
+    mo = mio[0]["link"]
+    thum = mio[0]["title"]
+    fridayz = mio[0]["id"]
+    thums = mio[0]["channel"]
+    kekme = f"https://img.youtube.com/vi/{fridayz}/hqdefault.jpg"
+    await asyncio.sleep(0.6)
+    url = mo
+    sedlyf = wget.download(kekme)
+    opts = {
+        "format": "best",
+        "addmetadata": True,
+        "key": "FFmpegMetadata",
+        "prefer_ffmpeg": True,
+        "geo_bypass": True,
+        "nocheckcertificate": True,
+        "postprocessors": [{"key": "FFmpegVideoConvertor", "preferedformat": "mp4"}],
+        "outtmpl": "%(id)s.mp4",
+        "logtostderr": False,
+        "quiet": True,
+    }
     try:
-        url = q[0]["link"]
-    except BaseException:
-        return await rkp.edit("`Failed to find that song`")
-    type = "audio"
-    await rkp.edit("Preparing to download...")
-    if type == "audio":
-        opts = {
-            "format": "bestaudio",
-            "addmetadata": True,
-            "key": "FFmpegMetadata",
-            "writethumbnail": True,
-            "prefer_ffmpeg": True,
-            "geo_bypass": True,
-            "nocheckcertificate": True,
-            "postprocessors": [
-                {
-                    "key": "FFmpegExtractAudio",
-                    "preferredcodec": "mp3",
-                    "preferredquality": "320",
-                }
-            ],
-            "outtmpl": "%(id)s.mp3",
-            "quiet": True,
-            "logtostderr": False,
-        }
-        song = True
-    try:
-        await rkp.edit("Downloading...")
-        with YoutubeDL(opts) as rip:
-            rip_data = rip.extract_info(url)
-    except DownloadError as DE:
-        await rkp.edit(f"`{str(DE)}`")
-        return
-    except ContentTooShortError:
-        await rkp.edit("`The download content was too short.`")
-        return
-    except GeoRestrictedError:
-        await rkp.edit(
-            "`Video is not available from your geographic location due to geographic restrictions imposed by a website.`"
-        )
-        return
-    except MaxDownloadsReached:
-        await rkp.edit("`Max-downloads limit has been reached.`")
-        return
-    except PostProcessingError:
-        await rkp.edit("`There was an error during post processing.`")
-        return
-    except UnavailableVideoError:
-        await rkp.edit("`Media is not available in the requested format.`")
-        return
-    except XAttrMetadataError as XAME:
-        await rkp.edit(f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
-        return
-    except ExtractorError:
-        await rkp.edit("`There was an error during info extraction.`")
-        return
+        with YoutubeDL(opts) as ytdl:
+            ytdl_data = ytdl.extract_info(url, download=True)
     except Exception as e:
-        await rkp.edit(f"{str(type(e)): {str(e)}}")
+        await event.edit(event, f"**Failed To Download** \n**Error :** `{str(e)}`")
         return
-    time.time()
-    if song:
-        await rkp.edit("Uploading...")
+    c_time = time.time()
+    file_stark = f"{ytdl_data['id']}.mp4"
+    capy = f"**Video Name ➠** `{thum}` \n**Requested For :** `{urlissed}` \n**Channel :** `{thums}` \n**Link :** `{mo}`"
+    await client.send_video(
+        message.chat.id,
+        video=open(file_stark, "rb"),
+        duration=int(ytdl_data["duration"]),
+        file_name=str(ytdl_data["title"]),
+        thumb=sedlyf,
+        caption=capy,
+        supports_streaming=True,
+        progress=progress,
+        progress_args=(
+            pablo,
+            c_time,
+            f"`Uploading {urlissed} Song From YouTube Music!`",
+            file_stark,
+        ),
+    )
+    await pablo.delete()
+    for files in (sedlyf, file_stark):
+        if files and os.path.exists(files):
+            os.remove(files)
 
-        lel = await v_url.client.send_file(
-            v_url.chat_id,
-            f"{rip_data['id']}.mp3",
-            supports_streaming=False,
-            force_document=False,
-            allow_cache=False,
-            attributes=[
-                DocumentAttributeAudio(
-                    duration=int(rip_data["duration"]),
-                    title=str(rip_data["title"]),
-                    performer=str(rip_data["uploader"]),
-                )
-            ],
+
+@pbot.on_message(filters.command(["music", "song"]))
+async def ytmusic(client, message: Message):
+    urlissed = get_text(message)
+    if not urlissed:
+        await client.send_message(
+            message.chat.id,
+            "Invalid Command Syntax, Please Check Help Menu To Know More!",
         )
-        await rkp.delete()
-        os.system("rm -rf *.mp3")
-        os.system("rm -rf *.webp")
+        return
+    pablo = await client.send_message(
+        message.chat.id, f"`Getting {urlissed} From Youtube Servers. Please Wait.`"
+    )
+    search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
+    mi = search.result()
+    mio = mi["search_result"]
+    mo = mio[0]["link"]
+    mio[0]["duration"]
+    thum = mio[0]["title"]
+    fridayz = mio[0]["id"]
+    thums = mio[0]["channel"]
+    kekme = f"https://img.youtube.com/vi/{fridayz}/hqdefault.jpg"
+    await asyncio.sleep(0.6)
+    sedlyf = wget.download(kekme)
+    opts = {
+        "format": "bestaudio",
+        "addmetadata": True,
+        "key": "FFmpegMetadata",
+        "writethumbnail": True,
+        "prefer_ffmpeg": True,
+        "geo_bypass": True,
+        "nocheckcertificate": True,
+        "postprocessors": [
+            {
+                "key": "FFmpegExtractAudio",
+                "preferredcodec": "mp3",
+                "preferredquality": "720",
+            }
+        ],
+        "outtmpl": "%(id)s.mp3",
+        "quiet": True,
+        "logtostderr": False,
+    }
+    try:
+        with YoutubeDL(opts) as ytdl:
+            ytdl_data = ytdl.extract_info(mo, download=True)
+    except Exception as e:
+        await pablo.edit(f"**Failed To Download** \n**Error :** `{str(e)}`")
+        return
+    c_time = time.time()
+    capy = f"**Song Name :** `{thum}` \n**Requested For :** `{urlissed}` \n**Channel :** `{thums}` \n**Link :** `{mo}`"
+    file_stark = f"{ytdl_data['id']}.mp3"
+    await client.send_audio(
+        message.chat.id,
+        audio=open(file_stark, "rb"),
+        duration=int(ytdl_data["duration"]),
+        title=str(ytdl_data["title"]),
+        performer=str(ytdl_data["uploader"]),
+        thumb=sedlyf,
+        caption=capy,
+        progress=progress,
+        progress_args=(
+            pablo,
+            c_time,
+            f"`Uploading {urlissed} Song From YouTube Music!`",
+            file_stark,
+        ),
+    )
+    await pablo.delete()
+    for files in (sedlyf, file_stark):
+        if files and os.path.exists(files):
+            os.remove(files)
+
+def time_to_seconds(time):
+    stringt = str(time)
+    return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":"))))
 
 
-__help__ = """
- • `/song <song name>`*:* uploads the song from YouTube in the best quality available.
- • `/lyrics <song name>`*:* provides the lyrics of the song you want.
-"""
+# Lel, Didn't Get Time To Make New One So Used Plugin Made br @mrconfused and @sandy1709 dont edit credits
 
-__mod_name__ = "Songs"
+
+@pbot.on_message(filters.command(["lyric", "lyrics"]))
+async def _(client, message):
+    lel = await message.reply("Searching For Lyrics.....")
+    query = message.text
+    if not query:
+        await lel.edit("`What I am Supposed to find `")
+        return
+
+    song = ""
+    song = Song.find_song(query)
+    if song:
+        if song.lyrics:
+            reply = song.format()
+        else:
+            reply = "Couldn't find any lyrics for that song! try with artist name along with song if still doesnt work try `.glyrics`"
+    else:
+        reply = "lyrics not found! try with artist name along with song if still doesnt work try `.glyrics`"
+
+    if len(reply) > 4095:
+        with io.BytesIO(str.encode(reply)) as out_file:
+            out_file.name = "lyrics.text"
+            await client.send_document(
+                message.chat.id,
+                out_file,
+                force_document=True,
+                allow_cache=False,
+                caption=query,
+                reply_to_msg_id=message.message_id,
+            )
+            await lel.delete()
+    else:
+        await lel.edit(reply)  # edit or reply
+
+
+@pbot.on_message(filters.command(["glyric", "glyrics"]))
+async def lyrics(client, message):
+
+    if r"-" in message.text:
+        pass
+    else:
+        await message.reply(
+            "`Error: please use '-' as divider for <artist> and <song>`\n"
+            "eg: `.glyrics Edward Maya - Stereo Love`"
+        )
+        return
+
+    if GENIUS is None:
+        await message.reply(
+            "`Provide genius access token to config.py or Heroku Config first kthxbye!`"
+        )
+    else:
+        genius = lyricsgenius.Genius(GENIUS)
+        try:
+            args = message.text.split(".lyrics")[1].split("-")
+            artist = args[0].strip(" ")
+            song = args[1].strip(" ")
+        except Exception:
+            await message.reply("`Lel please provide artist and song names`")
+            return
+
+    if len(args) < 1:
+        await message.reply("`Please provide artist and song names`")
+        return
+
+    lel = await message.reply(f"`Searching lyrics for {artist} - {song}...`")
+
+    try:
+        songs = genius.search_song(song, artist)
+    except TypeError:
+        songs = None
+
+    if songs is None:
+        await lel.edit(f"Song **{artist} - {song}** not found!")
+        return
+    if len(songs.lyrics) > 4096:
+        await lel.edit("`Lyrics is too big, view the file to see it.`")
+        with open("lyrics.txt", "w+") as f:
+            f.write(f"Search query: \n{artist} - {song}\n\n{songs.lyrics}")
+        await client.send_document(
+            message.chat.id,
+            "lyrics.txt",
+            reply_to_msg_id=message.message_id,
+        )
+        os.remove("lyrics.txt")
+    else:
+        await lel.edit(
+            f"**Search query**: \n`{artist} - {song}`\n\n```{songs.lyrics}```"
+        )
+    return
