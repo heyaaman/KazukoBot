@@ -75,10 +75,10 @@ def paginate_modules(page_n: int, module_dict: Dict, prefix, chat=None) -> List:
     max_num_pages = ceil(len(pairs) / 10)
     modulo_page = page_n % max_num_pages
 
-    EqInlineKeyboardButton("Back", callback_data="yone_back"),
+    EqInlineKeyboardButton("Back", callback_data="kazukobot_back"),
 
     else:
-        pairs += [[EqInlineKeyboardButton("Back", callback_data="yone_back")]]
+        pairs += [[EqInlineKeyboardButton("Back", callback_data="kazukobot_back")]]
 
     return pairs
 
