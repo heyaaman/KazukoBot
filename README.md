@@ -16,7 +16,7 @@ News channel as at [Kazuko Updates](https://t.me/Phoenix_Empire)
 ### Read these notes carefully before proceeding 
  - This bot is forked from saitama which is based on marie
  - Your code must be open source and a link to our repo
- - last, we don't support fork... So asking support for your fork in our support chat will be ignored.
+ - Fork and deploy on your own risk...
  
 
 
@@ -68,6 +68,11 @@ class Development(Config):
 
 If you can't have a config.py file (EG on Heroku), it is also possible to use environment variables.
 So just go and read the config sample file. 
+
+### Heroku Deploy 
+The easiest way to deploy this Bot is via Heroku.
+
+<p align="left"><a href="https://heroku.com/deploy?template=https://github.com/heyaaman/KazukoBot"> <img src="https://img.shields.io/badge/Deploy%20To%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
 
   ### Python dependencies
 
