@@ -190,7 +190,7 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
+                        [[InlineKeyboardButton(text="BACK", callback_data="help_back")]]
                     ),
                 )
 
@@ -352,6 +352,7 @@ def help_button(update, context):
         pass
 
 
+
 @run_async
 def kazuko_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
@@ -384,7 +385,6 @@ Have any question about Kazuko?, let us know at @CFC_BOT_support.""",
                 timeout=60,
                 disable_web_page_preview=False,
         )
-
 
 @run_async
 def Source_about_callback(update, context):
@@ -597,6 +597,7 @@ def settings_button(update: Update, context: CallbackContext):
             LOGGER.exception("Exception in settings buttons. %s", str(query.data))
 
 
+
 @run_async
 def get_settings(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
@@ -628,7 +629,6 @@ def get_settings(update: Update, context: CallbackContext):
     else:
         send_settings(chat.id, user.id, True)
 
-
 @run_async
 def donate(update: Update, context: CallbackContext):
     user = update.effective_message.from_user
@@ -639,7 +639,7 @@ def donate(update: Update, context: CallbackContext):
             DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True
         )
 
-        if OWNER_ID != 254318997 and DONATION_LINK:
+        if OWNER_ID != 1821151467 and DONATION_LINK:
             update.effective_message.reply_text(
                 "You can also donate to the person currently running me "
                 "[here]({})".format(DONATION_LINK),
@@ -747,4 +747,5 @@ def main():
 if __name__ == "__main__":
     LOGGER.info("Successfully loaded modules: " + str(ALL_MODULES))
     telethn.start(bot_token=TOKEN)
+    pbot.start()
     main()
