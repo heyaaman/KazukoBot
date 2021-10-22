@@ -11,6 +11,7 @@ from KazukoBot import (
     LOGGER,
     OWNER_ID,
     PORT,
+    SUPPORT_CHAT,
     TOKEN,
     URL,
     WEBHOOK,
@@ -18,7 +19,9 @@ from KazukoBot import (
     dispatcher,
     StartTime,
     telethn,
-    updater)
+    pbot,
+    updater,
+)
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
@@ -68,7 +71,6 @@ def get_readable_time(seconds: int) -> str:
     ping_time += ":".join(time_list)
 
     return ping_time
-
 
 PM_START_TEXT = """
 Hey hi {}, I'm {}!
