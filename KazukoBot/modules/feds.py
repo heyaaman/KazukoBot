@@ -2424,13 +2424,12 @@ FED_ADMIN_HELP = """
 """
 
 def get_help(chat):
-    return(chat, "feds_help"),
-      [
-         InlineKeyboardButton(text="Fedadmins", callback_data="fed_help_admin"
-         ),
-         InlineKeyboardButton(text="Fedowners", callback_data="fed_help_owner")
-      ],
+    return [gs(chat, "feds_help"),
     [
-         InlineKeyboardButton(text="Users", callback_data="fed_help_user")
+        InlineKeyboardButton(text="Fedadmins", callback_data="fed_help_admin"),
+        InlineKeyboardButton(text="Fedowners", callback_data="fed_help_owner")
     ],
- ]
+    [
+        InlineKeyboardButton(text="Users", callback_data="fed_help_user")
+    ],
+]
