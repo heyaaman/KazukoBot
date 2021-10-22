@@ -116,7 +116,7 @@ the things I can help you with.
  • /settings:
    • in PM: will send you your settings for all supported modules.
    • in a group: will redirect you to pm, with all that chat's settings.
-And the following: [.](https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg)
+And the following:
 """
 
 KAZUKO_IMG = "https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg"
@@ -367,16 +367,18 @@ def kazuko_about_callback(update, context):
     query = update.callback_query
     if query.data == "kazuko_":
         query.message.edit_text(
-            text=""" ℹ️ I'm *kazuko*, a powerful group management bot built to help you manage your group easily.
-                 \n❍ I can restrict users.
-                 \n❍ I can greet users with customizable welcome messages and even set a group's rules.
-                 \n❍ I have an advanced anti-flood system.
-                 \n❍ I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
-                 \n❍ I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
-                 \n❍ I check for admins' permissions before executing any command and more stuffs
-                 \n\n_kazuko's licensed under the GNU General Public License v3.0_
-                 \nHere is the [💾Repository](https://github.com/heyaaman/KazukoBot).
-                 \n\nIf you have any question about kazuko, let us know at .""",
+            text="""I'm *Kazuko*, a powerful group management bot built to help you manage your group easily[.](https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg)
+
+• I can restrict users.
+• I can greet users with customizable welcome messages and even set a group's rules.
+• I have an advanced anti-flood system.
+• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
+• I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
+• I check for admins'permissions before executing any command and more stuffs
+\n_Kazuko's licensed under the GNU General Public License v3.0_
+ \nMy Owner [heyaaman](https://t.me/heyaaman).
+Have any question about Kazuko?, let us know at @CFC\_BOT\_support.""",
+
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
