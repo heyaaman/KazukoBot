@@ -68,9 +68,17 @@ def paginate_modules(page_n: int, module_dict: Dict, prefix, chat=None) -> List:
     round_num = len(modules) / 3
     calc = len(modules) - round(round_num)
     if calc == 1:
-        pairs.append((modules[-1],))
+        pairs.append((modules[-1], ))
     elif calc == 2:
-        pairs.append((modules[-1],))
+        pairs.append((modules[-1], ))
+
+    max_num_pages = ceil(len(pairs) / 10)
+    modulo_page = page_n % max_num_pages
+
+    EqInlineKeyboardButton("Back", callback_data="yone_back"),
+
+    else:
+        pairs += [[EqInlineKeyboardButton("Back", callback_data="yone_back")]]
 
     return pairs
 
