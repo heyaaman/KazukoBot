@@ -182,4 +182,4 @@ CREDITS
 This Bot Is Developed By [heyaaman](https://github.com/heyaaman) 
 
 ## Find me on telegram 
-[![heyaaman](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](https://t.me/heyaaman)
+[![Telegram](https://img.shields.io/badge/heyaaman-1b77FF.svg?style=for-the-badge&logo=telegram)](https://t.me/heyaaman)
