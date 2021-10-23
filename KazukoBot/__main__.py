@@ -100,12 +100,12 @@ buttons = [
         ),
     ],
     [
-        InlineKeyboardButton(text="Help", callback_data="help_back",
+        InlineKeyboardButton(
+            text="️Add Kazuko to your group", url="t.me/KazukoRobot?startgroup=true",
         ),
     ],
     [ 
-        InlineKeyboardButton(
-            text="️Add Kazuko to your group", url="t.me/KazukoRobot?startgroup=true"),
+        InlineKeyboardButton(text="Help", callback_data="help_back"),
     ],
 ]
 
