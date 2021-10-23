@@ -376,7 +376,6 @@ def kazuko_about_callback(update, context):
 • I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
 • I check for admins'permissions before executing any command and more stuffs
 \n_Kazuko's licensed under the GNU General Public License v3.0_
- \nMy Owner [heyaaman](https://t.me/heyaaman).
 Have any question about Kazuko?, let us know at @CFC\_BOT\_support.""",
 
             parse_mode=ParseMode.MARKDOWN,
