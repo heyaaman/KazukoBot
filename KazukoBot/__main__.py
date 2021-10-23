@@ -76,14 +76,14 @@ def get_readable_time(seconds: int) -> str:
 PM_START_TEXT = """
 Hey...I'm Kazuko
 I am an Anime themed group management bot
-ᴛᴏ ʜᴇʟᴘ ɢʀᴏᴜᴘ ᴏᴡɴᴇʀ ᴀɴᴅ ᴀᴅᴍɪɴs ᴡɪᴛʜ ᴍʏ sᴜᴘᴇʀ ᴀᴅᴠᴀɴᴄᴇᴅ ғᴇᴀᴛᴜʀᴇs,
+to help maintaining groups with my super advanced features,
 I can do a variety of things, most common of em are:
 - Restrict users with ban permissions.
 - Greet users with media + text and buttons, with proper formatting.
 - Restrict users who flood your chat using my anti-flood module.
 - Warn users according to the options set and restrict em accordingly.
 - Save notes and filters with proper formatting and reply markup.
-ғᴏʀ ʀᴇᴘᴏʀᴛɪɴɢ ᴀɴʏ ɪssᴜᴇs ʀᴇɢᴀʀᴅɪɴɢ ᴍᴇ ᴋɪɴᴅʟʏ ʀᴇᴘᴏʀᴛ ɪɴ sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ sᴏ ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀs ᴄᴀɴ ғɪx ᴍᴇ ᴏᴜᴛ ғᴏʀ ʏᴏᴜʀ ɴᴇᴇᴅs[.](https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg)!
+For reporting any issues or bug kindly join support chat and report devs or admins[.](https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg)!
 """
 buttons = [
     [
@@ -112,16 +112,15 @@ buttons = [
 
 HELP_STRINGS = """
 Hey there! My name is Kazuko.
-I'm a Powerful bot to help admins manage their groups! Have a look at the following for an idea of some of \
+Have a look at the following for an idea of some of
 the things I can help you with.
-*Main* commands available:
- • /start: Start bot (You already started)
- • /help: Shows all commands and module.
- • /donate: information on how to donate!
+Main commands available:
+ • /start: Starts me, can be used to check I'm alive or not.
+ • /help: PM's you this message.
  • /settings:
-   • in PM: will send you your settings for all supported modules.
-   • in a group: will redirect you to pm, with all that chat's settings.
-And the following:
+   - in PM: will send you your settings for all supported modules.
+   - in a group: will redirect you to pm, with all that chat's settings.
+ Click on the buttons below to get documentation about specific modules!
 """
 
 KAZUKO_IMG = "https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg"
