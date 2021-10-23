@@ -100,7 +100,7 @@ buttons = [
         ),
     ],
     [
-        InlineKeyboardButton(text="Help", callback_data="help_back"),
+        InlineKeyboardButton(text="Help", callback_data="help_back",
         ),
     ],
     [ 
