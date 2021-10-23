@@ -172,10 +172,14 @@ Note: the restart bat requires that User account control be disabled.
 
 For queries or any issues regarding the bot please open an issue ticket or visit us at [CFC BOT SUPPORT](https://t.me/CFC_BOT_support)
 
-## Credits
-The bot is based on the original work done by [PaulSonOfLars](https://github.com/PaulSonOfLars)
-This repo was just revamped to suit an Anime-centric community. All original credits go to Paul and his dedication, Without his efforts, this fork would not have been possible!
+## Credits 📍
+CREDITS
+```
+❤️ Saitama = Sawada
+❤️ DaisyX = Inuka
+❤️ Yone = Noob kittu 
 
-Any other authorship/credits can be seen through the commits.
+This Bot Is Developed By [heyaaman](https://github/heyaaman) ! 
 
-Should any be missing kindly let us know at [CFC BOT SUPPORT](https://t.me/CFC_BOT_support) or simply submit a pull request on the readme.
+## Find me pn telegram 
+[![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](https://t.me/heyaaman)
