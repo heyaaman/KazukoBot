@@ -389,9 +389,15 @@ Have any question about Kazuko?, let us know at @CFC\_BOT\_support.""",
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="Back", callback_data="kazuko_back")
-                 ]
+                    [
+                        InlineKeyboardButton(
+                            text=" Setup Guide ", url="https://t.me/Phoenix_Empire/110"
+                        ),
+                        InlineKeyboardButton(
+                            text="Network", url="https://t.me/Phoenix_Empire/28"
+                        ),
+                    ],
+                    [InlineKeyboardButton(text="Back", callback_data="kazuko_back")],
                 ]
             ),
         )
