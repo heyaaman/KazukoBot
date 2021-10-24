@@ -2373,8 +2373,7 @@ def fed_help(update: Update, context: CallbackContext):
         text=help_text,
         parse_mode=ParseMode.MARKDOWN,
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton(text="Back", callback_data=f"help_module({__mod_name__.lower()})",
-
+            [[InlineKeyboardButton(text="Back", callback_data=f"help_module({__mod_name__.lower()}",
         ),
     )
     bot.answer_callback_query(query.id)
@@ -2386,7 +2385,7 @@ def fed_owner_help(update: Update, context: CallbackContext):
     update.effective_message.reply_text(
         (update.effective_chat.id, "FED_OWNER_HELP"),
         parse_mode=ParseMode.MARKDOWN,
-    )
+
 FED_OWNER_HELP:
     """*Fed Owner Only:*
 
