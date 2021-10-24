@@ -2338,8 +2338,11 @@ def get_chat(chat_id, chat_data):
 
 @run_async
 def fed_owner_help(update: Update, context: CallbackContext):
-    update.effective_message.reply_text(
-        """*Fed Owner Only:*
+    query = update.callback_query
+    if query.data == "kazuko_fed_owner_help":
+        query.message.edit_text(
+            text="""*Fed Owner Only:*
+
  • `/newfed <fed_name>`*:* Creates a Federation, One allowed per user
  • `/renamefed <fed_id> <new_fed_name>`*:* Renames the fed id to a new name
  • `/delfed <fed_id>`*:* Delete a Federation, and any information related to it. Will not cancel blocked users
@@ -2351,14 +2354,20 @@ def fed_owner_help(update: Update, context: CallbackContext):
  • `/unsetfedlog <fed_id>`*:* Removed the group as a fed log report base for the federation
  • `/fbroadcast <message>`*:* Broadcasts a messages to all groups that have joined your fed
  • `/fedsubs`*:* Shows the feds your group is subscribed to `(broken rn)`""",
-        parse_mode=ParseMode.MARKDOWN,
-    )
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+	    
+    )          
 
 
 @run_async
 def fed_admin_help(update: Update, context: CallbackContext):
-    update.effective_message.reply_text(
-        """* Fed Admins:*
+    query = update.callback_query
+    if query.data == "kazuko_fed_admin_help":
+        query.message.edit_text(
+            text="""*Fed admin help:*
+
  • `/fban <user> <reason>`*:* Fed bans a user
  • `/unfban <user> <reason>`*:* Removes a user from a fed ban
  • `/fedinfo <fed_id>`*:* Information about the specified Federation
@@ -2369,19 +2378,28 @@ def fed_admin_help(update: Update, context: CallbackContext):
  • `/fbanlist`*:* Displays all users who are victimized at the Federation at this time
  • `/fedchats`*:* Get all the chats that are connected in the Federation
  • `/chatfed `*:* See the Federation in the current chat\n""",
-        parse_mode=ParseMode.MARKDOWN,
-    )
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+	    
+    )          
 
 
 @run_async
 def fed_user_help(update: Update, context: CallbackContext):
-    update.effective_message.reply_text(
-        """* Any user:*
+    query = update.callback_query
+    if query.data == "kazuko_any_users":
+        query.message.edit_text(
+            text="""*Any users:*
+
  • `/fbanstat`*:* Shows if you/or the user you are replying to or their username is fbanned somewhere or not
  • `/fednotif <on/off>`*:* Federation settings not in PM when there are users who are fbaned/unfbanned
  • `/frules`*:* See Federation regulations\n""",
-        parse_mode=ParseMode.MARKDOWN,
-    )
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+	    
+    )          
 
 
 __mod_name__ = "Feds"
@@ -2391,12 +2409,20 @@ Everything is fun, until a spammer starts entering your group, and you have to b
 But then you have many groups, and you don't want this spammer to be in one of your groups - how can you deal? Do you have to manually block it, in all your groups?\n
 *No longer!* With Federation, you can make a ban in one chat overlap with all other chats.\n
 You can even designate federation admins, so your trusted admin can ban all the spammers from chats you want to protect.
-*Commands:*
+
 Feds are now divided into 3 sections for your ease. 
-• `/fedownerhelp`*:* Provides help for fed creation and owner only commands
-• `/fedadminhelp`*:* Provides help for fed administration commands
-• `/feduserhelp`*:* Provides help for commands anyone can use
 """
+
+        InlineKeyboardButton(text="fed owner help", callback_data="kazuko_fed_owner_help"),
+        InlineKeyboardButton(text="fed admin help", callback_data="kazuko_fed_admin_help",
+        ),
+    ],
+    [
+        InlineKeyboardButton(text="Any users", callback_data="kazuko_any_users",
+        ),
+
+
+
 
 NEW_FED_HANDLER = CommandHandler("newfed", new_fed)
 DEL_FED_HANDLER = CommandHandler("delfed", del_fed)
