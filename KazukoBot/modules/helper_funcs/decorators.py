@@ -2,8 +2,6 @@ from KazukoBot.modules.disable import DisableAbleCommandHandler, DisableAbleMess
 from telegram.ext import CommandHandler, MessageHandler, CallbackQueryHandler, InlineQueryHandler
 from telegram.ext.filters import BaseFilter
 from KazukoBot import dispatcher as d, log
-from KazukoBot import Optional, Union, List
-
 
 
 class KigyoTelegramHandler:
