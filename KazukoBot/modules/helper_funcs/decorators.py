@@ -79,4 +79,4 @@ class KigyoTelegramHandler:
             return func
         return _inlinequery
 
-kiginline = KigyoTelegramHandler(d).inlinequery
+run_async = KigyoTelegramHandler(d).inlinequery
