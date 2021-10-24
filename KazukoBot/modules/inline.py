@@ -24,7 +24,7 @@ from KazukoBot import (
     sw, log
 )
 from KazukoBot.modules.helper_funcs.misc import article
-from KazukoBot.modules.helper_funcs.decorators import run_async
+from KazukoBot.modules.helper_funcs.decorators import kiginline 
 
 
 def remove_prefix(text, prefix):
@@ -32,7 +32,7 @@ def remove_prefix(text, prefix):
         text = text.replace(prefix, "", 1)
     return text
 
-@run_async
+@kiginline 
 def inlinequery(update: Update, _) -> None:
     """
     Main InlineQueryHandler callback.
