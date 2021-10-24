@@ -39,7 +39,7 @@ class KigyoTelegramHandler:
 
         return _command
 
-    def message(self, pattern: Optional[str] = None, can_disable: bool = True, run_async: bool = True, group: Optional[Union[int]] = 60, friendly = None):
+    def message(self, pattern: str = None, can_disable: bool = True, run_async: bool = True, group: int = 60, friendly = None):
         def _message(func):
             try:
                 if can_disable:
