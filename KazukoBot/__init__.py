@@ -17,6 +17,14 @@ logging.basicConfig(
     level=logging.INFO,
 )
 
+
+#print(flag)
+log = logging.getLogger('[KazukoBot]')
+logging.getLogger('ptbcontrib.postgres_persistence.postgrespersistence').setLevel(logging.WARNING)
+log.info("[KAZUKO] Kazuko is starting. | CFC Empire Project. | Licensed under GPLv3.")
+log.info("[KAZUKO] Not affiliated to Azur Lane or Yostar in any way whatsoever.")
+log.info("[KAZUKO] Project maintained by: github.com/heyaaman (t.me/heyaaman)")
+
 LOGGER = logging.getLogger(__name__)
 
 # if version < 3.6, stop bot.
