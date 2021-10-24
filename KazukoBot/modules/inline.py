@@ -24,7 +24,7 @@ from KazukoBot import (
     sw, log
 )
 from KazukoBot.modules.helper_funcs.misc import article
-from KazukoBot.modules.helper_funcs.decorators import kiginline
+from KazukoBot.modules.helper_funcs.decorators import run_async
 
 
 def remove_prefix(text, prefix):
