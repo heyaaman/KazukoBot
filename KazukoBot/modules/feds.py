@@ -2394,14 +2394,13 @@ You can even designate federation admins, so your trusted admin can ban all the 
 *Commands:*
 Feds are now divided into 3 sections for your ease."""
 
-    [
-        InlineKeyboardButton(text="Fed admins", callback_data="fed_help_admin"),
-        InlineKeyboardButton(text="Fed owners", callback_data="fed_help_owner")
+        InlineKeyboardButton(text="Fed Owner help", callback_data="fed_owner_help"),
+        InlineKeyboardButton(text="Fed admin help", callback_data="fed_admin_help",
+        ),
     ],
     [
-        InlineKeyboardButton(text="Users", callback_data="fed_help_user")
-    ],
-]
+        InlineKeyboardButton(text="User help", callback_data="fed_user_help"),
+        ),
 
 
 NEW_FED_HANDLER = CommandHandler("newfed", new_fed)
