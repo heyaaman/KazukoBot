@@ -32,7 +32,7 @@ def remove_prefix(text, prefix):
         text = text.replace(prefix, "", 1)
     return text
 
-@kiginline()
+@run_async
 def inlinequery(update: Update, _) -> None:
     """
     Main InlineQueryHandler callback.
