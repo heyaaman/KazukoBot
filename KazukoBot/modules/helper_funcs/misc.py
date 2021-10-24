@@ -77,6 +77,27 @@ def paginate_modules(page_n: int, module_dict: Dict, prefix, chat=None) -> List:
 
     return pairs
 
+def article(
+    title: str = "",
+    description: str = "",
+    message_text: str = "",
+    thumb_url: str = None,
+    reply_markup: InlineKeyboardMarkup = None,
+    disable_web_page_preview: bool = False,
+) -> InlineQueryResultArticle:
+
+    return InlineQueryResultArticle(
+        id=uuid4(),
+        title=title,
+        description=description,
+        thumb_url=thumb_url,
+        input_message_content=InputTextMessageContent(
+            message_text=message_text,
+            disable_web_page_preview=disable_web_page_preview,
+        ),
+        reply_markup=reply_markup,
+    )
+
 def send_to_list(
     bot: Bot, send_to: list, message: str, markdown=False, html=False
 ) -> None:
