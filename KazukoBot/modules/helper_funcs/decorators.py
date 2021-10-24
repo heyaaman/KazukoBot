@@ -9,7 +9,7 @@ class KigyoTelegramHandler:
         self._dispatcher = d
 
     def command(
-        self, command: str, filters: BaseFilter = None, admin_ok: bool = False, pass_args: bool = False, pass_chat_data: bool = False, run_async: bool = True, can_disable: bool = True, group: [Union[int]] = 40
+        self, command: str, filters: BaseFilter = None, admin_ok: bool = False, pass_args: bool = False, pass_chat_data: bool = False, run_async: bool = True, can_disable: bool = True, group: int = 40
     ):
 
 
