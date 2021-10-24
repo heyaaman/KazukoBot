@@ -2399,7 +2399,7 @@ Feds are now divided into 3 sections for your ease."""
         ),
     ],
     [
-        InlineKeyboardButton(text="User help", callback_data="fed_user_help"),
+        InlineKeyboardButton(text="User help", callback_data="fed_user_help",
         ),
 
 
