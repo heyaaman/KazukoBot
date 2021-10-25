@@ -19,12 +19,12 @@ from pyrogram.types import (
 from Python_ARQ import ARQ
 from search_engine_parser import GoogleSearch
 
-from JisooX import BOT_USERNAME, OWNER_ID
-from JisooX.conf import get_str_key
-from JisooX.more.pluginhelpers import convert_seconds_to_minutes as time_convert
-from JisooX.more.pluginhelpers import fetch
-from JisooX.pyrogramee.pyrogram import pbot
-from JisooX import arq
+from KazukoBot import BOT_USERNAME, OWNER_ID
+from KazukoBot.conf import get_str_key
+from KazukoBot.more.pluginhelpers import convert_seconds_to_minutes as time_convert
+from KazukoBot.more.pluginhelpers import fetch
+from KazukoBot.pyrogramee.pyrogram import pbot
+from KazukoBot import arq
 
 SUDOERS = OWNER_ID
 
@@ -74,7 +74,7 @@ async def alive_function(answers):
     bot_state = "Dead" if not await app.get_me() else "Alive"
     # ubot_state = 'Dead' if not await app2.get_me() else 'Alive'
     buttons.add(
-        InlineKeyboardButton("Main Bot", url="https://t.me/JisooXRobot"),
+        InlineKeyboardButton("Main Bot", url="https://t.me/KazukoRobot"),
         InlineKeyboardButton("Go Inline!", switch_inline_query_current_chat=""),
     )
 
@@ -86,13 +86,13 @@ async def alive_function(answers):
 **Pyrogram:** `{pyrover}`
 **MongoDB:** `{mongover}`
 **Platform:** `{sys.platform}`
-**Profiles:** [BOT](t.me/{BOT_USERNAME}) | [UBOT](t.me/xflicks)
+**Profiles:** [Kazuko](t.me/KazukoRobot) | [Owner](t.me/heyaaman)
 """
     answers.append(
         InlineQueryResultArticle(
             title="Alive",
             description="Check Bot's Stats",
-            thumb_url="https://telegra.ph/file/4a35b80e9a023d48d6c11.jpg",
+            thumb_url="https://telegra.ph/file/9cd450abab6160b9f9b56.jpg",
             input_message_content=InputTextMessageContent(
                 msg, disable_web_page_preview=True
             ),
