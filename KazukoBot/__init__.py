@@ -189,17 +189,24 @@ if not SPAMWATCH_API:
     sw = None
     LOGGER.warning("SpamWatch API key missing! recheck your config.")
 else:
-    try:
-        sw = spamwatch.Client(SPAMWATCH_API)
-    except:
-        sw = None
-        LOGGER.warning("Can't connect to SpamWatch!")
+    sw = spamwatch.Client(SPAMWATCH_API)
 
+if STRING_SESSION:
+    ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
+else:
+    sys.exit(1)
+
+try:
+    ubot.start()
+except BaseException:
+    print("Network Error!")
+    sys.exit(1)
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
-telethn = TelegramClient("kazuko", API_ID, API_HASH)
-pbot = Client("KazukoBot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
+telethn = TelegramClient("mizuki", API_ID, API_HASH)
+pbot = Client("mizukiPyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 dispatcher = updater.dispatcher
+tbot = telethn
 
 DRAGONS = list(DRAGONS) + list(DEV_USERS)
 DEV_USERS = list(DEV_USERS)
