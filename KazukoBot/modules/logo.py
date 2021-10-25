@@ -1,6 +1,6 @@
 import os
-from JisooX.events import register
-from JisooX import telethn as tbot
+from KazukoBot.events import register
+from KazukoBot import telethn as tbot
 from PIL import Image, ImageDraw, ImageFont
 
 
