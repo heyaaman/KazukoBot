@@ -102,10 +102,10 @@ if ENV:
 
     ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True)
 
-    try:
+   try:
         BL_CHATS = set(int(x) for x in os.environ.get("BL_CHATS", "").split())
     except ValueError:
-        raise Exception("Your blacklisted chats list does not contain valid integers.")
+         raise Exception("Your blacklisted chats list does not contain valid integers.")
 
 else:
     from KazukoBot.config import Development as Config
@@ -182,26 +182,20 @@ else:
 
 DRAGONS.add(OWNER_ID)
 DEV_USERS.add(OWNER_ID)
-DEV_USERS.add(1200780834)
-DEV_USERS.add(797768146)
 
 if not SPAMWATCH_API:
     sw = None
     LOGGER.warning("SpamWatch API key missing! recheck your config.")
 else:
-    sw = spamwatch.Client(SPAMWATCH_API)
-
-try:
-    ubot.start()
-except BaseException:
-    print("Network Error!")
-    sys.exit(1)
+    try:
+        sw = spamwatch.Client(SPAMWATCH_API)
+    except:
+        sw = None
+        LOGGER.warning("Can't connect to SpamWatch!")
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
-telethn = TelegramClient("mizuki", API_ID, API_HASH)
-pbot = Client("mizukiPyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
+telethn = TelegramClient("saitama", API_ID, API_HASH)
 dispatcher = updater.dispatcher
-tbot = telethn
 
 DRAGONS = list(DRAGONS) + list(DEV_USERS)
 DEV_USERS = list(DEV_USERS)
