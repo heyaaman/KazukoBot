@@ -2,9 +2,6 @@ import importlib
 from typing import Union
 
 from future.utils import string_types
-from KazukoBot import dispatcher
-from KazukoBot.modules.helper_funcs.handlers import CMD_STARTERS, SpamChecker
-from KazukoBot.modules.helper_funcs.misc import is_module_loaded
 from telegram import ParseMode, Update
 from telegram.ext import (
     CallbackContext,
@@ -15,10 +12,16 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import escape_markdown
 
+from KazukoBot import dispatcher
+from KazukoBot.modules.helper_funcs.handlers import CMD_STARTERS, SpamChecker
+from KazukoBot.modules.helper_funcs.misc import is_module_loaded
+
 FILENAME = __name__.rsplit(".", 1)[-1]
 
 # If module is due to be loaded, then setup all the magical handlers
 if is_module_loaded(FILENAME):
+
+    from telegram.ext.dispatcher import run_async
 
     from KazukoBot.modules.helper_funcs.chat_status import (
         connection_status,
@@ -26,7 +29,6 @@ if is_module_loaded(FILENAME):
         user_admin,
     )
     from KazukoBot.modules.sql import disable_sql as sql
-    from telegram.ext.dispatcher import run_async
 
     DISABLE_CMDS = []
     DISABLE_OTHER = []
@@ -160,7 +162,7 @@ if is_module_loaded(FILENAME):
         args = context.args
         chat = update.effective_chat
         if len(args) >= 1:
-            disable_module = "SaitamaRobot.modules." + args[0].rsplit(".", 1)[0]
+            disable_module = "KazukoBot.modules." + args[0].rsplit(".", 1)[0]
 
             try:
                 module = importlib.import_module(disable_module)
@@ -172,7 +174,7 @@ if is_module_loaded(FILENAME):
                 command_list = module.__command_list__
             except:
                 update.effective_message.reply_text(
-                    "Module does not contain command list!",
+                    "Module does not contain command list!"
                 )
                 return
 
@@ -219,7 +221,7 @@ if is_module_loaded(FILENAME):
 
             if sql.enable_command(chat.id, enable_cmd):
                 update.effective_message.reply_text(
-                    f"Enabled the use of `{enable_cmd}`", parse_mode=ParseMode.MARKDOWN,
+                    f"Enabled the use of `{enable_cmd}`", parse_mode=ParseMode.MARKDOWN
                 )
             else:
                 update.effective_message.reply_text("Is that even disabled?")
@@ -235,7 +237,7 @@ if is_module_loaded(FILENAME):
         chat = update.effective_chat
 
         if len(args) >= 1:
-            enable_module = "SaitamaRobot.modules." + args[0].rsplit(".", 1)[0]
+            enable_module = "KazukoBot.modules." + args[0].rsplit(".", 1)[0]
 
             try:
                 module = importlib.import_module(enable_module)
@@ -247,7 +249,7 @@ if is_module_loaded(FILENAME):
                 command_list = module.__command_list__
             except:
                 update.effective_message.reply_text(
-                    "Module does not contain command list!",
+                    "Module does not contain command list!"
                 )
                 return
 
@@ -311,7 +313,7 @@ if is_module_loaded(FILENAME):
     def commands(update: Update, context: CallbackContext):
         chat = update.effective_chat
         update.effective_message.reply_text(
-            build_curr_disabled(chat.id), parse_mode=ParseMode.MARKDOWN,
+            build_curr_disabled(chat.id), parse_mode=ParseMode.MARKDOWN
         )
 
     def __stats__():
@@ -347,7 +349,7 @@ if is_module_loaded(FILENAME):
     • `/listcmds`*:* list all possible toggleable commands
     """
 
-    __mod_name__ = "Disable"
+    __mod_name__ = "Disabling"
 
 else:
     DisableAbleCommandHandler = CommandHandler
