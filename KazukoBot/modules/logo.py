@@ -13,13 +13,13 @@ async def lego(event):
  try:
     memek = await event.reply('Creating your logo...wait!')
     text = event.pattern_match.group(1)
-    img = Image.open('./KazukoBot/resources/9cd450abab6160b9f9b56.jpg')
+    img = Image.open('./KazukoBot/resources/1621467863b9e4cd03603.jpg')
     draw = ImageDraw.Draw(img)
     image_widthz, image_heightz = img.size
     pointsize = 500
     fillcolor = "gold"
     shadowcolor = "blue"
-    font = ImageFont.truetype("./KazukoBot/resources/heyaaman-lol.ttf", 55)
+    font = ImageFont.truetype("./KazukoBot/resources/Maghrib.ttf", 55)
     w, h = draw.textsize(text, font=font)
     h += int(h*0.21)
     image_width, image_height = img.size
