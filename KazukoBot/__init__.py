@@ -102,13 +102,13 @@ if ENV:
 
     ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True)
 
-   try:
+    try:
         BL_CHATS = set(int(x) for x in os.environ.get("BL_CHATS", "").split())
     except ValueError:
-         raise Exception("Your blacklisted chats list does not contain valid integers.")
+        raise Exception("Your blacklisted chats list does not contain valid integers.")
 
 else:
-    from KazukoBot.config import Development as Config
+    from SaitamaRobot.config import Development as Config
 
     TOKEN = Config.TOKEN
 
