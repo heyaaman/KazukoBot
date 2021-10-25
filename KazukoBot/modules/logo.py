@@ -13,7 +13,7 @@ async def lego(event):
  try:
     memek = await event.reply('Creating your logo...wait!')
     text = event.pattern_match.group(1)
-    img = Image.open('./KazukoBot/resources/951b8baf6839dccee3bbd7ab16b23813.jpg')
+    img = Image.open('./KazukoBot/resources/9cd450abab6160b9f9b56.jpg')
     draw = ImageDraw.Draw(img)
     image_widthz, image_heightz = img.size
     pointsize = 500
