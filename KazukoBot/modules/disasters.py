@@ -512,9 +512,9 @@ def supportlist(update: Update, context: CallbackContext):
     m.edit_text(reply, parse_mode=ParseMode.HTML)
 
 
-def sudolist(update: Update, context: CallbackContext):
 @run_async
 @whitelist_plus
+def sudolist(update: Update, context: CallbackContext):
     bot = context.bot
     m = update.effective_message.reply_text(
         "<code>Gathering intel..</code>", parse_mode=ParseMode.HTML,
