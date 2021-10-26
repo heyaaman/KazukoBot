@@ -437,7 +437,7 @@ def kazuko_tac_callback(update, context):
 ☉ NSFW will get permanent global ban in Kazuko which never removes, report spammers on Kazuko's support 
 
 NOTE: Terms and Conditions will be change anytime."""
-      
+            parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
