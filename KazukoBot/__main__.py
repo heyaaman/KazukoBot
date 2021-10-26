@@ -166,17 +166,12 @@ for module_name in ALL_MODULES:
         USER_SETTINGS[imported_module.__mod_name__.lower()] = imported_module
 
 
-
 # do not async
 def send_help(chat_id, text, keyboard=None):
     if not keyboard:
         keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
     dispatcher.bot.send_message(
-        chat_id=chat_id,
-        text=text,
-        parse_mode=ParseMode.MARKDOWN,
-        disable_web_page_preview=True,
-        reply_markup=keyboard,
+        chat_id=chat_id, text=text, parse_mode=ParseMode.MARKDOWN, reply_markup=keyboard
     )
 
 
@@ -204,7 +199,7 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="⬅️ BACK", callback_data="help_back")]]
+                        [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
                     ),
                 )
 
@@ -221,8 +216,10 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
         else:
-            update.effective_message.reply_text(
-                PM_START_TEXT,
+            update.effective_user.first_name
+            update.effective_message.reply_photo(
+                KAZUKO_IMG ,
+                caption=PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
@@ -415,10 +412,8 @@ or choosing help button at home menu and report error/bugs at Kazuko's support c
                 disable_web_page_preview=False,
         )
 
-@run_async
-def kazuko_tac_callback(update, context):
-    query = update.callback_query
-    if query.data == "kazuko_tac":
+
+   elif query.data == "kazuko_tac":
         query.message.edit_text(
              text=""" Terms and Conditions 
 
@@ -441,7 +436,7 @@ NOTE: Terms and Conditions will be change anytime."""
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Back", callback_data="kazuko_back")
+                    InlineKeyboardButton(text="Back", callback_data="kazuko_")
                  ]
                 ]
             ),
