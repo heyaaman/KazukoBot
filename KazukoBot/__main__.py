@@ -382,7 +382,7 @@ or choosing help button at home menu and report error/bugs at Kazuko's support c
                         InlineKeyboardButton(
                             text=" Setup Guide ", url="https://t.me/Phoenix_Empire/110",
                         ),
-                        InlineKeyboardButton(text="T & C", callback_data="Enjoy",
+                        InlineKeyboardButton(text="T & C", url="https://telegra.ph/Terms-and-Conditions-10-26",
                         ),
                         InlineKeyboardButton(
                             text="Gban logs", url="https://t.me/CFC_Banlogs",
