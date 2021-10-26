@@ -667,9 +667,6 @@ def get_settings(update: Update, context: CallbackContext):
     else:
         send_settings(chat.id, user.id, True)
 
-
-
-
 @run_async
 def kazuko_terms_callback(update, context):
     query = update.callback_query
@@ -685,17 +682,10 @@ def kazuko_terms_callback(update, context):
 
 NOTE: Terms and Conditions will be change anytime."""
 
-                    [InlineKeyboardButton(text="Back", callback_data="kazuko_back")],
-                ]
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="Back", callback_data="kazuko_")]]
             ),
-        )
-    elif query.data == "kazuko_back":
-        query.message.edit_text(
-                kazuko_about,
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
         )
 
 @run_async
