@@ -88,7 +88,7 @@ for fixing all bugs and issues for your needs[.](https://telegra.ph/file/d96f567
 """
 buttons = [
     [
-        InlineKeyboardButton(text="About", callback_data="kazuko_"),
+        InlineKeyboardButton(text="About & Support", callback_data="kazuko_"),
         InlineKeyboardButton(
             text="Source code", url="https://github.com/heyaaman/KazukoBot"),
       ],
