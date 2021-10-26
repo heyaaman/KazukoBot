@@ -683,6 +683,7 @@ def kazuko_terms_callback(update, context):
 NOTE: Terms and Conditions will be change anytime."""
 
             parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text="Back", callback_data="kazuko_")]]
             ),
