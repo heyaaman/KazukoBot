@@ -675,7 +675,7 @@ def kazuko_terms_callback(update, context):
     query = update.callback_query
     if query.data == "kazuko_terms":
         query.message.edit_text(
-            text=""""Terms and Conditions:
+            text="""Terms and Conditions:
 
 • Only your first name, last name(if any) and username(if any) is stored.
 • No group ID or it's messages are stored, We respect everyone's privacy.
@@ -683,7 +683,7 @@ def kazuko_terms_callback(update, context):
 • Messages between Bot & you is only infront of your eyes and there is no backuse of it..
 • NSFW will get permanent global ban in Kazuko which never removes, report spammers here -> @CFC_BOT_support.
 
-NOTE: Terms and Conditions will be change anytime.""""
+NOTE: Terms and Conditions will be change anytime."""
 
                     [InlineKeyboardButton(text="Back", callback_data="kazuko_back")],
                 ]
