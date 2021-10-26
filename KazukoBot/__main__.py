@@ -668,28 +668,6 @@ def get_settings(update: Update, context: CallbackContext):
         send_settings(chat.id, user.id, True)
 
 @run_async
-def kazuko_terms_callback(update, context):
-    query = update.callback_query
-    if query.data == "kazuko_terms":
-        query.message.edit_text(
-            text="""Terms and Conditions:
-
-• Only your first name, last name(if any) and username(if any) is stored.
-• No group ID or it's messages are stored, We respect everyone's privacy.
-• Don't spam commands, buttons, or anything in bot PM, if we found anyone doing than he will probhited to use Kazuko permanently.
-• Messages between Bot & you is only infront of your eyes and there is no backuse of it..
-• NSFW will get permanent global ban in Kazuko which never removes, report spammers here -> @CFC_BOT_support.
-
-NOTE: Terms and Conditions will be change anytime."""
-
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="kazuko_")]]
-            ),
-        )
-
-@run_async
 def donate(update: Update, context: CallbackContext):
     user = update.effective_message.from_user
     chat = update.effective_chat  # type: Optional[Chat]
