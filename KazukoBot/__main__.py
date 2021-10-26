@@ -388,7 +388,7 @@ or choosing help button at home menu and report error/bugs at Kazuko's support c
                         InlineKeyboardButton(
                             text=" Setup Guide ", url="https://t.me/Phoenix_Empire/110",
                         ),
-                        InlineKeyboardButton(text="T & C", callback_data="aboutmanu_tac",
+                        InlineKeyboardButton(text="T & C", callback_data="kazuko_tac",
                         ),
                         InlineKeyboardButton(
                             text="Gban logs", url="https://t.me/CFC_Banlogs",
@@ -415,9 +415,12 @@ or choosing help button at home menu and report error/bugs at Kazuko's support c
                 disable_web_page_preview=False,
         )
 
-    elif query.data == "aboutmanu_tac":
+@run_async
+def kazuko_tac_callback(update, context):
+    query = update.callback_query
+    if query.data == "kazuko_tac":
         query.message.edit_text(
-            text=""" Terms and Conditions:
+             text=""" Terms and Conditions 
 
 ☉ Your first name, last name (if any) and username (if any) is stored in Kazuko's Database for a convenient communication!
 
@@ -434,12 +437,13 @@ or choosing help button at home menu and report error/bugs at Kazuko's support c
 ☉ NSFW will get permanent global ban in Kazuko which never removes, report spammers on Kazuko's support 
 
 NOTE: Terms and Conditions will be change anytime."""
-            parse_mode=ParseMode.HTML,
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [
-                        InlineKeyboardButton(text="Back", callback_data="kazuko_"),
-                    ]
+                 [
+                    InlineKeyboardButton(text="Back", callback_data="kazuko_back")
+                 ]
                 ]
             ),
         )
