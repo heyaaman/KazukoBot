@@ -388,8 +388,7 @@ or choosing help button at home menu and report error/bugs at Kazuko's support c
                         InlineKeyboardButton(
                             text=" Setup Guide ", url="https://t.me/Phoenix_Empire/110",
                         ),
-                        InlineKeyboardButton(
-                            text="Network", url="https://t.me/Phoenix_Empire/28",
+                        InlineKeyboardButton(text="T & C", callback_data="kazuko_terms"),
                         ),
                         InlineKeyboardButton(
                             text="Gban logs", url="https://t.me/CFC_Banlogs",
@@ -435,6 +434,15 @@ def Source_about_callback(update, context):
             ),
         )
     elif query.data == "source_back":
+        query.message.edit_text(
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60,
+                disable_web_page_preview=False,
+        )
+
+    elif query.data == "kazuko_back":
         query.message.edit_text(
                 PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
@@ -659,6 +667,36 @@ def get_settings(update: Update, context: CallbackContext):
     else:
         send_settings(chat.id, user.id, True)
 
+
+
+
+@run_async
+def kazuko_terms_callback(update, context):
+    query = update.callback_query
+    if query.data == "kazuko_terms":
+        query.message.edit_text(
+            text=""""Terms and Conditions:
+
+• Only your first name, last name(if any) and username(if any) is stored.
+• No group ID or it's messages are stored, We respect everyone's privacy.
+• Don't spam commands, buttons, or anything in bot PM, if we found anyone doing than he will probhited to use Kazuko permanently.
+• Messages between Bot & you is only infront of your eyes and there is no backuse of it..
+• NSFW will get permanent global ban in Kazuko which never removes, report spammers here -> @CFC_BOT_support.
+
+NOTE: Terms and Conditions will be change anytime.""""
+
+                    [InlineKeyboardButton(text="Back", callback_data="kazuko_back")],
+                ]
+            ),
+        )
+    elif query.data == "kazuko_back":
+        query.message.edit_text(
+                kazuko_about,
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60,
+                disable_web_page_preview=False,
+        )
 
 @run_async
 def donate(update: Update, context: CallbackContext):
