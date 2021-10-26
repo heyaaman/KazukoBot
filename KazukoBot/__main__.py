@@ -380,7 +380,7 @@ or choosing help button at home menu and report error/bugs at Kazuko's support c
                 [
                     [
                         InlineKeyboardButton(
-                            text=" Setup Guide ", url="https://t.me/Phoenix_Empire/110",
+                            text=" Setup Guide ", url="https://t.me/KazukoUpdates/4",
                         ),
                         InlineKeyboardButton(text="T & C", url="https://telegra.ph/Terms-and-Conditions-10-26",
                         ),
@@ -390,10 +390,10 @@ or choosing help button at home menu and report error/bugs at Kazuko's support c
                     ],
                     [
                         InlineKeyboardButton(
-                            text="Support", url="https://t.me/CFC_BOT_support",
+                            text="Support", url="https://t.me/KazukoSupportChat",
                         ),   
                         InlineKeyboardButton(
-                             text="Updates", url="https://t.me/phoenix_empire",
+                             text="Updates", url="https://t.me/KazukoUpdates",
                         ),
                     ],      
                     [InlineKeyboardButton(text="Back", callback_data="kazuko_back")],
