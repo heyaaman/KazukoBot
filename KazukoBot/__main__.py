@@ -83,29 +83,22 @@ I can do a variety of things, most common of em are:
 - Restrict users who flood your chat using my anti-flood module.
 - Warn users according to the options set and restrict em accordingly.
 - Save notes and filters with proper formatting and reply markup.
-For reporting any issues or bug kindly join support chat and report devs or admins[.](https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg)!
+For reporting any issues or bug kindly join support chat and report to kazuko's devs or admins
+for fixing all bugs and issues for your needs[.](https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg)!
 """
 buttons = [
     [
-         InlineKeyboardButton(
-           text="Support", url="https://t.me/CFC_BOT_support",
-         ),   
-         InlineKeyboardButton(
-           text="Updates", url="https://t.me/phoenix_empire"),
-      ],
-    [
         InlineKeyboardButton(text="About", callback_data="kazuko_"),
         InlineKeyboardButton(
-            text="Source code", url="https://github.com/heyaaman/KazukoBot"
-        ),
-    ],
+            text="Source code", url="https://github.com/heyaaman/KazukoBot"),
+      ],
     [
         InlineKeyboardButton(
             text="️Add Kazuko to your group", url="t.me/KazukoRobot?startgroup=true",
         ),
     ],
     [ 
-        InlineKeyboardButton(text="Help", callback_data="help_back"),
+        InlineKeyboardButton(text="Help & Commands", callback_data="help_back"),
     ],
 ]
 
@@ -374,7 +367,7 @@ def kazuko_about_callback(update, context):
     query = update.callback_query
     if query.data == "kazuko_":
         query.message.edit_text(
-            text="""I'm *Kazuko*, a powerful group management bot built to help you manage your group easily[.](https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg)
+            text="""I'm *Kazuko*, a powerful group management bot built to help you manage your group easily.
 
 • I can restrict users.
 • I can greet users with customizable welcome messages and even set a group's rules.
@@ -383,7 +376,9 @@ def kazuko_about_callback(update, context):
 • I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
 • I check for admins'permissions before executing any command and more stuffs
 \n_Kazuko's licensed under the GNU General Public License v3.0_
-Have any question about Kazuko?, let us know at @CFC\_BOT\_support.""",
+Have any question about Kazuko?, let us know at Kazuko's support chat.
+and also almost all modules usage defined in the help menu, checkout by sending /help
+or choosing help button at home menu and report error/bugs at Kazuko's support chat...""",
 
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -391,12 +386,23 @@ Have any question about Kazuko?, let us know at @CFC\_BOT\_support.""",
                 [
                     [
                         InlineKeyboardButton(
-                            text=" Setup Guide ", url="https://t.me/Phoenix_Empire/110"
+                            text=" Setup Guide ", url="https://t.me/Phoenix_Empire/110",
                         ),
                         InlineKeyboardButton(
-                            text="Network", url="https://t.me/Phoenix_Empire/28"
+                            text="Network", url="https://t.me/Phoenix_Empire/28",
+                        ),
+                        InlineKeyboardButton(
+                            text="Gban logs", url="https://t.me/CFC_Banlogs",
                         ),
                     ],
+                    [
+                        InlineKeyboardButton(
+                            text="Support", url="https://t.me/CFC_BOT_support",
+                        ),   
+                        InlineKeyboardButton(
+                             text="Updates", url="https://t.me/phoenix_empire",
+                        ),
+                    ],      
                     [InlineKeyboardButton(text="Back", callback_data="kazuko_back")],
                 ]
             ),
