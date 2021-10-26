@@ -413,7 +413,10 @@ or choosing help button at home menu and report error/bugs at Kazuko's support c
         )
 
 
-   elif query.data == "kazuko_tac":
+@run_async
+def kazuko_tac_callback(update, context):
+    query = update.callback_query
+    if query.data == "kazuko_tac":
         query.message.edit_text(
              text=""" Terms and Conditions 
 
