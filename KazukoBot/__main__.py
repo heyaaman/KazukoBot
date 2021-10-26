@@ -385,7 +385,7 @@ or choosing help button at home menu and report error/bugs at Kazuko's support c
                         InlineKeyboardButton(
                             text=" Setup Guide ", url="https://t.me/Phoenix_Empire/110",
                         ),
-                        InlineKeyboardButton(text="T & C", callback_data="kazuko_tac",
+                        InlineKeyboardButton(text="T & C", callback_data="Enjoy",
                         ),
                         InlineKeyboardButton(
                             text="Gban logs", url="https://t.me/CFC_Banlogs",
@@ -410,39 +410,6 @@ or choosing help button at home menu and report error/bugs at Kazuko's support c
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
                 disable_web_page_preview=False,
-        )
-
-
-@run_async
-def kazuko_tac_callback(update, context):
-    query = update.callback_query
-    if query.data == "kazuko_tac":
-        query.message.edit_text(
-             text=""" Terms and Conditions 
-
-☉ Your first name, last name (if any) and username (if any) is stored in Kazuko's Database for a convenient communication!
-
-☉ When you add Filters notes or such content that data will be stared in our database (Only used for bot's functions)
-
-☉ Messages between Bot and you are not being logged and Kazuko won't spy on anything
-
-☉ Watch your group, if someone is spamming your group, you can use the report feature of your Telegram Client.
-
-☉ Don't spam commands, buttons, or anything in bot PM, if we found anyone doing than he will probhited to use Kazuko permanently.
-
-☉ Messages between Bot & you is only infront of your eyes and there is no backuse of it.
-
-☉ NSFW will get permanent global ban in Kazuko which never removes, report spammers on Kazuko's support 
-
-NOTE: Terms and Conditions will be change anytime."""
-            parse_mode=ParseMode.HTML,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                 [
-                    InlineKeyboardButton(text="Back", callback_data="kazuko_")
-                 ]
-                ]
-            ),
         )
 
 @run_async
