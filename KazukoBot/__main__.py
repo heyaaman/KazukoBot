@@ -199,7 +199,7 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
+                        [[InlineKeyboardButton(text="⬅️ BACK", callback_data="help_back")]]
                     ),
                 )
 
@@ -216,10 +216,8 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
         else:
-            update.effective_user.first_name
-            update.effective_message.reply_photo(
-                KAZUKO_IMG ,
-                caption=PM_START_TEXT,
+            update.effective_message.reply_text(
+                PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
@@ -234,7 +232,6 @@ def start(update: Update, context: CallbackContext):
                 [[InlineKeyboardButton(text="Sᴜᴘᴘᴏʀᴛ", url="t.me/CFC_BOT_support")]]
             ),
         )
-
 
 def error_handler(update, context):
     """Log the error and send a telegram message to notify the developer."""
