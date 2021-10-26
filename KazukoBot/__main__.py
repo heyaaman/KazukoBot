@@ -388,7 +388,7 @@ or choosing help button at home menu and report error/bugs at Kazuko's support c
                         InlineKeyboardButton(
                             text=" Setup Guide ", url="https://t.me/Phoenix_Empire/110",
                         ),
-                        InlineKeyboardButton(text="T & C", callback_data="kazuko_terms"),
+                        InlineKeyboardButton(text="T & C", callback_data="kazuko_terms",
                         ),
                         InlineKeyboardButton(
                             text="Gban logs", url="https://t.me/CFC_Banlogs",
