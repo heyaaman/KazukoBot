@@ -55,7 +55,7 @@ from pyrogram import filters
 
 from KazukoBot.helper_extra.aichat import add_chat, get_session, remove_chat
 from KazukoBot.pyrogramee.pluginshelper import admins_only, edit_or_reply
-from KazukoBot import pbot as Amelia
+from KazukoBot import pbot as Kazuko
 
 translator = google_translator()
 
