@@ -53,9 +53,9 @@ url = "https://acobot-brainshop-ai-v1.p.rapidapi.com/get"
 from google_trans_new import google_translator
 from pyrogram import filters
 
-from AmeliaRobot.helper_extra.aichat import add_chat, get_session, remove_chat
-from AmeliaRobot.pyrogramee.pluginshelper import admins_only, edit_or_reply
-from AmeliaRobot import pbot as Amelia
+from KazukoBot.helper_extra.aichat import add_chat, get_session, remove_chat
+from KazukoBot.pyrogramee.pluginshelper import admins_only, edit_or_reply
+from KazukoBot import pbot as Amelia
 
 translator = google_translator()
 
@@ -69,7 +69,7 @@ en_chats = []
 # AI Chat (C) 2020-2021 by @InukaAsith
 
 
-@Amelia.on_message(filters.command("chatbot") & ~filters.edited & ~filters.bot)
+@Kazuko.on_message(filters.command("chatbot") & ~filters.edited & ~filters.bot)
 @admins_only
 async def hmm(_, message):
     global amelia_chats
@@ -87,17 +87,17 @@ async def hmm(_, message):
             await lel.edit("amelia AI Already Activated In This Chat")
             return
         await lel.edit(
-            f"amelia AI Successfully Added For Users In The Chat {message.chat.id}"
+            f"kazuko AI Successfully Added For Users In The Chat {message.chat.id}"
         )
 
     elif status == "OFF" or status == "off" or status == "Off":
         lel = await edit_or_reply(message, "`Processing...`")
         Escobar = remove_chat(int(message.chat.id))
         if not Escobar:
-            await lel.edit("amelia AI Was Not Activated In This Chat")
+            await lel.edit("kazuko AI Was Not Activated In This Chat")
             return
         await lel.edit(
-            f"amelia AI Successfully Deactivated For Users In The Chat {message.chat.id}"
+            f"kazuko AI Successfully Deactivated For Users In The Chat {message.chat.id}"
         )
 
     elif status == "EN" or status == "en" or status == "english":
@@ -113,7 +113,7 @@ async def hmm(_, message):
         )
 
 
-@Amelia.on_message(
+@Kazuko.on_message(
     filters.text & filters.reply & ~filters.bot & ~filters.via_bot & ~filters.forwarded,
     group=2,
 )
@@ -126,8 +126,8 @@ async def hmm(client, message):
         message.continue_propagation()
     if chat_id in en_chats:
         test = msg
-        test = test.replace("amelia", "Aco")
-        test = test.replace("amelia", "Aco")
+        test = test.replace("kazuko", "Aco")
+        test = test.replace("kazuko", "Aco")
         querystring = {
             "bid": "178",
             "key": "sX5A2PcYZbsN5EY6",
@@ -142,12 +142,12 @@ async def hmm(client, message):
         result = response.text
         result = result.replace('{"cnt":"', "")
         result = result.replace('"}', "")
-        result = result.replace("Aco", "amelia")
+        result = result.replace("Aco", "kazuko")
         result = result.replace("<a href=\\", "<a href =")
         result = result.replace("<\/a>", "</a>")
         pro = result
         try:
-            await amelia.send_chat_action(message.chat.id, "typing")
+            await amelia.send_chat_action(message.chat.id, "typing...")
             await message.reply_text(pro)
         except CFError as e:
             print(e)
@@ -188,8 +188,8 @@ async def hmm(client, message):
         # test = emoji.demojize(test.strip())
 
         # Kang with the credits bitches @InukaASiTH
-        test = test.replace("amelia", "Aco")
-        test = test.replace("amelia", "Aco")
+        test = test.replace("kazuko", "Aco")
+        test = test.replace("kazuko", "Aco")
         querystring = {
             "bid": "178",
             "key": "sX5A2PcYZbsN5EY6",
@@ -204,21 +204,21 @@ async def hmm(client, message):
         result = response.text
         result = result.replace('{"cnt":"', "")
         result = result.replace('"}', "")
-        result = result.replace("Aco", "amelia")
+        result = result.replace("Aco", "kazuko")
         result = result.replace("<a href=\\", "<a href =")
         result = result.replace("<\/a>", "</a>")
         pro = result
         if not "en" in lan and not lan == "":
             pro = translator.translate(pro, lang_tgt=lan[0])
         try:
-            await asuna.send_chat_action(message.chat.id, "typing")
+            await asuna.send_chat_action(message.chat.id, "typing...")
             await message.reply_text(pro)
         except CFError as e:
             print(e)
 
 
-@Amelia.on_message(filters.text & filters.private & ~filters.reply & ~filters.bot)
-async def inuka(client, message):
+@Kazuko.on_message(filters.text & filters.private & ~filters.reply & ~filters.bot)
+async def heyaaman(client, message):
     msg = message.text
     if msg.startswith("/") or msg.startswith("@"):
         message.continue_propagation()
@@ -258,8 +258,8 @@ async def inuka(client, message):
     # test = emoji.demojize(test.strip())
 
     # Kang with the credits bitches @InukaASiTH
-    test = test.replace("amelia", "Aco")
-    test = test.replace("amelia", "Aco")
+    test = test.replace("kazuko", "Aco")
+    test = test.replace("kazuko", "Aco")
     querystring = {
         "bid": "178",
         "key": "sX5A2PcYZbsN5EY6",
@@ -281,14 +281,14 @@ async def inuka(client, message):
     if not "en" in lan and not lan == "":
         pro = translator.translate(pro, lang_tgt=lan[0])
     try:
-        await amelia.send_chat_action(message.chat.id, "typing")
+        await amelia.send_chat_action(message.chat.id, "typing...")
         await message.reply_text(pro)
     except CFError as e:
         print(e)
 
 
 @Amelia.on_message(
-    filters.regex("amelia|Amelia|warlegend|hello|hi")
+    filters.regex("kazuko|Kazuko|KazukoSupportChat|hello|hi")
     & ~filters.bot
     & ~filters.via_bot
     & ~filters.forwarded
@@ -335,8 +335,8 @@ async def inuka(client, message):
     # test = emoji.demojize(test.strip())
 
     # Kang with the credits bitches @InukaASiTH
-    test = test.replace("amelia", "Aco")
-    test = test.replace("amelia", "Aco")
+    test = test.replace("kazuko", "Aco")
+    test = test.replace("kazuko", "Aco")
     querystring = {
         "bid": "178",
         "key": "sX5A2PcYZbsN5EY6",
@@ -351,14 +351,14 @@ async def inuka(client, message):
     result = response.text
     result = result.replace('{"cnt":"', "")
     result = result.replace('"}', "")
-    result = result.replace("Aco", "amelia")
+    result = result.replace("Aco", "kazuko")
     result = result.replace("<a href=\\", "<a href =")
     result = result.replace("<\/a>", "</a>")
     pro = result
     if not "en" in lan and not lan == "":
         pro = translator.translate(pro, lang_tgt=lan[0])
     try:
-        await asuna.send_chat_action(message.chat.id, "typing")
+        await asuna.send_chat_action(message.chat.id, "typing...")
         await message.reply_text(pro)
     except CFError as e:
         print(e)
