@@ -1,21 +1,3 @@
-#    Copyright (C) 2020-2021 by @AmarnathCdj & @InukaAsith
-#    Chatbot system written by @AmarnathCdj databse added and recoded for pyrogram by @InukaAsith
-#    This programme is a part of asuna (TG bot) project
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-#    Kang with the credits
-#    Special credits to @AmarnathCdj
 import re
 
 import emoji
@@ -26,24 +8,7 @@ IBM_WATSON_CRED_PASSWORD = "UQ1MtTzZhEsMGK094klnfa-7y_4MCpJY1yhd52MXOo3Y"
 url = "https://acobot-brainshop-ai-v1.p.rapidapi.com/get"
 from google_trans_new import google_translator
 from pyrogram import filters
-#    Copyright (C) 2020-2021 by @AmarnathCdj & @InukaAsith
-#    Chatbot system written by @AmarnathCdj databse added and recoded for pyrogram by @InukaAsith
-#    This programme is a part of asuna (TG bot) project
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#    Kang with the credits
-#    Special credits to @AmarnathCdj
 import re
 
 import emoji
@@ -56,17 +21,15 @@ from pyrogram import filters
 from KazukoBot.helper_extra.aichat import add_chat, get_session, remove_chat
 from KazukoBot.pyrogramee.pluginshelper import admins_only, edit_or_reply
 from KazukoBot import pbot as Kazuko
-
-translator = google_translator()
-
+from Python_ARQ import ARQ
 
 def extract_emojis(s):
     return "".join(c for c in s if c in emoji.UNICODE_EMOJI)
 
 BOT_ID = 1793109179
-amelia_chats = []
+kazuko_chats = []
 en_chats = []
-# AI Chat (C) 2020-2021 by @InukaAsith
+# AI Chat (C) 2021-2022 by @heyaaman
 
 
 @Kazuko.on_message(filters.command("chatbot") & ~filters.edited & ~filters.bot)
@@ -84,7 +47,7 @@ async def hmm(_, message):
         lel = await edit_or_reply(message, "`Processing...`")
         lol = add_chat(int(message.chat.id))
         if not lol:
-            await lel.edit("amelia AI Already Activated In This Chat")
+            await lel.edit("kazuko AI Already Activated In This Chat")
             return
         await lel.edit(
             f"kazuko AI Successfully Added For Users In The Chat {message.chat.id}"
@@ -147,7 +110,7 @@ async def hmm(client, message):
         result = result.replace("<\/a>", "</a>")
         pro = result
         try:
-            await amelia.send_chat_action(message.chat.id, "typing...")
+            await amelia.send_chat_action(message.chat.id, "typing")
             await message.reply_text(pro)
         except CFError as e:
             print(e)
@@ -211,7 +174,7 @@ async def hmm(client, message):
         if not "en" in lan and not lan == "":
             pro = translator.translate(pro, lang_tgt=lan[0])
         try:
-            await asuna.send_chat_action(message.chat.id, "typing...")
+            await asuna.send_chat_action(message.chat.id, "typing")
             await message.reply_text(pro)
         except CFError as e:
             print(e)
@@ -281,10 +244,63 @@ async def heyaaman(client, message):
     if not "en" in lan and not lan == "":
         pro = translator.translate(pro, lang_tgt=lan[0])
     try:
-        await amelia.send_chat_action(message.chat.id, "typing...")
+        await amelia.send_chat_action(message.chat.id, "typing")
         await message.reply_text(pro)
     except CFError as e:
         print(e)
+
+@Kazuko.on_message(filters.command("repo") & ~filters.edited)
+async def repo(_, message):
+    await message.reply_text(
+        "[GitHub](https://github.com/heyaaman/KazukoBot)"
+        + " | [Group](t.me/KazukoSupportChat)",
+        disable_web_page_preview=True,
+    )
+
+@Kazuko.on_message(filters.command("help") & ~filters.edited)
+async def start(_, message):
+    await kazuko.send_chat_action(message.chat.id, "typing")
+    await sleep(2)
+    await message.reply_text("/repo - Get Repo Link")
+
+
+@Kazuko.on_message(
+    ~filters.private
+    & filters.text
+    & ~filters.command("help")
+    & ~filters.edited,
+    group=69,
+)
+async def chat(_, message):
+    if message.reply_to_message:
+        if not message.reply_to_message.from_user:
+            return
+        from_user_id = message.reply_to_message.from_user.id
+        if from_user_id != bot_id:
+            return
+    else:
+        match = re.search(
+            "[.|\n]{0,}kazuko[.|\n]{0,}",
+            message.text.strip(),
+            flags=re.IGNORECASE,
+        )
+        if not match:
+            return
+    await type_and_send(message)
+
+@Kazuko.on_message(
+    filters.private & ~filters.command("help") & ~filters.edited
+)
+async def chatpm(_, message):
+    if not message.text:
+        return
+    await type_and_send(message)
+
+
+async def main():
+    global arq
+    session = ClientSession()
+    arq = ARQ(ARQ_API_BASE_URL, ARQ_API_KEY, session)
 
 
 @Kazuko.on_message(
