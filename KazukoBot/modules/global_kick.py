@@ -4,7 +4,7 @@ from typing import List, Optional
 from telegram.error import BadRequest, TelegramError
 from telegram.ext import run_async, CommandHandler, MessageHandler, Filters
 from telegram.utils.helpers import mention_html
-from KazukoBot import dispatcher, OWNER_ID, SUDO_USERS, SUPPORT_USERS
+from KazukoBot import dispatcher, OWNER_ID, DRAGONS, DEMONS
 from KazukoBot.modules.helper_funcs.chat_status import user_admin, is_user_admin
 from KazukoBot.modules.helper_funcs.extraction import extract_user, extract_user_and_text
 from KazukoBot.modules.helper_funcs.filters import CustomFilters
@@ -50,8 +50,8 @@ def gkick(bot: Bot, update: Update, args: List[str]):
     if not user_id or int(user_id)==777000:
         message.reply_text("You don't seem to be referring to a user.")
         return
-    if int(user_id) in SUDO_USERS or int(user_id) in SUPPORT_USERS:
-        message.reply_text("OHHH! Someone's trying to gkick a sudo/support user! *Grabs popcorn*")
+    if int(user_id) in DRAGONS or int(user_id) in DEMONS:
+        message.reply_text("OHHH! Someone's trying to gkick a dragon/demon disasters! *Grabs popcorn*")
         return
     if int(user_id) == OWNER_ID:
         message.reply_text("Wow! Someone's so noob that he want to gkick my owner! *Grabs Potato Chips*")
@@ -63,11 +63,11 @@ def gkick(bot: Bot, update: Update, args: List[str]):
 
     chats = get_all_chats()
     banner = update.effective_user  # type: Optional[User]
-    send_to_list(bot, SUDO_USERS + SUPPORT_USERS,
+    send_to_list(bot, DRAGONS + DEMONS,
                  "<b>Global Kick</b>" \
                  "\n#GKICK" \
                  "\n<b>Status:</b> <code>Enforcing</code>" \
-                 "\n<b>Sudo Admin:</b> {}" \
+                 "\n<b>dragon Admin:</b> {}" \
                  "\n<b>User:</b> {}" \
                  "\n<b>ID:</b> <code>{}</code>".format(mention_html(banner.id, banner.first_name),
                                               mention_html(user_chat.id, user_chat.first_name), 
@@ -95,7 +95,7 @@ def gkick(bot: Bot, update: Update, args: List[str]):
 def __user_info__(user_id):
     times = sql.get_times(user_id)
     
-    if int(user_id) in SUDO_USERS or int(user_id) in SUPPORT_USERS:
+    if int(user_id) in DRAGONS or int(user_id) in DEMONS:
         text="Globally kicked: <b>No</b> (Immortal)"
     else:
         text = "Globally kicked: {}"
@@ -121,8 +121,8 @@ def gkickset(bot: Bot, update: Update, args: List[str]):
     if not user_id:
         message.reply_text("You do not seems to be referring to a user")
         return  
-    if int(user_id) in SUDO_USERS or int(user_id) in SUPPORT_USERS:
-        message.reply_text("SUDOER: Irrelevant")
+    if int(user_id) in DRAGONS or int(user_id) in DEMONS:
+        message.reply_text("dragon: Irrelevant")
         return
     if int(user_id) == OWNER_ID:
         message.reply_text("OWNER: Irrelevant")
