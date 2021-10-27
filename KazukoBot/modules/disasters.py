@@ -565,6 +565,7 @@ Group admins/group owners do not need these commands.
  ╠ `/addtiger`*:* Adds a user to Tiger
  ╠ `/addwolf`*:* Adds a user to Wolf
  ╚ `Add dev doesnt exist, devs should know how to add themselves`
+
  ╔ *Ping:*
  ╠ `/ping`*:* gets ping time of bot to telegram server
  ╚ `/pingall`*:* gets all listed ping times
@@ -573,6 +574,7 @@ Group admins/group owners do not need these commands.
  ╠ `/broadcastall`*:* Broadcasts everywhere
  ╠ `/broadcastusers`*:* Broadcasts too all users
  ╚ `/broadcastgroups`*:* Broadcasts too all groups
+
  ╔ *Groups Info:*
  ╠ `/groups`*:* List the groups with Name, ID, members count as a txt
  ╠ `/leave <ID>`*:* Leave the group, ID must have hyphen
@@ -585,32 +587,40 @@ Group admins/group owners do not need these commands.
  ╠ `/lockdown <off/on>`*:* Toggles bot adding to groups
  ╠ `/notice`*:* Removes user from blacklist
  ╚ `/ignoredlist`*:* Lists ignored users
+
  ╔ *Module loading:*
  ╠ `/listmodules`*:* Prints modules and their names
  ╠ `/unload <name>`*:* Unloads module dynamically
  ╚ `/load <name>`*:* Loads module
  ╔ *Speedtest:*
  ╚ `/speedtest`*:* Runs a speedtest and gives you 2 options to choose from, text or image output
+
  ╔ *Global Bans:*
  ╠ `/gban user reason`*:* Globally bans a user
- ╚ `/ungban user reason`*:* Unbans the user from the global bans list
+ ╠`/ungban user reason`*:* Unbans the user from the global bans list
+ ╚`/gkick user reason` *:* Globally kicks a user
+
  ╔ *Module loading:*
  ╠ `/listmodules`*:* Lists names of all modules
  ╠ `/load modulename`*:* Loads the said module to
  ╠   memory without restarting.
  ╠ `/unload modulename`*:* Loads the said module from
  ╚   memory without restarting.memory without restarting the bot
+
  ╔ *Remote commands:*
  ╠ `/rban user group`*:* Remote ban
  ╠ `/runban user group`*:* Remote un-ban
  ╠ `/rpunch user group`*:* Remote punch
  ╠ `/rmute user group`*:* Remote mute
  ╚ `/runmute user group`*:* Remote un-mute
+
  ╔ *Windows self hosted only:*
  ╠ `/reboot`*:* Restarts the bots service
  ╚ `/gitpull`*:* Pulls the repo and then restarts the bots service
+
  ╔ *Chatbot:*
  ╚ `/listaichats`*:* Lists the chats the chatmode is enabled in
+
  ╔ *Debugging and Shell:*
  ╠ `/debug <on/off>`*:* Logs commands to updates.txt
  ╠ `/logs`*:* Run this in support group to get logs in pm
@@ -620,6 +630,7 @@ Group admins/group owners do not need these commands.
  ╠ `/clearlocals`*:* As the name goes
  ╠ `/dbcleanup`*:* Removes deleted accs and groups from db
  ╚ `/py`*:* Runs python code
+
  ╔ *Global Bans:*
  ╠ `/gban <id> <reason>`*:* Gbans the user, works by reply too
  ╠ `/ungban`*:* Ungbans the user, same usage as gban
