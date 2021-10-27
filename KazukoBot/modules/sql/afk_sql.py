@@ -1,9 +1,7 @@
 import threading
 
-from datetime import datetime
-
 from KazukoBot.modules.sql import BASE, SESSION
-from sqlalchemy import Boolean, Column, Integer, UnicodeText, DateTime
+from sqlalchemy import Boolean, Column, Integer, UnicodeText
 
 
 class AFK(BASE):
@@ -12,13 +10,11 @@ class AFK(BASE):
     user_id = Column(Integer, primary_key=True)
     is_afk = Column(Boolean)
     reason = Column(UnicodeText)
-    time = Column(DateTime)
 
-    def __init__(self, user_id: int, reason: str = "", is_afk: bool = True):
+    def __init__(self, user_id, reason="", is_afk=True):
         self.user_id = user_id
         self.reason = reason
         self.is_afk = is_afk
-        self.time = datetime.now()
 
     def __repr__(self):
         return "afk_status for {}".format(self.user_id)
@@ -49,7 +45,7 @@ def set_afk(user_id, reason=""):
         else:
             curr.is_afk = True
 
-        AFK_USERS[user_id] = {"reason": reason, "time": curr.time}
+        AFK_USERS[user_id] = reason
 
         SESSION.add(curr)
         SESSION.commit()
@@ -87,9 +83,7 @@ def __load_afk_users():
     global AFK_USERS
     try:
         all_afk = SESSION.query(AFK).all()
-        AFK_USERS = {
-            user.user_id: {"reason": user.reason, "time": user.time} for user in all_afk if user.is_afk
-        }
+        AFK_USERS = {user.user_id: user.reason for user in all_afk if user.is_afk}
     finally:
         SESSION.close()
 
