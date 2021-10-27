@@ -287,7 +287,7 @@ async def heyaaman(client, message):
         print(e)
 
 
-@Amelia.on_message(
+@Kazuko.on_message(
     filters.regex("kazuko|Kazuko|KazukoSupportChat|hello|hi")
     & ~filters.bot
     & ~filters.via_bot
