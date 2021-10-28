@@ -15,7 +15,6 @@ from pyrogram.types import Chat, Message, User
 
 from KazukoBot import OWNER_ID, SUPPORT_CHAT
 from KazukoBot.utils.errors import split_limits
-from KazukoBot import pgram
 
 
 def get_user(message: Message, text: str) -> [int, str, None]:
