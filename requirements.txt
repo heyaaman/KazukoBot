@@ -70,3 +70,4 @@ better_profanity
 nudepy
 motor
 cloudscraper
+gpytranslate
