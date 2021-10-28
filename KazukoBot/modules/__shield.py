@@ -1,54 +1,33 @@
-#    Copyright (C) DevsExpo 2020-2021
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-
 import asyncio
 import os
 import re
-
 import better_profanity
 import emoji
 import nude
 import requests
+
 from better_profanity import profanity
-from google_trans_new import google_translator
+from gpytranslate import SyncTranslator
 from telethon import events
 from telethon.tl.types import ChatBannedRights
-
-from KazukoBot import BOT_ID
-from KazukoBot.conf import get_int_key, get_str_key
-
-# from KazukoBot.db.mongo_helpers.nsfw_guard import add_chat, get_all_nsfw_chats, is_chat_in_db, rm_chat
-from KazukoBot.pyrogramee.telethonbasics import is_admin
-from KazukoBot.events import register
-from KazukoBot import MONGO_DB_URI 
 from pymongo import MongoClient
-from KazukoBot.modules.sql_extended.nsfw_watch_sql import (
+
+from KazukoBot.utils.pluginhelpers import is_admin
+from KazukoBot.events import register
+from KazukoBot.modules.sql.nsfw_watch_sql import (
     add_nsfwatch,
     get_all_nsfw_enabled_chat,
     is_nsfwatch_indb,
     rmnsfwatch,
 )
-from KazukoBot import telethn as tbot
+from KazukoBot import telethn, MONGO_DB_URI, BOT_ID
 
-translator = google_translator()
+trans = SyncTranslator()
 MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
-
-MONGO_DB_URI = get_str_key("MONGO_DB_URI")
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
-db = client["KazukoBot"]
+db = client["kazuko"]
 
 async def is_nsfw(event):
     lmao = event
@@ -84,7 +63,7 @@ async def is_nsfw(event):
     return is_nsfw
 
 
-@tbot.on(events.NewMessage(pattern="/gshield (.*)"))
+@telethn.on(events.NewMessage(pattern="/gshield (.*)"))
 async def nsfw_watch(event):
     if not event.is_group:
         await event.reply("You Can Only Nsfw Watch in Groups.")
@@ -101,7 +80,7 @@ async def nsfw_watch(event):
             or input_str == "enable"
         ):
             if is_nsfwatch_indb(str(event.chat_id)):
-                await event.reply("`This Chat Has Already Enabled Nsfw Watch.`")
+                await event.reply("This Chat Has Already Enabled Nsfw Watch.")
                 return
             add_nsfwatch(str(event.chat_id))
             await event.reply(
@@ -125,11 +104,11 @@ async def nsfw_watch(event):
                 "I undestand `/nsfwguardian on` and `/nsfwguardian off` only"
             )
     else:
-        await event.reply("`You Should Be Admin To Do This!`")
+        await event.reply("You Should Be Admin To Do This!")
         return
 
 
-@tbot.on(events.NewMessage())
+@telethn.on(events.NewMessage())
 async def ws(event):
     warner_starkz = get_all_nsfw_enabled_chat()
     if len(warner_starkz) == 0:
@@ -148,77 +127,11 @@ async def ws(event):
         await event.delete()
         st = sender.first_name
         hh = sender.id
-        final = f"**NSFW DETECTED**\n\n{st}](tg://user?id={hh}) your message contain NSFW content.. So, Kazuko deleted the message\n\n **Nsfw Sender - User / Bot :** {st}](tg://user?id={hh})  \n\n`⚔️Automatic Detections Powered By KazukoAI` \n**#GROUP_GUARDIAN** "
+        final = f"**NSFW DETECTED**\n\n{st}](tg://user?id={hh}) your message contain NSFW content.. So, deleted the message\n\n **Nsfw Sender - User / Bot :** {st}](tg://user?id={hh})  \n\n`⚔️Automatic Detections Powered By TGN`\n"
         dev = await event.respond(final)
-        await asyncio.sleep(10)
+        await asyncio.sleep(30)
         await dev.delete()
         os.remove("nudes.jpg")
-
-
-"""
-@pbot.on_message(filters.command("nsfwguardian") & ~filters.edited & ~filters.bot)
-async def add_nsfw(client, message):
-    if len(await member_permissions(message.chat.id, message.from_user.id)) < 1:
-        await message.reply_text("**You don't have enough permissions**")
-        return
-    status = message.text.split(None, 1)[1] 
-    if status == "on" or status == "ON" or status == "enable":
-        pablo = await message.reply("`Processing..`")
-        if is_chat_in_db(message.chat.id):
-            await pablo.edit("This Chat is Already In My DB")
-            return
-        me = await client.get_me()
-        add_chat(message.chat.id)
-        await pablo.edit("Successfully Added Chat To NSFW Watch.")
-        
-    elif status == "off" or status=="OFF" or status == "disable":
-        pablo = await message.reply("`Processing..`")
-        if not is_chat_in_db(message.chat.id):
-            await pablo.edit("This Chat is Not in dB.")
-            return
-        rm_chat(message.chat.id)
-        await pablo.edit("Successfully Removed Chat From NSFW Watch service")
-    else:
-        await message.reply(" I undestand only `/nsfwguardian on` or `/nsfwguardian off` only")
-        
-@pbot.on_message(filters.incoming & filters.media & ~filters.private & ~filters.channel & ~filters.bot)
-async def nsfw_watch(client, message):
-    lol = get_all_nsfw_chats()
-    if len(lol) == 0:
-        message.continue_propagation()
-    if not is_chat_in_db(message.chat.id):
-        message.continue_propagation()
-    hot = await is_nsfw(client, message)
-    if not hot:
-        message.continue_propagation()
-    else:
-        try:
-            await message.delete()
-        except:
-            pass
-        lolchat = await client.get_chat(message.chat.id)
-        ctitle = lolchat.title
-        if lolchat.username:
-            hehe = lolchat.username
-        else:
-            hehe = message.chat.id
-        midhun = await client.get_users(message.from_user.id)
-        await message.delete()
-        if midhun.username:
-            Escobar = midhun.username
-        else:
-            Escobar = midhun.id
-        await client.send_message(
-            message.chat.id,
-            f"**NSFW DETECTED**\n\n{hehe}'s message contain NSFW content.. So, Kazuko deleted the message\n\n **Nsfw Sender - User / Bot :** `{Escobar}` \n**Chat Title:** `{ctitle}` \n\n`⚔️Automatic Detections Powered By KazukoAI` \n**#GROUP_GUARDIAN** ",
-        )
-        message.continue_propagation()
-"""
-
-
-# This Module is ported from https://github.com/MissJuliaRobot/MissJuliaRobot
-# This hardwork was completely done by MissJuliaRobot
-# Full Credits goes to MissJuliaRobot
 
 
 approved_users = db.approve
@@ -291,7 +204,7 @@ async def profanity(event):
         return
     event.pattern_match.group(1)
     if not await is_admin(event, BOT_ID):
-        await event.reply("`I Should Be Admin To Do This!`")
+        await event.reply("I Should Be Admin To Do This!")
         return
     if await is_admin(event, event.message.sender_id):
 
@@ -336,7 +249,7 @@ async def profanity(event):
         return
 
 
-@tbot.on(events.NewMessage(pattern=None))
+@telethn.on(events.NewMessage(pattern=None))
 async def del_profanity(event):
     if event.is_private:
         return
@@ -367,7 +280,7 @@ async def del_profanity(event):
                     await event.delete()
                     st = sender.first_name
                     hh = sender.id
-                    final = f"**NSFW DETECTED**\n\n{st}](tg://user?id={hh}) your message contain NSFW content.. So, Kazuko deleted the message\n\n **Nsfw Sender - User / Bot :** {st}](tg://user?id={hh})  \n\n`⚔️Automatic Detections Powered By KazukoAI` \n**#GROUP_GUARDIAN** "
+                    final = f"**NSFW DETECTED**\n\n{st}](tg://user?id={hh}) your message contain NSFW content.. So, Sophia deleted the message\n\n **Nsfw Sender - User / Bot :** {st}](tg://user?id={hh})  \n\n`⚔️Automatic Detections Powered By Sophia` \n "
                     dev = await event.respond(final)
                     await asyncio.sleep(10)
                     await dev.delete()
@@ -378,7 +291,7 @@ def extract_emojis(s):
     return "".join(c for c in s if c in emoji.UNICODE_EMOJI)
 
 
-@tbot.on(events.NewMessage(pattern=None))
+@telethn.on(events.NewMessage(pattern=None))
 async def del_profanity(event):
     if event.is_private:
         return
@@ -417,7 +330,7 @@ async def del_profanity(event):
                 else:
                     rm = msg
                 # print (rm)
-                b = translator.detect(rm)
+                b = trans.detect(rm)
                 if not "en" in b and not b == "":
                     await event.delete()
                     st = sender.first_name
@@ -426,17 +339,13 @@ async def del_profanity(event):
                     dev = await event.respond(final)
                     await asyncio.sleep(10)
                     await dev.delete()
-#
 
 __help__ = """
-<b> Group Guardian: </b>
-✪ Kazuko can protect your group from NSFW senders, Slag word users and also can force members to use English
-<b>Commmands</b>
- - /gshield <i>on/off</i> - Enable|Disable Porn cleaning
- - /globalmode <i>on/off</i> - Enable|Disable English only mode
- - /profanity <i>on/off</i> - Enable|Disable slag word cleaning
- 
-Note: Special credits goes to Julia project and Friday Userbot
- 
+• TGNRobot can protect your group from NSFW senders, Slag word users and also can force members to use English
+*Commmands:*
+  • `/gshield <on/off>`*:* Enable|Disable Porn cleaning
+  • `/globalmode <on/off>`*:* Enable|Disable English only mode
+  • `/profanity <on/off>`*:* Enable|Disable slag word cleaning
 """
+
 __mod_name__ = "Shield"
