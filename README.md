@@ -11,7 +11,7 @@ The Support group can be reached out to at [CFC BOT SUPPORT](https://t.me/CFC_BO
 
 News channel as at [Kazuko Updates](https://t.me/Phoenix_Empire)
 
-## How to setup/deploy.
+### How to setup/deploy.
 
 ### Read these notes carefully before proceeding 
  - This bot is forked from yone and saitama (which is based on marie)
