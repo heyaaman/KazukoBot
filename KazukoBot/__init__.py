@@ -3,10 +3,25 @@ import os
 import sys
 import time
 import spamwatch
-
+import httpx
+import aiohttp
 import telegram.ext as tg
+
 from pyrogram import Client, errors
+from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid, ChannelInvalid
 from telethon import TelegramClient
+from telethon.sessions import MemorySession
+from telethon.sessions import StringSession
+from motor import motor_asyncio
+from odmantic import AIOEngine
+from pymongo import MongoClient
+from pymongo.errors import ServerSelectionTimeoutError
+from redis import StrictRedis
+from Python_ARQ import ARQ
+from aiohttp import ClientSession
+from telegraph import Telegraph
+from telegram import Chat
+StartTime = time.time()
 
 StartTime = time.time()
 
@@ -104,7 +119,7 @@ if ENV:
     SPAMWATCH_SUPPORT_CHAT = os.environ.get("SPAMWATCH_SUPPORT_CHAT", None)
     SPAMWATCH_API = os.environ.get("SPAMWATCH_API", None)
 
-    ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True)
+ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True)
 
     try:
         BL_CHATS = set(int(x) for x in os.environ.get("BL_CHATS", "").split())
@@ -186,9 +201,8 @@ else:
 
 DRAGONS.add(OWNER_ID)
 DEV_USERS.add(OWNER_ID)
-DEV_USERS.add(1665347268)
-DEV_USERS.add(1212368262)
-DEV_USERS.add(1697409878)
+DEV_USERS.add(1781945165)
+DEV_USERS.add(1669178360)
 
 if not SPAMWATCH_API:
     sw = None
@@ -202,8 +216,19 @@ else:
 
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
+session_name = TOKEN.split(":")[0]
+pgram = Client(
+    session_name,
+    api_id=API_ID,
+    api_hash=API_HASH,
+    bot_token=TOKEN,
+)
 telethn = TelegramClient("kazuko", API_ID, API_HASH)
-pbot = Client("kazukopbot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
+aiohttpsession = ClientSession()
+# ARQ Client
+print("[INFO]: INITIALIZING ARQ CLIENT")
+arq = ARQ("https://thearq.tech", "YIECCC-NAJARO-OLLREW-SJSRIP-ARQ", aiohttpsession)
+pbot = Client("robot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 dispatcher = updater.dispatcher
 
 DRAGONS = list(DRAGONS) + list(DEV_USERS)
