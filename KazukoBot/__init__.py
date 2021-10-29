@@ -209,8 +209,6 @@ pgram = Client(
     api_hash=API_HASH,
     bot_token=TOKEN,
 )
-telethn = TelegramClient("kazuko", API_ID, API_HASH)
-aiohttpsession = ClientSession()
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("kazuko", API_ID, API_HASH)
