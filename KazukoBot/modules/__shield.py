@@ -27,7 +27,7 @@ MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
-db = client["kazuko"]
+db = client["Kazuko"]
 
 async def is_nsfw(event):
     lmao = event
