@@ -202,15 +202,6 @@ else:
         LOGGER.warning("Can't connect to SpamWatch!")
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
-session_name = TOKEN.split(":")[0]
-pgram = Client(
-    session_name,
-    api_id=API_ID,
-    api_hash=API_HASH,
-    bot_token=TOKEN,
-)
-
-updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("kazuko", API_ID, API_HASH)
 pbot = Client("kazukopbot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 dispatcher = updater.dispatcher
