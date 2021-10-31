@@ -84,7 +84,7 @@ I can do a variety of things, most common of em are:
 - Warn users according to the options set and restrict em accordingly.
 - Save notes and filters with proper formatting and reply markup.
 For reporting any issues or bug kindly join support chat and report to kazuko's devs or admins
-for fixing all bugs and issues for your needs[.](https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg)!
+for fixing all bugs and issues for your needs[.](https://telegra.ph/file/4a1c827cf2ddbf25e8c0a.jpg )!
 """
 buttons = [
     [
