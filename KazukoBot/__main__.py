@@ -116,7 +116,7 @@ Main commands available:
  Click on the buttons below to get documentation about specific modules!
 """
 
-KAZUKO_IMG = "https://telegra.ph/file/d96f5671647dcaf2cc1c4.jpg"
+KAZUKO_IMG = "https://telegra.ph/file/108bd234140cbe382e3fe.jpg"
 
 DONATE_STRING =  """Heya, glad to hear you want to donate!
  You can support the project via [Paypal](ko-fi.com/heyaaman) or by contacting @heyaaman \
