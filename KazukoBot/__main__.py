@@ -393,7 +393,7 @@ or choosing help button at home menu and report error/bugs at Kazuko's support c
                             text="Support", url="https://t.me/KazukoSupportChat",
                         ),   
                         InlineKeyboardButton(
-                             text="Updates", url="https://t.me/CFC_BotUpdates",
+                             text="Updates", url="https://t.me/phoenix_empire",
                         ),
                     ],      
                     [InlineKeyboardButton(text="Back", callback_data="kazuko_back")],
