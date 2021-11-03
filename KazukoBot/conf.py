@@ -35,7 +35,6 @@ def get_str_key(name, required=False):
         return None
     elif not data:
         LOGGER.critical("No str key: " + name)
-        sys.exit(2)
     else:
         return data
 
@@ -49,6 +48,5 @@ def get_int_key(name, required=False):
         return None
     elif not data:
         LOGGER.critical("No int key: " + name)
-        sys.exit(2)
     else:
         return data
