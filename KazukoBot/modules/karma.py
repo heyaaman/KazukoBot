@@ -26,9 +26,9 @@ from typing import Dict, Union
 from pyrogram import filters
 
 from KazukoBot.utils.karma import is_karma_on, karma_off, karma_on
-from KazukoBot.function.pluginhelpers import member_permissions
-from KazukoBot.services.mongo2 import db
-from KazukoBot.services.pyrogram import pbot as app
+from KazukoBot.utils.pluginhelpers import member_permissions
+from KazukoBot.helper_extra.mongo2 import db
+from KazukoBot.helper_extra.pyrogram import pbot as app
 
 karmadb = db.karma
 karma_positive_group = 3
