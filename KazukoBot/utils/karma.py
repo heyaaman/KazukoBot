@@ -1,4 +1,4 @@
-from KazukoBot.services.mongo2 import db
+from KazukoBot.helper_extra.mongo2 import db
 
 karmadb = db.karma2
 
