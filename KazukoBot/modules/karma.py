@@ -25,7 +25,7 @@ from typing import Dict, Union
 
 from pyrogram import filters
 
-from KazukoBot.db.mongo_helpers.karma import is_karma_on, karma_off, karma_on
+from KazukoBot.utils.karma import is_karma_on, karma_off, karma_on
 from KazukoBot.function.pluginhelpers import member_permissions
 from KazukoBot.services.mongo2 import db
 from KazukoBot.services.pyrogram import pbot as app
