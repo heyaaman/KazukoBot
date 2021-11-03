@@ -20,7 +20,7 @@ from telegram.utils.helpers import mention_html, mention_markdown, escape_markdo
 from KazukoBot.modules.helper_funcs.filters import CustomFilters
 from KazukoBot.modules.helper_funcs.chat_status import user_admin, user_admin_no_reply
 from KazukoBot import dispatcher, updater, SUPPORT_CHAT
-from KazukoBot.modules.logchannel import gloggable
+from KazukoBot.modules.log_channel import gloggable
 
  
 @user_admin_no_reply
