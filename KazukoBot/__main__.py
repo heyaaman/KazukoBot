@@ -392,11 +392,16 @@ or choosing help button at home menu and report error/bugs at Kazuko's support c
                             text="Support", url="https://t.me/KazukoSupportChat",
                         ),
                         InlineKeyboardButton(
+                             text="Updates", url="https://t.me/KazukoUpdates",
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
                             text="Network", url="https://t.me/Phoenix_Empire/28",
                         ),   
                         InlineKeyboardButton(
-                             text="Updates", url="https://t.me/KazukoUpdates",
-                        ),
+                            text="Gban logs", url="https://t.me/CFC_BotsGban_logs",
+                        ),   
                     ],     
                     [InlineKeyboardButton(text="Back", callback_data="kazuko_back")],
                 ]
