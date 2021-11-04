@@ -117,7 +117,7 @@ async def alive_function(answers):
     answers.append(
         InlineQueryResultArticle(
             title="Alive",
-            description="Check Emilia's Stats",
+            description="Check Kazuko's Stats",
             thumb_url="https://telegra.ph/file/498db41720d78526815b4.jpg",
             input_message_content=InputTextMessageContent(
                 msg, disable_web_page_preview=True
