@@ -27,7 +27,6 @@ def get_rules(update: Update, context: CallbackContext):
 def send_rules(update, chat_id, from_pm=False):
     bot = dispatcher.bot
     user = update.effective_user  # type: Optional[User]
-    reply_msg = update.message.reply_to_message
     try:
         chat = bot.get_chat(chat_id)
     except BadRequest as excp:
@@ -46,26 +45,13 @@ def send_rules(update, chat_id, from_pm=False):
 
     if from_pm and rules:
         bot.send_message(
-            user.id, text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True,
+            user.id, text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True
         )
     elif from_pm:
         bot.send_message(
             user.id,
             "The group admins haven't set any rules for this chat yet. "
             "This probably doesn't mean it's lawless though...!",
-        )
-    elif rules and reply_msg:
-        reply_msg.reply_text(
-            "Please click the button below to see the rules.",
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(
-                            text="Rules", url=f"t.me/{bot.username}?start={chat_id}",
-                        ),
-                    ],
-                ],
-            ),
         )
     elif rules:
         update.effective_message.reply_text(
@@ -74,16 +60,16 @@ def send_rules(update, chat_id, from_pm=False):
                 [
                     [
                         InlineKeyboardButton(
-                            text="Rules", url=f"t.me/{bot.username}?start={chat_id}",
-                        ),
-                    ],
-                ],
+                            text="Rules", url=f"t.me/{bot.username}?start={chat_id}"
+                        )
+                    ]
+                ]
             ),
         )
     else:
         update.effective_message.reply_text(
             "The group admins haven't set any rules for this chat yet. "
-            "This probably doesn't mean it's lawless though...!",
+            "This probably doesn't mean it's lawless though...!"
         )
 
 
@@ -98,7 +84,7 @@ def set_rules(update: Update, context: CallbackContext):
         txt = args[1]
         offset = len(txt) - len(raw_text)  # set correct offset relative to command
         markdown_rules = markdown_parser(
-            txt, entities=msg.parse_entities(), offset=offset,
+            txt, entities=msg.parse_entities(), offset=offset
         )
 
         sql.set_rules(chat_id, markdown_rules)
@@ -132,10 +118,10 @@ def __chat_settings__(chat_id, user_id):
 
 
 __help__ = """
- • `/rules`*:* get the rules for this chat.
+ ❍ /rules*:* get the rules for this chat.
 *Admins only:*
- • `/setrules <your rules here>`*:* set the rules for this chat.
- • `/clearrules`*:* clear the rules for this chat.
+ ❍ /setrules <your rules here>*:* set the rules for this chat.
+ ❍ /clearrules*:* clear the rules for this chat.
 """
 
 __mod_name__ = "Rules"
