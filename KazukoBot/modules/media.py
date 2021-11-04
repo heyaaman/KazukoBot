@@ -6,7 +6,6 @@ from functools import partial
 from io import BytesIO
 from urllib.parse import urlparse
 
-import ffmpeg
 import youtube_dl
 from pyrogram import filters
 
