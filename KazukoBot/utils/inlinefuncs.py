@@ -12,7 +12,6 @@ from re import sub as re_sub
 from sys import version as pyver
 from time import ctime, time
 
-from fuzzysearch import find_near_matches
 from motor import version as mongover
 from pykeyboard import InlineKeyboard
 from pyrogram import __version__ as pyrover
