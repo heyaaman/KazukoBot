@@ -241,7 +241,7 @@ BOT_MENTION = bottie.mention
 
 end_credits = """
 INFO GATHERED!
-Client: Emilia Pyro
-Copyright: (c) 2021 EmiliaAnimeBot
+Client: Kazuko Pyro
+Copyright: (c) 2021 KazukoBot
 """
 print(end_credits)
