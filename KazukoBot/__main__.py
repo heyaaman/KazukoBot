@@ -89,8 +89,7 @@ for fixing all bugs and issues for your needs[.](https://telegra.ph/file/108bd23
 buttons = [
     [
         InlineKeyboardButton(text="About & Support", callback_data="kazuko_"),
-        InlineKeyboardButton(
-            text="Source code", url="https://github.com/heyaaman/KazukoBot"),
+        InlineKeyboardButton(text="Try inline",switch_inline_query_current_chat=""),                            
       ],
     [
         InlineKeyboardButton(
@@ -385,17 +384,20 @@ or choosing help button at home menu and report error/bugs at Kazuko's support c
                         InlineKeyboardButton(text="T & C", url="https://telegra.ph/Terms-and-Conditions-10-26",
                         ),
                         InlineKeyboardButton(
-                            text="Network", url="https://t.me/Phoenix_Empire/28",
+                            text="Source code", url="https://github.com/heyaaman/KazukoBot",
                         ),
                     ],
                     [
                         InlineKeyboardButton(
                             text="Support", url="https://t.me/KazukoSupportChat",
+                        ),
+                        InlineKeyboardButton(
+                            text="Network", url="https://t.me/Phoenix_Empire/28",
                         ),   
                         InlineKeyboardButton(
                              text="Updates", url="https://t.me/KazukoUpdates",
                         ),
-                    ],      
+                    ],     
                     [InlineKeyboardButton(text="Back", callback_data="kazuko_back")],
                 ]
             ),
