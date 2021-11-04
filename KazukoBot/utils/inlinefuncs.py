@@ -113,7 +113,7 @@ async def alive_function(answers):
 **Pyrogram:** `{pyrover}`
 **MongoDB:** `{mongover}`
 **Platform:** `{sys.platform}`
-[Bot](https://t.me/KazukoRobot) [Owner](https://t.me/heyaaman)
+[Bot](https://t.me/KazukoRobot)   |   [Owner](https://t.me/heyaaman)
 """
     answers.append(
         InlineQueryResultArticle(
