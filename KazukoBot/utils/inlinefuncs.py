@@ -100,7 +100,7 @@ async def alive_function(answers):
     buttons = InlineKeyboard(row_width=2)
     bot_state = "Dead" if not await app.get_me() else "Alive"
     buttons.add(
-        InlineKeyboardButton("Stats", callback_data="stats_callback"),
+        InlineKeyboardButton("Support Chat", url="https://t.me/KazukoSupportChat"),
         InlineKeyboardButton(
             "Go Inline!", switch_inline_query_current_chat=""
         ),
@@ -113,6 +113,7 @@ async def alive_function(answers):
 **Pyrogram:** `{pyrover}`
 **MongoDB:** `{mongover}`
 **Platform:** `{sys.platform}`
+[Bot](https://t.me/KazukoRobot) [Owner](https://t.me/heyaaman)
 """
     answers.append(
         InlineQueryResultArticle(
