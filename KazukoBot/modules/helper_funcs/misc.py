@@ -1,6 +1,3 @@
-
-
-
 from typing import Dict, List
 
 from KazukoBot import NO_LOAD
