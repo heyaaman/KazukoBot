@@ -3,7 +3,7 @@ import traceback
 from KazukoBot import pgram as app
 from KazukoBot.utils.inlinefuncs import *
 
-__mod_name__ = ""
+__mod_name__ = "Inline"
 __help__ = """
 See inline for help related to inline
 Usage: @KazukoRobot <func> <query>"""
