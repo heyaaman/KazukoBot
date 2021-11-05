@@ -15,7 +15,7 @@ from KazukoBot import pgram as app
 from KazukoBot.pyroerror import capture_err
 from KazukoBot.utils.pastebin import paste
 
-__mod_name__ = ""
+__mod_name__ = "Media"
 __help__ = """
 
 *AUDIO*
