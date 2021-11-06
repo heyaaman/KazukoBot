@@ -228,7 +228,7 @@ def start(update: Update, context: CallbackContext):
             ),
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Support", url="t.me/KazukoSupportChat")]]
+                [[InlineKeyboardButton(text="Support", url="t.me/KazukoSupportChat"), InlineKeyboardButton(text="Updates", url="t.me/KazukoUpdates")]]
             ),
         )
 
