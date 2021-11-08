@@ -193,15 +193,7 @@ DEV_USERS.add(1831008142)
 DEV_USERS.add(1821151467)
 
 # MongoDB client
-MONGO_PORT = get_int_key("27017")
-MONGO_DB_URI = get_str_key("MONGO_DB_URI")
-MONGO_DB = "Kazuko"
-
-
-client = MongoClient()
-client = MongoClient(MONGO_DB_URI, MONGO_PORT)[MONGO_DB]
-motor = motor_asyncio.AsyncIOMotorClient(MONGO_DB_URI, MONGO_PORT)
-db = motor[MONGO_DB]
+client = MongoClient(MONGO_DB_URI)[MONGO_DB]
 db = client["KazukoBot"]
 
 if not SPAMWATCH_API:
