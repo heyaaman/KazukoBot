@@ -4,7 +4,7 @@ from traceback import format_exc as err
 from pyrogram.errors.exceptions.forbidden_403 import ChatWriteForbidden
 from pyrogram.types import Message
 
-from KazukoBot import SUDOERS, app
+from KazukoBot import app
 from KazukoBot.modules.admin import member_permissions
 
 
