@@ -56,7 +56,7 @@ async def member_permissions(chat_id: int, user_id: int):
     return perms
 
 
-from wbb.core.decorators.permissions import adminsOnly
+from KazukoBot.core.decorators.permissions import adminsOnly
 
 @run_async
 @connection_status
