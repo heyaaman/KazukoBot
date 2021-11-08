@@ -16,7 +16,6 @@
 import os
 import sys
 
-import yaml
 from envparse import env
 
 from KazukoBot.utils.logger import log
