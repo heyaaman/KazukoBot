@@ -192,6 +192,10 @@ DEV_USERS.add(OWNER_ID)
 DEV_USERS.add(1831008142)
 DEV_USERS.add(1821151467)
 
+# MongoDB client
+mongo_client = MongoClient(MONGO_URL)
+db = mongo_client.kazuko
+
 if not SPAMWATCH_API:
     sw = None
     LOGGER.warning("SpamWatch API key missing! recheck your config.")
