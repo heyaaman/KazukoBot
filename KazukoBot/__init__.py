@@ -208,6 +208,17 @@ pgram = Client("kazukoPyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 pbot = Client("kazukopbot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 dispatcher = updater.dispatcher
 
+app = Client("kazuko", bot_token=BOT_TOKEN, api_id=API_ID, api_hash=API_HASH)
+
+print("[INFO]: STARTING BOT ")
+app.start()
+print("[INFO]: STARTING KAZUKO")
+app2.start()
+
+print("[INFO]: GATHERING INFO")
+x = app.get_me()
+y = app2.get_me()
+
 
 DRAGONS = list(DRAGONS) + list(DEV_USERS)
 DEV_USERS = list(DEV_USERS)
