@@ -26,7 +26,7 @@ from pyrogram import filters
 from KazukoBot.utils.dbfunctions import is_karma_on, karma_off, karma_on
 from KazukoBot.modules.admin import member_permissions
 from KazukoBot import db
-from KazukoBot core.pyrogram import pbot as app
+from KazukoBot.utils.pyrogram import pbot as app
 
 
 __mod_name__ = "Karma"
