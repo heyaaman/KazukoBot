@@ -208,7 +208,7 @@ pgram = Client("kazukoPyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 pbot = Client("kazukopbot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 dispatcher = updater.dispatcher
 
-app = Client("kazuko", bot_token=BOT_TOKEN, api_id=API_ID, api_hash=API_HASH)
+app = Client("kazuko", bot_token=TOKEN, api_id=API_ID, api_hash=API_HASH)
 
 print("[INFO]: STARTING BOT ")
 app.start()
