@@ -7,6 +7,7 @@ import spamwatch
 import telegram.ext as tg
 from pyrogram import Client, errors
 from telethon import TelegramClient
+from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 
 StartTime = time.time()
 
@@ -193,8 +194,9 @@ DEV_USERS.add(1831008142)
 DEV_USERS.add(1821151467)
 
 # MongoDB client
-client = MongoClient(MONGO_DB_URI)[MONGO_DB]
-db = client["KazukoBot"]
+print("[INFO]: INITIALIZING DATABASE")
+mongo_client = MongoClient(MONGO_DB_URI)
+db = mongo_client.KazukoBot
 
 if not SPAMWATCH_API:
     sw = None
