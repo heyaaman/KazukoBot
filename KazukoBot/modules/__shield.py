@@ -341,7 +341,7 @@ async def del_profanity(event):
                     await dev.delete()
 
 __help__ = """
-• TGNRobot can protect your group from NSFW senders, Slag word users and also can force members to use English
+• Kazuko can protect your group from NSFW senders, Slag word users and also can force members to use English
 *Commmands:*
   • `/gshield <on/off>`*:* Enable|Disable Porn cleaning
   • `/globalmode <on/off>`*:* Enable|Disable English only mode
