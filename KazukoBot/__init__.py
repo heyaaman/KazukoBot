@@ -206,19 +206,8 @@ updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("kazuko", API_ID, API_HASH)
 pgram = Client("kazukoPyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 pbot = Client("kazukopbot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
-dispatcher = updater.dispatcher
-
 app = Client("kazuko", bot_token=TOKEN, api_id=API_ID, api_hash=API_HASH)
-
-print("[INFO]: STARTING BOT ")
-app.start()
-print("[INFO]: STARTING KAZUKO")
-app2.start()
-
-print("[INFO]: GATHERING INFO")
-x = app.get_me()
-y = app2.get_me()
-
+dispatcher = updater.dispatcher
 
 DRAGONS = list(DRAGONS) + list(DEV_USERS)
 DEV_USERS = list(DEV_USERS)
