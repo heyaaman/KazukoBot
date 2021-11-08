@@ -55,9 +55,6 @@ async def member_permissions(chat_id: int, user_id: int):
         perms.append("can_manage_voice_chats")
     return perms
 
-
-from KazukoBot.core.decorators.permissions import adminsOnly
-
 @run_async
 @connection_status
 @bot_admin
