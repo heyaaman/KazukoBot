@@ -1,25 +1,40 @@
-import re
+# Ported From WilliamButcher Bot.
+# Credits Goes to WilliamButcherBot
+# Ported from https://github.com/TheHamkerCat/WilliamButcherBot
+"""
+MIT License
+Copyright (c) 2021 TheHamkerCat
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
 
 from pyrogram import filters
 
-from KazukoBot import app
-from KazukoBot.core.decorators.errors import capture_err
-from KazukoBot.core.decorators.permissions import adminsOnly
-from KazukoBot.core.sections import section
-from KazukoBot.utils.dbfunctions import (alpha_to_int, get_karma, get_karmas,
-                                   int_to_alpha, is_karma_on, karma_off,
-                                   karma_on, update_karma)
-from KazukoBot.utils.filter_groups import karma_negative_group, karma_positive_group
-from KazukoBot.utils.functions import get_user_id_and_usernames
+from KazukoBot.utils.dbfunctions import is_karma_on, karma_off, karma_on
+from KazukoBot.modules.admin import member_permissions
+from KazukoBot import db
+from KazukoBot core.pyrogram import pbot as app
+
 
 __mod_name__ = "Karma"
-__help__ = """
-[UPVOTE] - Use upvote keywords like "+", "+1", "thanks" etc to upvote a message.
+__help__ = """[UPVOTE] - Use upvote keywords like "+", "+1", "thanks" etc to upvote a message.
 [DOWNVOTE] - Use downvote keywords like "-", "-1", etc to downvote a message.
 /karma_toggle [ENABLE|DISABLE] - Enable or Disable Karma System In Your Chat.
 Reply to a message with /karma to check a user's karma
 Send /karma without replying to any message to check karma list of top 10 users"""
-
 
 regex_upvote = r"^(\+|\+\+|\+1|thx|tnx|ty|thank you|thanx|thanks|pro|cool|good|👍|\+\+ .+)$"
 regex_downvote = r"^(-|--|-1|👎|-- .+)$"
