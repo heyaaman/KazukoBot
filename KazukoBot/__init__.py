@@ -25,11 +25,11 @@ logging.getLogger('ptbcontrib.postgres_persistence.postgrespersistence').setLeve
 log.info("------------------------------")
 log.info("|   Loading repository...   |")
 log.info("------------------------------")
-log.info("[KAZUKO] Kazuko is starting. | CFC Empire Project. | Licensed under GPLv3.")
+log.info("[KAZUKO] Kazuko is starting. | Phoenix Empire Project. | Licensed under GPLv3.")
 log.info("[KAZUKO] Not affiliated to Azur Lane or Yostar in any way whatsoever.")
 log.info("[KAZUKO] Project maintained by: github.com/heyaaman (t.me/heyaaman)")
 log.info("------------------------")
-log.info("| Deploying Kazuko ♡  |")
+log.info("| Deploying Kazuko... |")
 log.info("------------------------")
 LOGGER = logging.getLogger(__name__)
 
