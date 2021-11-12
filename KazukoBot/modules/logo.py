@@ -333,7 +333,7 @@ async def lego(event):
 
 
    
-@register(pattern="^/jlogo ?(.*)")
+@register(pattern="^/klogo ?(.*)")
 async def lego(event):
  quew = event.pattern_match.group(1)
  if event.sender_id == OWNER_ID:
@@ -348,7 +348,7 @@ async def lego(event):
  await event.reply('Creating your logo...wait!🤡')
  try:
     text = event.pattern_match.group(1)
-    img = Image.open('./KazukoRobot/resources/fjoker.jpg')
+    img = Image.open('./KazukoRobot/resources/kazuko.jpg')
     draw = ImageDraw.Draw(img)
     image_widthz, image_heightz = img.size
     pointsize = 500
@@ -418,7 +418,7 @@ file_helpo = file_help.replace("_", " ")
 
 
 __help__ = """
- 🔹 `/jlogo` <text> :  Create your logo with your name
+ 🔹 `/klogo` <text> :  Create your logo with your name
  🔹 `/ylogo` <text> :  Create your logo with your name
  🔹 `/blogo` <text> :  Create your logo with your name
  🔹 `/tlogo` <text> :  Create your logo with your name
