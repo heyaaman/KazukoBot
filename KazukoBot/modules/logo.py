@@ -418,9 +418,9 @@ file_helpo = file_help.replace("_", " ")
 
 
 __help__ = """
- 🔹 `/klogo` <text> :  Create your logo with your name
- 🔹 `/ylogo` <text> :  Create your logo with your name
- 🔹 `/blogo` <text> :  Create your logo with your name
- 🔹 `/tlogo` <text> :  Create your logo with your name
+   /klogo <text> :  Create your logo with your name
+   /ylogo <text> :  Create your logo with your name
+   /blogo <text> :  Create your logo with your name
+   /tlogo <text> :  Create your logo with your name
  """
 __mod_name__ = "Logo Maker"
