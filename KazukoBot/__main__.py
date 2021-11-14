@@ -88,7 +88,7 @@ I have lots of handy features such as:
 ‣ Approvals and much more.
 
 So what are you waiting for?
-Add me in your groups and promote me to make me function well.
+Add me in your groups and promote me to make me function well[.](https://telegra.ph/file/6d0f29836fda1effbb4ba.jpg)
 """
 buttons = [
     [
