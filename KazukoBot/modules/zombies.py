@@ -1,11 +1,13 @@
+import asyncio
 from asyncio import sleep
 
 from telethon import events
 from telethon.errors import ChatAdminRequiredError, UserAdminInvalidError
 from telethon.tl.functions.channels import EditBannedRequest
-from telethon.tl.types import ChannelParticipantsAdmins, ChatBannedRights
+from telethon.tl.types import ChatBannedRights, ChannelParticipantsAdmins
 
-from KazukoBot import DEV_USERS, DRAGONS, OWNER_ID, TIGERS, telethn
+from KazukoBot import telethn, OWNER_ID, DEV_USERS, DRAGONS, DEMONS
+
 
 # =================== CONSTANT ===================
 
@@ -33,7 +35,7 @@ UNBAN_RIGHTS = ChatBannedRights(
     embed_links=None,
 )
 
-OFFICERS = [OWNER_ID] + DEV_USERS + DRAGONS + TIGERS
+OFFICERS = [OWNER_ID] + DEV_USERS + DRAGONS + DEMONS
 
 # Check if user has admin rights
 async def is_administrator(user_id: int, message):
@@ -45,6 +47,7 @@ async def is_administrator(user_id: int, message):
             admin = True
             break
     return admin
+
 
 
 @telethn.on(events.NewMessage(pattern=f"^[!/]zombies ?(.*)"))
@@ -64,7 +67,7 @@ async def zombies(event):
                 await sleep(1)
         if del_u > 0:
             del_status = f"Found **{del_u}** Zombies In This Group.\
-            \nClean Them By Using :-\n 👉 `/zombies clean`"
+            \nClean Them By Using - `/zombies clean`"
         await find_zombies.edit(del_status)
         return
 
@@ -74,7 +77,6 @@ async def zombies(event):
     creator = chat.creator
 
     # Well
-
     if not await is_administrator(user_id=event.from_id, message=event):
         await event.respond("You're Not An Admin!")
         return
@@ -110,3 +112,44 @@ async def zombies(event):
         \n`{del_a}` Zombie Admin Accounts Are Not Removed!"
 
     await cleaning_zombies.edit(del_status)
+    
+    
+from telethon.tl.types import UserStatusLastMonth, UserStatusLastWeek, ChatBannedRights
+from innexiaBot.events import register
+from telethon import *
+from telethon.tl.functions.channels import (EditBannedRequest)
+                                            
+
+@register(pattern="^/kickthefools")
+async def _(event):
+    if event.fwd_from:
+        return
+    chat = await event.get_chat()
+    admin = chat.admin_rights
+    creator = chat.creator
+    if not event.chat.admin_rights.ban_users:
+        return
+    if not admin and not creator:
+        await event.reply("I am not admin here !")
+        return
+    c = 0
+    KICK_RIGHTS = ChatBannedRights(until_date=None, view_messages=True)
+    await event.reply("Searching Participant Lists...")
+    async for i in event.client.iter_participants(event.chat_id):
+
+        if isinstance(i.status, UserStatusLastMonth):
+            status = await event.client(EditBannedRequest(event.chat_id, i, KICK_RIGHTS))
+            if not status:
+               return
+            else:
+               c = c + 1
+                    
+        if isinstance(i.status, UserStatusLastMonth):
+            status = await event.client(EditBannedRequest(event.chat_id, i, KICK_RIGHTS))
+            if not status:
+               return
+            else:
+               c = c + 1                    
+
+    required_string = "Successfully Kicked **{}** users"
+    await event.reply(required_string.format(c))
