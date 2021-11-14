@@ -74,17 +74,21 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hey...I'm Kazuko
+Hey there, I'm Kazuko,
+
 I am an Anime themed group management bot
-to help maintaining groups with my super advanced features,
-I can do a variety of things, most common of em are:
-- Restrict users with ban permissions.
-- Greet users with media + text and buttons, with proper formatting.
-- Restrict users who flood your chat using my anti-flood module.
-- Warn users according to the options set and restrict em accordingly.
-- Save notes and filters with proper formatting and reply markup.
-For reporting any issues or bug kindly join support chat and report to kazuko's devs or admins
-for fixing all bugs and issues for your needs[.](https://telegra.ph/file/108bd234140cbe382e3fe.jpg)!
+to help maintaining groups with my super advanced features.
+
+I have lots of handy features such as:
+‣ Warning system
+‣ Artificial intelligence
+‣ Flood control system
+‣ Note keeping system
+‣ Filters keeping system
+‣ Approvals and much more.
+
+So what are you waiting for?
+Add me in your groups and promote me to make me function well.
 """
 buttons = [
     [
@@ -115,7 +119,7 @@ Main commands available:
  Click on the buttons below to get documentation about specific modules!
 """
 
-KAZUKO_IMG = "https://telegra.ph/file/108bd234140cbe382e3fe.jpg"
+KAZUKO_IMG = "https://telegra.ph/file/6d0f29836fda1effbb4ba.jpg"
 
 DONATE_STRING =  """Heya, glad to hear you want to donate!
  You can support the project via [Paypal](ko-fi.com/heyaaman) or by contacting @heyaaman \
