@@ -8,6 +8,8 @@ arq
 odmantic
 redis
 pykeyboard
+#googletrans
+google_trans_new
 beautifulsoup4
 python-arq==6.0.3
 requests==2.26.0
