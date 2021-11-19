@@ -80,7 +80,7 @@ async def inline_help_func(__help__):
             input_message_content=InputTextMessageContent(
                 "Click A Button To Get Started."
             ),
-            thumb_url="https://telegra.ph/file/498db41720d78526815b4.jpg",
+            thumb_url="https://telegra.ph/file/e4dcd9a32e7b93d6309fd.jpg",
             reply_markup=buttons,
         ),
         InlineQueryResultArticle(
@@ -119,7 +119,7 @@ async def alive_function(answers):
         InlineQueryResultArticle(
             title="Alive",
             description="Check Kazuko's Stats",
-            thumb_url="https://telegra.ph/file/498db41720d78526815b4.jpg",
+            thumb_url="https://telegra.ph/file/e4dcd9a32e7b93d6309fd.jpg",
             input_message_content=InputTextMessageContent(
                 msg, disable_web_page_preview=True
             ),
