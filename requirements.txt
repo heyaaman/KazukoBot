@@ -76,4 +76,4 @@ nudepy
 motor
 cloudscraper
 gpytranslate
-googletrans==3.0.0a0
+googletrans==2.4.0
