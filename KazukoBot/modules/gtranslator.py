@@ -1,41 +1,20 @@
-from gpytranslate import Translator
-from telegram.ext import CommandHandler, CallbackContext
-from telegram import (
-    Message,
-    Chat,
-    User,
-    ParseMode,
-    Update,
-    InlineKeyboardMarkup,
-    InlineKeyboardButton,
-)
-from KazukoBot import dispatcher, pbot
-from pyrogram import filters
+from telegram import ParseMode, Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import CallbackContext, run_async
+
+from gpytranslate import SyncTranslator
+
+from KazukoBot import dispatcher
 from KazukoBot.modules.disable import DisableAbleCommandHandler
 
 
-__help__ = """ 
-Use this module to translate stuff!
-*Commands:*
-• `/tl` (or `/tr`): as a reply to a message, translates it to English.
-• `/tl <lang>`: translates to <lang>
-eg: `/tl ja`: translates to Japanese.
-• `/tl <source>//<dest>`: translates from <source> to <lang>.
-eg: `/tl ja//en`: translates from Japanese to English.
-• `/langs`: get a list of supported languages for translation.
-"""
-
-__mod_name__ = "Translator"
+trans = SyncTranslator()
 
 
-trans = Translator()
-
-
-@pbot.on_message(filters.command(["tl", "tr"]))
-async def translate(_, message: Message) -> None:
+def totranslate(update: Update, context: CallbackContext) -> None:
+    message = update.effective_message
     reply_msg = message.reply_to_message
     if not reply_msg:
-        await message.reply_text("Reply to a message to translate it!")
+        message.reply_text("Reply to a message to translate it!")
         return
     if reply_msg.caption:
         to_translate = reply_msg.caption
@@ -47,18 +26,17 @@ async def translate(_, message: Message) -> None:
             source = args.split("//")[0]
             dest = args.split("//")[1]
         else:
-            source = await trans.detect(to_translate)
+            source = trans.detect(to_translate)
             dest = args
     except IndexError:
-        source = await trans.detect(to_translate)
+        source = trans.detect(to_translate)
         dest = "en"
-    translation = await trans(to_translate, sourcelang=source, targetlang=dest)
-    reply = (
-        f"<b>Translated from {source} to {dest}</b>:\n"
+    translation = trans(to_translate,
+                              sourcelang=source, targetlang=dest)
+    reply = f"<b>Translated from {source} to {dest}</b>:\n" \
         f"<code>{translation.text}</code>"
-    )
 
-    await message.reply_text(reply, parse_mode="html")
+    message.reply_text(reply, parse_mode=ParseMode.HTML)
 
 
 def languages(update: Update, context: CallbackContext) -> None:
@@ -69,15 +47,21 @@ def languages(update: Update, context: CallbackContext) -> None:
                 [
                     InlineKeyboardButton(
                         text="Language codes",
-                        url="https://telegra.ph/Lang-Codes-03-19-3",
-                    ),
+                        url="https://telegra.ph/𝗕ooo--‌ᴀꜰᴋ-ᴏꜰꜰʟɪɴᴇ-10-30-4"
+                        ),
                 ],
             ],
-            disable_web_page_preview=True,
-        ),
+        disable_web_page_preview=True
     )
+        )
+
+__mod_name__ = "Translator"
 
 
-LANG_HANDLER = DisableAbleCommandHandler("langs", languages, run_async=True)
+TRANSLATE_HANDLER = DisableAbleCommandHandler(["tr", "tl"], totranslate)
 
-dispatcher.add_handler(LANG_HANDLER)
+dispatcher.add_handler(TRANSLATE_HANDLER)
+
+__mod_name__ = "Translator"
+__command_list__ = ["tr", "tl"]
+__handlers__ = [TRANSLATE_HANDLER]
