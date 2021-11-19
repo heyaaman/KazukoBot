@@ -78,7 +78,7 @@ Hey there, I'm Kazuko,
 
 I am an Anime themed group management bot
 to help maintaining groups with my super advanced features.
-
+♡ *Uptime:* `{}`
 I have lots of handy features such as:
 ‣ Warning system
 ‣ Artificial intelligence
