@@ -405,7 +405,12 @@ def set_about_me(update: Update, context: CallbackContext):
                 )
             )
 
-
+@run_async
+@sudo_plus
+@run_async
+@sudo_plus
+@run_async
+@sudo_plus
 @run_async
 @sudo_plus
 def stats(update: Update, context: CallbackContext):
