@@ -159,7 +159,7 @@ def get_id(update: Update, context: CallbackContext):
                 parse_mode=ParseMode.HTML)
 
 
-@YoneTelethonClient.on(
+@KazukoTelethonClient.on(
     events.NewMessage(
         pattern='/ginfo ',
         from_users=(TIGERS or []) + (DRAGONS or []) + (DEMONS or [])))
@@ -234,7 +234,7 @@ def info(update: Update, context: CallbackContext):
     rep = message.reply_text(
         "<code>Appraising...</code>", parse_mode=ParseMode.HTML)
 
-    text = (f"╒═══「<b> Appraisal results:</b> 」\n"
+    text = (f" ✿<b>General:</b> \n"
             f"ID: <code>{user.id}</code>\n"
             f"First Name: {html.escape(user.first_name)}")
 
@@ -405,8 +405,6 @@ def set_about_me(update: Update, context: CallbackContext):
                 )
             )
 
-@run_async
-@sudo_plus
 @run_async
 @sudo_plus
 @run_async
