@@ -10,7 +10,7 @@ from telegram import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
 )
-from telegram.ext import CallbackContext
+from telegram.ext import CallbackContext, run_async
 
 from KazukoBot import dispatcher
 from KazukoBot.modules.disable import DisableAbleCommandHandler
