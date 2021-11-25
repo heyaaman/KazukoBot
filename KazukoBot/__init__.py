@@ -196,7 +196,7 @@ DEV_USERS.add(1831008142)
 DEV_USERS.add(1821151467)
 
 # Pass if SpamWatch token not set.
-if SPAMWATCH is None:
+if SPAMWATCH_API is None:
     spamwtc = None
     LOGGER.warning("[Kazuko] Invalid spamwatch api")
 else:
