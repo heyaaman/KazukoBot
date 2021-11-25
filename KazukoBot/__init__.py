@@ -200,7 +200,7 @@ if SPAMWATCH_API is None:
     spamwtc = None
     LOGGER.warning("[Kazuko] Invalid spamwatch api")
 else:
-    spamwtc = spamwatch.Client(SPAMWATCH)
+    spamwtc = spamwatch_api.Client(SPAMWATCH)
 
 # MongoDB client
 print("[INFO]: INITIALIZING DATABASE")
