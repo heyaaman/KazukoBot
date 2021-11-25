@@ -207,7 +207,7 @@ print("[INFO]: INITIALIZING DATABASE")
 mongo_client = MongoClient(MONGO_DB_URI)
 db = mongo_client.KazukoBot
 
-if not SPAMWATCH_API:
+if not SPAMWATCH:
     sw = None
     LOGGER.warning("SpamWatch API key missing! recheck your config.")
 else:
