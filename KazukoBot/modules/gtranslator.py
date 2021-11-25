@@ -145,5 +145,5 @@ TRANSLATE_HANDLER = DisableAbleCommandHandler(["", ""], totranslate)
 dispatcher.add_handler(TRANSLATE_HANDLER)
 
 __mod_name__ = ""
-__command_list__ = ["", ""]
+__command_list__ = ["tr", "tl"]
 __handlers__ = [TRANSLATE_HANDLER]
