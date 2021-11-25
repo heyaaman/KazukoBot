@@ -118,7 +118,6 @@ def totranslate(update: Update, context: CallbackContext):
                     parse_mode=ParseMode.MARKDOWN,
                 )
 
-@run_async
 def languages(update: Update, context: CallbackContext) -> None:
     update.effective_message.reply_text(
         "Click on the button below to see the list of supported language codes.",
