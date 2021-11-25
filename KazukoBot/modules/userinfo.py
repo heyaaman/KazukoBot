@@ -8,11 +8,11 @@ from telegram.utils.helpers import escape_markdown
 import KazukoBot.modules.sql.userinfo_sql as sql
 from KazukoBot import dispatcher, DEV_USERS
 from KazukoBot.modules.disable import DisableAbleCommandHandler
-from KazukoBot.modules.helper_funcs.alternate import run_async
+from KazukoBot.modules.helper_funcs.alternate import typing_action
 from KazukoBot.modules.helper_funcs.extraction import extract_user
 
 
-@run_async
+@typing_action
 def about_me(update, context):
     message = update.effective_message  # type: Optional[Message]
     bot, args = context.bot, context.args
@@ -38,7 +38,7 @@ def about_me(update, context):
         )
 
 
-@run_async
+@typing_action
 def set_about_me(update, _):
     message = update.effective_message
     user_id = message.from_user.id
@@ -58,7 +58,7 @@ def set_about_me(update, _):
             )
 
 
-@run_async
+@typing_action
 def about_bio(update, context):
     message = update.effective_message  # type: Optional[Message]
     args = context.args
@@ -82,7 +82,7 @@ def about_bio(update, context):
         update.effective_message.reply_text(" Your bio  about you has been saved !")
 
 
-@run_async
+@typing_action
 def set_about_bio(update, context):
     message = update.effective_message  # type: Optional[Message]
     sender = update.effective_user  # type: Optional[User]
