@@ -118,19 +118,20 @@ def totranslate(update: Update, context: CallbackContext):
                     parse_mode=ParseMode.MARKDOWN,
                 )
 
-    except IndexError:
-        update.effective_message.reply_text(
-            "Reply to messages or write messages from other languages ​​for translating into the intended language\n\n"
-            "Example: `/tr en-ml` to translate from English to Malayalam\n"
-            "Or use: `/tr ml` for automatic detection and translating it into Malayalam.\n"
-            "See [List of Language Codes](t.me/OnePunchSupport/12823) for a list of language codes.",
-            parse_mode="markdown",
+@run_async
+def languages(update: Update, context: CallbackContext) -> None:
+    update.effective_message.reply_text(
+        "Click on the button below to see the list of supported language codes.",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        text="Language codes",
+                        url="https://telegra.ph/Lang-Codes-03-19-3",
+                    ),
+                ],
+            ],
             disable_web_page_preview=True,
-        )
-    except ValueError:
-        update.effective_message.reply_text("The intended language is not found!")
-    else:
-        return
 
 
 __help__ = """
@@ -141,9 +142,9 @@ __help__ = """
 """
 
 TRANSLATE_HANDLER = DisableAbleCommandHandler(["tr", "tl"], totranslate)
-
+dispatcher.add_handler(DisableAbleCommandHandler(["langs", "lang"], languages, run_async=True)
 dispatcher.add_handler(TRANSLATE_HANDLER)
 
-__mod_name__ = ""
+__mod_name__ = "Translator"
 __command_list__ = ["tr", "tl"]
 __handlers__ = [TRANSLATE_HANDLER]
