@@ -8,7 +8,7 @@ arq
 odmantic
 redis
 pykeyboard
-#googletrans
+googletrans
 google_trans_new
 beautifulsoup4
 python-arq==6.0.3
@@ -78,3 +78,4 @@ cloudscraper
 gpytranslate
 googletrans==2.4.0
 gtts
+psutil
