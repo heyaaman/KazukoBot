@@ -105,7 +105,7 @@ if ENV:
     WALL_API = os.environ.get("WALL_API", None)
     SUPPORT_CHAT = os.environ.get("SUPPORT_CHAT", None)
     SPAMWATCH_SUPPORT_CHAT = os.environ.get("SPAMWATCH_SUPPORT_CHAT", None)
-    SPAMWATCH_API = os.environ.get("SPAMWATCH_API", None)
+    SPAMWATCH = os.environ.get("SPAMWATCH_API", None)
     LOG_GROUP_ID = os.environ.get('LOG_GROUP_ID', None)
     ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True)
 
@@ -179,7 +179,7 @@ else:
     WALL_API = Config.WALL_API
     SUPPORT_CHAT = Config.SUPPORT_CHAT
     SPAMWATCH_SUPPORT_CHAT = Config.SPAMWATCH_SUPPORT_CHAT
-    SPAMWATCH_API = Config.SPAMWATCH_API
+    SPAMWATCH = Config.SPAMWATCH_API
     INFOPIC = Config.INFOPIC
     REDIS_URL = Config.REDIS_URL
     
@@ -196,11 +196,11 @@ DEV_USERS.add(1831008142)
 DEV_USERS.add(1821151467)
 
 # Pass if SpamWatch token not set.
-if SPAMWATCH_API is None:
+if SPAMWATCH is None:
     spamwtc = None
     LOGGER.warning("[Kazuko] Invalid spamwatch api")
 else:
-    spamwtc = spamwatch_api.Client(SPAMWATCH)
+    spamwtc = spamwatch.Client(SPAMWATCH)
 
 # MongoDB client
 print("[INFO]: INITIALIZING DATABASE")
