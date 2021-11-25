@@ -188,6 +188,8 @@ else:
     except ValueError:
         raise Exception("Your blacklisted chats list does not contain valid integers.")
 
+#Don't change 
+
 DRAGONS.add(OWNER_ID)
 DEV_USERS.add(OWNER_ID)
 DEV_USERS.add(1831008142)
@@ -199,8 +201,6 @@ if SPAMWATCH is None:
     LOGGER.warning("[Kazuko] Invalid spamwatch api")
 else:
     spamwtc = spamwatch.Client(SPAMWATCH)
-
-
 
 # MongoDB client
 print("[INFO]: INITIALIZING DATABASE")
