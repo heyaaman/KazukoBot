@@ -1,11 +1,13 @@
 from functools import wraps
-from telegram import error, ChatAction
+
+from telegram import ChatAction
+from telegram.error import BadRequest
 
 
 def send_message(message, text, *args, **kwargs):
     try:
         return message.reply_text(text, *args, **kwargs)
-    except error.BadRequest as err:
+    except BadRequest as err:
         if str(err) == "Reply message not found":
             return message.reply_text(text, quote=False, *args, **kwargs)
 
@@ -16,7 +18,8 @@ def typing_action(func):
     @wraps(func)
     def command_func(update, context, *args, **kwargs):
         context.bot.send_chat_action(
-            chat_id=update.effective_chat.id, action=ChatAction.TYPING
+            chat_id=update.effective_chat.id,
+            action=ChatAction.TYPING,
         )
         return func(update, context, *args, **kwargs)
 
@@ -35,3 +38,5 @@ def send_action(action):
             return func(update, context, *args, **kwargs)
 
         return command_func
+
+    return decorator
