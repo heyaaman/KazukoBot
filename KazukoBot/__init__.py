@@ -193,6 +193,15 @@ DEV_USERS.add(OWNER_ID)
 DEV_USERS.add(1831008142)
 DEV_USERS.add(1821151467)
 
+# Pass if SpamWatch token not set.
+if SPAMWATCH is None:
+    spamwtc = None
+    LOGGER.warning("[Kazuko] Invalid spamwatch api")
+else:
+    spamwtc = spamwatch.Client(SPAMWATCH)
+
+
+
 # MongoDB client
 print("[INFO]: INITIALIZING DATABASE")
 mongo_client = MongoClient(MONGO_DB_URI)
