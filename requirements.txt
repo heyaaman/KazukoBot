@@ -79,3 +79,4 @@ gpytranslate
 googletrans==2.4.0
 gtts
 psutil
+multicolorcaptcha
