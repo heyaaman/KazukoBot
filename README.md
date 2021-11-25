@@ -69,12 +69,6 @@ class Development(Config):
 If you can't have a config.py file (EG on Heroku), it is also possible to use environment variables.
 So just go and read the config sample file. 
 
-### Heroku Deploy 
-The easiest way to deploy this Bot is via Heroku.
-
-<p align="left"><a href="https://heroku.com/deploy?template=https://github.com/heyaaman/KazukoBot"> <img src="https://img.shields.io/badge/Deploy%20To%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
-
-
   ### Python dependencies
 
 Install the necessary Python dependencies by moving to the project directory and running:
