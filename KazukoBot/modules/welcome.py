@@ -40,7 +40,7 @@ from telegram.ext import (
 from telegram.utils.helpers import escape_markdown, mention_html, mention_markdown
 
 import KazukoBot.modules.sql.welcome_sql as sql
-from zeldris import (
+from KazukoBot import (
     DEV_USERS,
     LOGGER,
     OWNER_ID,
