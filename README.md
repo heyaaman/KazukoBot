@@ -183,7 +183,7 @@ CREDITS
 ```
 This Bot Is Developed By [heyaaman](https://github.com/heyaaman) 
 
-##Note : While kanging or forking this repo don't change credits.
+## Note : While kanging or forking this repo don't change credits.
 
 ## Find me on telegram 
 [![Telegram](https://img.shields.io/badge/heyaaman-1b77FF.svg?style=for-the-badge&logo=telegram)](https://t.me/heyaaman)
