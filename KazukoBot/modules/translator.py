@@ -3,7 +3,6 @@ import os
 
 import requests
 from gpytranslate import SyncTranslator
-from gtts import gTTS
 from telegram import (
     ParseMode,
     Update,
@@ -71,29 +70,6 @@ def languages(update: Update, context: CallbackContext) -> None:
     )
 
 
-@send_action(ChatAction.RECORD_AUDIO)
-def gtts(update, context):
-    msg = update.effective_message
-    reply = " ".join(context.args)
-    if not reply:
-        if msg.reply_to_message:
-            reply = msg.reply_to_message.text
-        else:
-            return msg.reply_text(
-                "Reply to some message or enter some text to convert it into audio format!"
-            )
-        for x in "\n":
-            reply = reply.replace(x, "")
-    try:
-        tts = gTTS(reply)
-        tts.save("Kazuko.mp3")
-        with open("Kazuko.mp3", "rb") as speech:
-            msg.reply_audio(speech)
-    finally:
-        if os.path.isfile("Kazuko.mp3"):
-            os.remove("Kazuko.mp3")
-
-
 # Open API key
 API_KEY = "6ae0c3a0-afdc-4532-a810-82ded0054236"
 URL = "http://services.gingersoftware.com/Ginger/correct/json/GingerTheText"
@@ -133,7 +109,6 @@ __help__ = """
 use `/tr <lang code>` for some other language!
  /langs: List of all language code to translates!
  /splcheck: As a reply to get grammar corrected text of gibberish message. 
- /tts: To some message to convert it into audio format! 
 """
 
 __mod_name__ = "Translate"
@@ -143,9 +118,6 @@ dispatcher.add_handler(
 )
 dispatcher.add_handler(
     DisableAbleCommandHandler(["langs", "lang"], languages, run_async=True)
-)
-dispatcher.add_handler(
-    DisableAbleCommandHandler("tts", gtts, pass_args=True, run_async=True)
 )
 dispatcher.add_handler(
     DisableAbleCommandHandler("splcheck", spellcheck, run_async=True)
