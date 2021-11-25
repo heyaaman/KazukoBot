@@ -68,7 +68,8 @@ def paginate_modules(page_n: int, module_dict: Dict, prefix, chat=None) -> List:
     if calc in [1, 2]:
         pairs.append([modules[-1]])
     else:
-        pairs += [[EqInlineKeyboardButton("Back", callback_data="kazuko_back")]]
+        pairs += [[EqInlineKeyboardButton("Home", callback_data="kazuko_back") EqInlineKeyboardButton(text="Try inline",switch_inline_query_current_chat="") ]]
+
     return pairs
 
 
