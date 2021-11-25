@@ -140,7 +140,7 @@ __help__ = """
   `/tr hi-en`*:* translates hindi to english
 """
 
-TRANSLATE_HANDLER = DisableAbleCommandHandler(["", ""], totranslate)
+TRANSLATE_HANDLER = DisableAbleCommandHandler(["tr", "tl"], totranslate)
 
 dispatcher.add_handler(TRANSLATE_HANDLER)
 
