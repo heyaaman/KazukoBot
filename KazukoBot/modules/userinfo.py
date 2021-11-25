@@ -320,6 +320,20 @@ def info(update, context):
         del_msg.delete()
 
 
+def __user_info__(user_id):
+    bio = html.escape(sql.get_user_bio(user_id) or "")
+    me = html.escape(sql.get_user_me_info(user_id) or "")
+    if bio and me:
+        return "<b>About user:</b>\n{me}\n\n<b>What others say:</b>\n{bio}".format(
+            me=me, bio=bio
+        )
+    if bio:
+        return "<b>What others say:</b>\n{bio}\n".format(me=me, bio=bio)
+    if me:
+        return "<b>About user:</b>\n{me}" "".format(me=me, bio=bio)
+    return ""
+
+
 @run_async
 def about_me(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
