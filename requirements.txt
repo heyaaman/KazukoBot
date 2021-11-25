@@ -77,3 +77,4 @@ motor
 cloudscraper
 gpytranslate
 googletrans==2.4.0
+gtts
