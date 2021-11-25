@@ -19,7 +19,7 @@ from KazukoBot.modules.helper_funcs.alternate import typing_action, send_action
 trans = SyncTranslator()
 
 
-@typing_action
+@run_async
 def translate(update: Update, context: CallbackContext) -> None:
     bot = context.bot
     message = update.effective_message
@@ -52,7 +52,7 @@ def translate(update: Update, context: CallbackContext) -> None:
     message.reply_text(reply, parse_mode=ParseMode.HTML)
 
 
-@typing_action
+@run_async
 def languages(update: Update, context: CallbackContext) -> None:
     update.effective_message.reply_text(
         "Click on the button below to see the list of supported language codes for Kazuko.",
@@ -75,7 +75,7 @@ API_KEY = "6ae0c3a0-afdc-4532-a810-82ded0054236"
 URL = "http://services.gingersoftware.com/Ginger/correct/json/GingerTheText"
 
 
-@typing_action
+@run_async
 def spellcheck(update, _):
     if update.effective_message.reply_to_message:
         msg = update.effective_message.reply_to_message
