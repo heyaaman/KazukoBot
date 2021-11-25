@@ -5,11 +5,11 @@ from telegram import Message, User
 from telegram import ParseMode, MAX_MESSAGE_LENGTH
 from telegram.utils.helpers import escape_markdown
 
-import zeldris.modules.sql.userinfo_sql as sql
-from zeldris import dispatcher, DEV_USERS
-from zeldris.modules.disable import DisableAbleCommandHandler
-from zeldris.modules.helper_funcs.alternate import run_async
-from zeldris.modules.helper_funcs.extraction import extract_user
+import KazukoBot.modules.sql.userinfo_sql as sql
+from KazukoBot import dispatcher, DEV_USERS
+from KazukoBot.modules.disable import DisableAbleCommandHandler
+from KazukoBot.modules.helper_funcs.alternate import run_async
+from KazukoBot.modules.helper_funcs.extraction import extract_user
 
 
 @run_async
