@@ -116,22 +116,7 @@ def totranslate(update: Update, context: CallbackContext):
                         source_lang, dest_lang, tekstr.text
                     ),
                     parse_mode=ParseMode.MARKDOWN,
-                )
-
-def languages(update: Update, context: CallbackContext) -> None:
-    update.effective_message.reply_text(
-        "Click on the button below to see the list of supported language codes.",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="Language codes",
-                        url="https://telegra.ph/Lang-Codes-03-19-3",
-                    ),
-                ],
-            ],
-            disable_web_page_preview=True,
-
+           
 
 __help__ = """
 • `/tr` or `/tl` (language code) as reply to a long message
@@ -141,7 +126,7 @@ __help__ = """
 """
 
 TRANSLATE_HANDLER = DisableAbleCommandHandler(["tr", "tl"], totranslate)
-dispatcher.add_handler(DisableAbleCommandHandler(["langs", "lang"], languages, run_async=True)
+
 dispatcher.add_handler(TRANSLATE_HANDLER)
 
 __mod_name__ = "Translator"
