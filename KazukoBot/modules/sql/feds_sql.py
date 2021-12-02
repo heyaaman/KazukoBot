@@ -6,6 +6,7 @@ from KazukoBot.modules.sql import BASE, SESSION
 from sqlalchemy import Boolean, Column, Integer, String, UnicodeText
 from telegram.error import BadRequest, Unauthorized
 
+
 class Federations(BASE):
     __tablename__ = "feds"
     owner_id = Column(String(14))
