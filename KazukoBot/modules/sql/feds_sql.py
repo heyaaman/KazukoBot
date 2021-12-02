@@ -6,7 +6,6 @@ from KazukoBot.modules.sql import BASE, SESSION
 from sqlalchemy import Boolean, Column, Integer, String, UnicodeText
 from telegram.error import BadRequest, Unauthorized
 
-
 class Federations(BASE):
     __tablename__ = "feds"
     owner_id = Column(String(14))
@@ -66,7 +65,7 @@ class FedsUserSettings(BASE):
         self.user_id = user_id
 
     def __repr__(self):
-        return "<Feds report settings ({})>".format(self.user_id)
+        return f"<Feds report settings ({self.user_id})>"
 
 
 class FedSubs(BASE):
@@ -79,7 +78,7 @@ class FedSubs(BASE):
         self.fed_subs = fed_subs
 
     def __repr__(self):
-        return "<Fed {} subscribes for {}>".format(self.fed_id, self.fed_subs)
+        return f"<Fed {self.fed_id} subscribes for {self.fed_subs}>"
 
 
 # Dropping db
@@ -420,6 +419,36 @@ def user_join_fed(fed_id, user_id):
         __load_all_feds_chats()
         return True
 
+
+def user_transfer_fed(fed_id, user_id):
+	with FEDS_LOCK:
+		global FEDERATION_BYOWNER, FEDERATION_BYFEDID, FEDERATION_BYNAME
+		fed = SESSION.query(Federations).get(fed_id)
+		if not fed:
+			return False
+		newowner = str(user_id)
+		# Variables
+		getfed = FEDERATION_BYFEDID.get(str(fed_id))
+		owner_id = getfed['owner']
+		members = ast.literal_eval(ast.literal_eval(getfed['fusers'])['members'])
+		fed_name = getfed['fname']
+		fed_rules = getfed['frules']
+		fed_log = getfed['flog']
+		#Update
+		oldowner = FEDERATION_BYFEDID[str(fed_id)]["owner"]
+		tempdata = FEDERATION_BYOWNER[oldowner]
+		FEDERATION_BYOWNER.pop(oldowner)
+
+		FEDERATION_BYFEDID[str(fed_id)]['owner'] = str(user_id)
+		FEDERATION_BYFEDID[str(fed_id)]['fusers'] = str({'owner': str(user_id), 'members': str(members)})
+		FEDERATION_BYOWNER[newowner] = tempdata
+
+		#DB Update
+		fed = Federations(str(user_id), fed_name, str(fed_id), fed_rules, fed_log, str({'owner': str(user_id), 'members': str(members)}))
+		SESSION.merge(fed)
+		SESSION.commit()
+		__load_all_feds_chats()
+		return True
 
 def chat_leave_fed(chat_id):
     with FEDS_LOCK:
