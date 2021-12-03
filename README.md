@@ -172,7 +172,6 @@ CREDITS
 ❤️ Saitama = Sawada
 ❤️ DaisyX = Inuka
 ❤️ Yone = Noob kittu 
-❤️ William Butcher Bot = TheHamkerCat
 ❤️ Developed by = heyaaman
 ```
 This Bot Is Developed By [heyaaman](https://github.com/heyaaman) 
