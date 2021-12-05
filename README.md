@@ -11,6 +11,10 @@ The Support group can be reached out to at [Kazuko Support](https://t.me/KazukoS
 
 News channel as at [Kazuko Updates](https://t.me/KazukoUpdates)
 
+
+### To deploy on Heroku make yourself a deployment button and deploy, rest is on this repository.
+
+
 ### How to setup/deploy.
 
 ### Read these notes carefully before proceeding 
