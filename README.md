@@ -168,7 +168,7 @@ You can use [nssm](https://nssm.cc/usage) to install the bot as service on windo
 Make sure to edit the start and restart bats to your needs. 
 Note: the restart bat requires that User account control be disabled.
 
-For queries or any issues regarding the bot please open an issue ticket or visit us at [CFC BOT SUPPORT](https://t.me/CFC_BOT_support)
+For queries or any issues regarding the bot please open an issue ticket or visit us at [Kazuko Support](https://t.me/KazukoSupportChat)
 
 ## Credits 📍
 CREDITS
@@ -178,9 +178,11 @@ CREDITS
 ❤️ Yone = Noob kittu 
 ❤️ Developed by = heyaaman
 ```
-This Bot Is Developed By [heyaaman](https://github.com/heyaaman) 
-
 ## Note : While kanging or forking this repo don't change credits.
+
+This repository is a mix set of other bot repositorys which mentioned on credits above developed By [heyaaman](https://github.com/heyaaman) 
 
 ## Find me on telegram 
 [![Telegram](https://img.shields.io/badge/heyaaman-1b77FF.svg?style=for-the-badge&logo=telegram)](https://t.me/heyaaman)
+
+### If anything missing on this repository, give a pull request :)
