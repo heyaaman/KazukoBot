@@ -1,7 +1,7 @@
 {
       "name": "KazukoBot",
       "description": "Telegram group management bot.",
-      "logo": "https://telegra.ph/file/6d0f29836fda1effbb4ba.jpg",
+      "logo": "https://telegra.ph/file/ff90bfef47a81da8e8ab3.jpg",
       "keywords": [
          "telegram",
          "anime",
@@ -72,7 +72,7 @@
       "SUPPORT_CHAT": {
          "description": "Your Telegram support group chat username where your users will go and bother you with shit But be like: MyGroupChatUsernameBlah. If this ever points to masha support than consider you made an enemy.",
          "required": true,
-         "value": "CFC_BOT_support"
+         "value": "KazukoSupportChat"
       },
       "MONGO_DB_URI": {
          "description": "Required for database connections.",
@@ -117,7 +117,7 @@
          "required": false,
          "value": ""
       },
-      "sw_api": {
+      "SPAMWATCH_API": {
          "description": "Spamwatch API Token, Get one from @SpamWatchBot.",
          "required": false,
          "value": ""
