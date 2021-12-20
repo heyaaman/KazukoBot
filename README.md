@@ -12,8 +12,10 @@ The Support group can be reached out to at [Kazuko Support](https://t.me/KazukoS
 News channel as at [Kazuko Updates](https://t.me/KazukoUpdates)
 
 
-### To deploy on Heroku make yourself a deployment button and deploy, rest is on this repository.
+### Heroku Deploy 
+The easiest way to deploy this Bot is via Heroku.
 
+<p align="left"><a href="https://heroku.com/deploy?template=https://github.com/heyaaman/KazukoBot"> <img src="https://img.shields.io/badge/Deploy%20To%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
 
 ### How to setup/deploy.
 
