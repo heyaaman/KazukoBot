@@ -3,7 +3,9 @@ import os
 import sys
 import time
 import spamwatch
-
+from telegraph import Telegraph
+from Python_ARQ import ARQ
+from aiohttp import ClientSession
 import telegram.ext as tg
 from pyrogram import Client, errors
 from telethon import TelegramClient
@@ -82,7 +84,7 @@ if ENV:
     CERT_PATH = os.environ.get("CERT_PATH")
     API_ID = os.environ.get("API_ID", None)
     API_HASH = os.environ.get("API_HASH", None)
-    ARQ_API_KEY = os.environ.get('ARQ_API_KEY', None)
+    ARQ_API = os.environ.get("ARQ_API", None)
     BOT_ID = int(os.environ.get("BOT_ID", None))
     DB_URI = os.environ.get("DATABASE_URL")
     MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
@@ -108,7 +110,10 @@ if ENV:
     SPAMWATCH = os.environ.get("SPAMWATCH_API", None)
     LOG_GROUP_ID = os.environ.get('LOG_GROUP_ID', None)
     ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True)
-
+    HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", True)
+    HEROKU_API_KEY = os.environ.get("HEROKU_APP_NAME", True)
+    ARQ_API_URL = "https://grambuilders.tech"
+    ARQ_API_KEY = ARQ_API
     try:
         BL_CHATS = set(int(x) for x in os.environ.get("BL_CHATS", "").split())
     except ValueError:
@@ -173,6 +178,8 @@ else:
     BAN_STICKER = Config.BAN_STICKER
     ALLOW_EXCL = Config.ALLOW_EXCL
     CASH_API_KEY = Config.CASH_API_KEY
+    ARQ_API = Config.ARQ_API_KEY
+    ARQ_API_URL = Config.ARQ_API_URL
     TIME_API_KEY = Config.TIME_API_KEY
     ARQ_API_KEY = Config.ARQ_API_KEY
     AI_API_KEY = Config.AI_API_KEY
@@ -182,7 +189,8 @@ else:
     SPAMWATCH = Config.SPAMWATCH_API
     INFOPIC = Config.INFOPIC
     REDIS_URL = Config.REDIS_URL
-    
+    HEROKU_APP_NAME = Config.HEROKU_APP_NAME
+    HEROKU_API_KEY = Config.HEROKU_API_KEY
     try:
         BL_CHATS = set(int(x) for x in Config.BL_CHATS or [])
     except ValueError:
@@ -220,7 +228,7 @@ else:
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("kazuko", API_ID, API_HASH)
 pgram = Client("kazukoPyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
-pbot = Client("kazukopbot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
+pbot = Client("heykazukobot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 app = Client("kazuko", bot_token=TOKEN, api_id=API_ID, api_hash=API_HASH)
 dispatcher = updater.dispatcher
 
@@ -230,13 +238,20 @@ WOLVES = list(WOLVES)
 DEMONS = list(DEMONS)
 TIGERS = list(TIGERS)
 
+telegraph = Telegraph()
+telegraph.create_account(short_name="kazu")
+
 # Load at end to ensure all prev variables have been set
 from KazukoBot.modules.helper_funcs.handlers import (
     CustomCommandHandler,
     CustomMessageHandler,
     CustomRegexHandler,
 )
-
+# ARQ Client
+print("[INFO]: INITIALZING AIOHTTP SESSION")
+aiohttpsession = ClientSession()
+print("[INFO]: INITIALIZING ARQ CLIENT")
+arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 # make sure the regex handler can take extra kwargs
 tg.RegexHandler = CustomRegexHandler
 tg.CommandHandler = CustomCommandHandler
