@@ -172,6 +172,9 @@ Note: the restart bat requires that User account control be disabled.
 
 For queries or any issues regarding the bot please open an issue ticket or visit us at [Kazuko Support](https://t.me/KazukoSupportChat)
 
+## Thank you [Alpha Coders](https://alphacoders.com) for the wallpaper API and Support ❤️
+
+
 ## Credits 📍
 CREDITS
 ```
