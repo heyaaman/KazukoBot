@@ -32,7 +32,7 @@ from KazukoBot.modules.sql.afk_sql import is_afk, check_afk_status
 from KazukoBot.modules.sql.users_sql import get_user_num_chats
 from KazukoBot.modules.helper_funcs.chat_status import sudo_plus
 from KazukoBot.modules.helper_funcs.extraction import extract_user
-from KazukoBot import telethn as YoneTelethonClient, TIGERS, DRAGONS, DEMONS
+from KazukoBot import telethn as KazukoTelethonClient, TIGERS, DRAGONS, DEMONS
 
 
 def no_by_per(totalhp, percentage):
@@ -159,7 +159,7 @@ def get_id(update: Update, context: CallbackContext):
                 parse_mode=ParseMode.HTML)
 
 
-@YoneTelethonClient.on(
+@KazukoTelethonClient.on(
     events.NewMessage(
         pattern='/ginfo ',
         from_users=(TIGERS or []) + (DRAGONS or []) + (DEMONS or [])))
@@ -404,11 +404,6 @@ def set_about_me(update: Update, context: CallbackContext):
                     MAX_MESSAGE_LENGTH // 4, len(info[1])
                 )
             )
-
-@run_async
-@sudo_plus
-@run_async
-@sudo_plus
 @run_async
 @sudo_plus
 def stats(update: Update, context: CallbackContext):
