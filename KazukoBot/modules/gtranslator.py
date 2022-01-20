@@ -1,7 +1,9 @@
-from telegram import ParseMode, Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import CallbackContext, run_async
+from telegram.ext import CallbackContext, CommandHandler, run_async
+from telegram import ParseMode, Update
+
 
 from gpytranslate import SyncTranslator
+from KazukoBot.modules.helper_funcs.misc import delete
 
 from KazukoBot import dispatcher
 from KazukoBot.modules.disable import DisableAbleCommandHandler
@@ -9,8 +11,9 @@ from KazukoBot.modules.disable import DisableAbleCommandHandler
 
 trans = SyncTranslator()
 
-
-def totranslate(update: Update, context: CallbackContext) -> None:
+@run_async
+def translate(update: Update, context: CallbackContext) -> None:
+    bot = context.bot
     message = update.effective_message
     reply_msg = message.reply_to_message
     if not reply_msg:
@@ -32,33 +35,27 @@ def totranslate(update: Update, context: CallbackContext) -> None:
         source = trans.detect(to_translate)
         dest = "en"
     translation = trans(to_translate,
-                              sourcelang=source, targetlang=dest)
+                        sourcelang=source, targetlang=dest)
     reply = f"<b>Translated from {source} to {dest}</b>:\n" \
         f"<code>{translation.text}</code>"
 
-    message.reply_text(reply, parse_mode=ParseMode.HTML)
+    bot.send_message(text=reply, chat_id=message.chat.id, parse_mode=ParseMode.HTML)
 
 
-def languages(update: Update, context: CallbackContext) -> None:
-    update.effective_message.reply_text(
-        "Click on the button below to see the list of supported language codes.",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="Language codes",
-                        url="https://telegra.ph/𝗕ooo--‌ᴀꜰᴋ-ᴏꜰꜰʟɪɴᴇ-10-30-4"
-                        ),
-                ],
-            ],
-        disable_web_page_preview=True
-    )
-        )
+__help__="""
+ • `/tts `*:* to create a an audio type message.
+ *Example:* 
+ •`/tts hello `*:* Creates an audio of hello
+Reply to messages or write messages from other languages for translating into the intended language.
+ • `/tr or /tl `(language code) as reply to a long message
+*Example:* 
+ •` /tr en`*:* translates something to english
+ • `/tr hi-en`*:* translates hindi to english
+*Language codes*
+‣ Click [Languages](https://cloud.google.com/translate/docs/languages) to see the list of supported language codes!
+"""
 
-__mod_name__ = "Translator"
-
-
-TRANSLATE_HANDLER = DisableAbleCommandHandler(["tr", "tl"], totranslate)
+TRANSLATE_HANDLER = DisableAbleCommandHandler(["tr", "tl"], translate)
 
 dispatcher.add_handler(TRANSLATE_HANDLER)
 
