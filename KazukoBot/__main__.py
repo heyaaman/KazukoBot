@@ -92,19 +92,15 @@ Add me in your groups and promote me to make me function well[.](https://telegra
 """
 buttons = [
     [
-        InlineKeyboardButton(text="About & Support", callback_data="kazuko_"),
-        InlineKeyboardButton(text="Try inline",switch_inline_query_current_chat=""),                            
+        InlineKeyboardButton(text="Updates", callback_data="https://t.me/KazukoUpdates"),
+        InlineKeyboardButton(text="About", callback_data="kazuko_"),
+        InlineKeyboardButton(text="Support", callback_data="https://t.me/KazukoSupportChat"),
       ],
     [
-        InlineKeyboardButton(
-            text="️Add Kazuko to your group", url="t.me/KazukoRobot?startgroup=true",
-        ),
-    ],
-    [ 
-        InlineKeyboardButton(text="Help & Commands", callback_data="help_back"),
+        InlineKeyboardButton(text="️Add Me", url="t.me/KazukoRobot?startgroup=true"),
+        InlineKeyboardButton(text="Commands", callback_data="help_back"),
     ],
 ]
-
 
 HELP_STRINGS = """
 Hey there! My name is Kazuko.
@@ -232,9 +228,18 @@ def start(update: Update, context: CallbackContext):
             ),
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Support", url="t.me/KazukoSupportChat"), InlineKeyboardButton(text="Try Inline",switch_inline_query_current_chat=""),
-                  InlineKeyboardButton(text="Updates", url="t.me/KazukoUpdates")]]               
-                  
+                [
+                    [
+                        InlineKeyboardButton(text="Support",url="https://t.me/KazukoSupportChat",
+                        ),
+                        InlineKeyboardButton(text="Updates",url="https://t.me/KazukoUpdates",
+                        ),
+                    ],
+                    [  
+                        InlineKeyboardButton(text="Try Inline",switch_inline_query_current_chat="",
+                        ),
+                    ]
+                ]
             ),
         )
 
@@ -391,14 +396,6 @@ or choosing help button at home menu and report error/bugs at Kazuko's support c
                         ),
                         InlineKeyboardButton(
                             text="Source code", url="https://github.com/heyaaman/KazukoBot",
-                        ),
-                    ],
-                    [
-                        InlineKeyboardButton(
-                            text="Support", url="https://t.me/KazukoSupportChat",
-                        ),
-                        InlineKeyboardButton(
-                             text="Updates", url="https://t.me/KazukoUpdates",
                         ),
                     ],
                     [
