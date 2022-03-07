@@ -218,16 +218,6 @@ print("[INFO]: INITIALIZING DATABASE")
 mongo_client = MongoClient(MONGO_DB_URI)
 db = mongo_client.KazukoBot
 
-if not SPAMWATCH:
-    sw = None
-    LOGGER.warning("SpamWatch API key missing! recheck your config.")
-else:
-    try:
-        sw = spamwatch.Client(SPAMWATCH_API)
-    except:
-        sw = None
-        LOGGER.warning("Can't connect to SpamWatch!")
-
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("kazuko", API_ID, API_HASH)
 pgram = Client("kazukoPyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
