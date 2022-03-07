@@ -342,7 +342,7 @@ __help__ = """
  • `/sanitize`*:* always use this before /pat or any contact
  • `/pat`*:* pats a user, or get patted
  • `/8ball`*:* predicts using 8ball method 
- • /couples - To Choose Couple Of The Day
+ • `/couples`*:* To Choose Couple Of The Day
 
 """
 
