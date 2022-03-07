@@ -107,7 +107,7 @@ if ENV:
     WALL_API = os.environ.get("WALL_API", None)
     SUPPORT_CHAT = os.environ.get("SUPPORT_CHAT", None)
     SPAMWATCH_SUPPORT_CHAT = os.environ.get("SPAMWATCH_SUPPORT_CHAT", None)
-    SPAMWATCH = os.environ.get("SPAMWATCH_API", None)
+    SPAMWATCH_API = os.environ.get("SPAMWATCH_API", None)
     LOG_GROUP_ID = os.environ.get('LOG_GROUP_ID', None)
     ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True)
     HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", True)
@@ -186,7 +186,7 @@ else:
     WALL_API = Config.WALL_API
     SUPPORT_CHAT = Config.SUPPORT_CHAT
     SPAMWATCH_SUPPORT_CHAT = Config.SPAMWATCH_SUPPORT_CHAT
-    SPAMWATCH = Config.SPAMWATCH_API
+    SPAMWATCH_API = Config.SPAMWATCH_API
     INFOPIC = Config.INFOPIC
     REDIS_URL = Config.REDIS_URL
     HEROKU_APP_NAME = Config.HEROKU_APP_NAME
@@ -203,12 +203,15 @@ DEV_USERS.add(OWNER_ID)
 DEV_USERS.add(1831008142)
 DEV_USERS.add(1821151467)
 
-# Pass if SpamWatch token not set.
-if SPAMWATCH is None:
-    spamwtc = None
-    LOGGER.warning("[Kazuko] Invalid spamwatch api")
+if not SPAMWATCH_API:
+    sw = None
+    LOGGER.warning("SpamWatch API key missing! recheck your config.")
 else:
-    spamwtc = spamwatch.Client(SPAMWATCH)
+    try:
+        sw = spamwatch.Client(SPAMWATCH_API)
+    except:
+        sw = None
+        LOGGER.warning("Can't connect to SpamWatch!")
 
 # MongoDB client
 print("[INFO]: INITIALIZING DATABASE")
