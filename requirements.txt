@@ -11,7 +11,7 @@ pykeyboard
 beautifulsoup4
 python-arq==6.0.3
 requests==2.26.0
-python-telegram-bot==12.8
+python-telegram-bot==13.9
 sqlalchemy==1.3.20
 httpx[http2]>=0.18.1,<1.0.0
 psycopg2-binary
